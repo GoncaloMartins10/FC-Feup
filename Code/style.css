@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap'); /* Ubuntu font */
+
 * {
     box-sizing: border-box;
     margin: 0px;
@@ -16,9 +18,9 @@ body {
 }
 
 .header{
-    /* background-image:url("images/header_background.jpg");
-    background-size: cover;*/ 
-    background-color: teal;
+    /*background-image:url("images/header_background.jpg");
+    background-size: cover;*/
+    background-color: #353535;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -30,15 +32,10 @@ body {
     border: 2px solid red;
 }
 
-.slogan{
-    border: 3px solid black;
-    font: 30px 'Ubuntu', sans-serif;
-}
-
 footer{
     right: 0;
     bottom: 0;
     left: 0;
     margin-top: auto;
-    background-color: tomato;
+    background-color: #284b63;
 }
