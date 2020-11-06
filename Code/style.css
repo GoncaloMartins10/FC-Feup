@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap'); /* Ubuntu font */
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap'); /* Nunito font */
 
 * {
     box-sizing: border-box;
@@ -17,21 +17,54 @@ body {
     flex-direction: column;
 }
 
-.header{
-    /*background-image:url("images/header_background.jpg");
-    background-size: cover;*/
+/* ---------------------------------------- Header  ---------------------------------------- */
+header{
     background-color: #353535;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    padding: 0px 20px;
 }
-
+/* -------------------- Logo -------------------- */
 .logo{
     width: 100px;
-    border: 2px solid red;
+}
+/* -------------------- Navbar -------------------- */
+nav {
+    list-style: none;
+}
+nav ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+nav li{
+    list-style-type: none;
+    padding: 10px 20px;
+    margin: 0px 10px;
+    font: 20px 'Nunito', sans-serif;
+    background: #141414;
+    border-radius: 20px;
 }
 
+nav li a{
+    text-decoration: none;
+    color: white;
+}
+
+nav li:hover, .active {
+    background-color: #525252;
+}
+/* ----- Login and Chart -----*/
+.loginandchart{
+    background: #3C6E71;
+}
+.loginandchart:hover{
+    background: #4D9093;
+}
+
+/* ---------------------------------------- Footer  ---------------------------------------- */
 footer{
     right: 0;
     bottom: 0;
