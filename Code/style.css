@@ -151,6 +151,15 @@ footer .container{
 .fa-instagram {
     background: #DD2A7B;
 }
+
+.copyright{
+    background-color: #182C3A;
+    width: 100%;
+    margin-bottom: 0;
+    padding: 7px;
+    text-align: center;
+    color: #3B6F91
+  }
   
 
 /* ---------------------------------------- Animations  ---------------------------------------- */
