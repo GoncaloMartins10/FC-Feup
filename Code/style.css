@@ -61,7 +61,7 @@ nav li a{
 }
 
 nav li:hover, .active {
-    background-color: #525252;
+    background-color: #5C5C5C;
 }
 /* ----- Login and Chart -----*/
 .loginandchart{
