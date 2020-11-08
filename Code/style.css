@@ -19,8 +19,7 @@ body {
 }
 
 main {
-    margin: 0 30px;
-    padding: 10px;
+    display: flex;
 }
 /* ---------------------------------------- H ---------------------------------------- */
 
@@ -227,4 +226,112 @@ footer .container{
   }
   
 
+/*------------------------------------------MODAL------------------------------------------------*/
+
+
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    position: absolute;
+    top: 100px;
+    right: 15px;
+    width: 30%;
+    max-width: 300px;
+    border: 3px solid #141414;
+    z-index: 9;
+  }
+
+  /* Add styles to the form container */
+  .form-container { 
+    padding: 10px;
+    background-color: white;
+  }
+
+  /* Full-width input fields */
+  .form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background: #f1f1f1;
+  }
+
+  /* When the inputs get focus, do something */
+  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    background-color: #3C6E71;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  /* The Close Button (x) */
+  .close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+  .close:hover, .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+
+  .form-popup h1{
+    font: 26px 'Nunito', sans-serif;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+/*------------------SIDEBAR----------------------------*/
+.sidenav {
+    width: 0;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #141414;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
   
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
