@@ -13,15 +13,15 @@
         <img class="logo" src="images/logo.png">
         <nav>
            <ul>
-               <li class="hvr-grow-shadow"><a href="#">Inicio</a></li>
-               <li class="active hvr-grow-shadow"><a href="#">Membros</a></li>
+               <li class="hvr-grow-shadow"><a href="inicio.html">Inicio</a></li>
+               <li class="active hvr-grow-shadow"><a href="membros.html">Membros</a></li>
                <li class="hvr-grow-shadow"><a href="#">Loja</a></li>
                <li class="hvr-grow-shadow"><a href="#">Admin</a></li>
            </ul> 
         </nav>
         <nav>
             <ul>
-                <li class="loginandchart hvr-grow-shadow"><a href="#">Login <i class="fas fa-sign-in-alt"></i></a></li>
+                <li class="loginandchart hvr-grow-shadow"><a role="button" onclick="document.getElementById('myForm').style.display = 'block'" style="cursor: pointer;">Login <i class="fas fa-sign-in-alt"></i></a></li>
                 <li class="loginandchart hvr-grow-shadow"><a href="#">Carrinho <i class="fas fa-shopping-cart"></i></a></li>
             </ul> 
          </nav>
@@ -67,6 +67,14 @@
                     <b>Nome:</b> Cristiano Ronaldo<br>
                 </div>
             </div>
+            <div class="card">
+                <img src="images/cr7.jpg">
+                <div class="text">
+                    <b>Nº Sócio:</b> 1234<br>
+                    <b>Nome:</b> Cristiano Ronaldo<br>
+                </div>
+            </div>
+            
 
         </div>
     
@@ -128,7 +136,21 @@
     <div class="copyright">
         &copy 2020, Gonçalo Martins & Ricardo Martins. Todos os direitos reservados.
     </div>
+    <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+            <span onclick="document.getElementById('myForm').style.display = 'none'" class="close" title="Close Modal">&times;</span>
 
+            <h1>Login</h1>
+    
+            <label for="numero"><b>Número de Sócio</b></label>
+             <input type="text" placeholder="Insira o númerod de sócio" name="numero" required>
+    
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Insira a Password" name="psw" required>
+    
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </div>
 
 </body>
 

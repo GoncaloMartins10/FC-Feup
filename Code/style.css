@@ -215,4 +215,72 @@ footer .container{
     transform: scale(1.1);
   }
 
-  
+/*------------------------------------------MODAL------------------------------------------------*/
+
+
+  /* The popup form - hidden by default */
+  .form-popup {
+    display: none;
+    position: absolute;
+    top: 100px;
+    right: 15px;
+    width: 30%;
+    max-width: 300px;
+    border: 3px solid #141414;
+    z-index: 9;
+  }
+
+  /* Add styles to the form container */
+  .form-container { 
+    padding: 10px;
+    background-color: white;
+  }
+
+  /* Full-width input fields */
+  .form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background: #f1f1f1;
+  }
+
+  /* When the inputs get focus, do something */
+  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+
+  /* Set a style for the submit/login button */
+  .form-container .btn {
+    background-color: #3C6E71;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  /* The Close Button (x) */
+  .close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+
+  .close:hover, .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+
+  .form-popup h1{
+    font: 32px 'Nunito', sans-serif;
+    color: black;
+    font-weight: bold;
+  }
