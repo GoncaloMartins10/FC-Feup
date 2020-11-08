@@ -17,11 +17,22 @@ body {
     flex-direction: column;
     font-family: 'PT Sans', sans-serif;
 }
+
+main {
+    margin: 0 30px;
+    padding: 10px;
+}
 /* ---------------------------------------- H ---------------------------------------- */
 
 h2{
     font: 24px 'Nunito', sans-serif;
     color: #D9D9D9;
+    font-weight: bold;
+}
+
+h3{
+    font: 25px 'Nunito', sans-serif;  
+    color: #284b63;
     font-weight: bold;
 }
 
@@ -43,7 +54,6 @@ nav {
 }
 nav ul{
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
 }
 nav li{
@@ -104,7 +114,6 @@ footer .container{
 /* ----- Partners Section ----- */
 .partners{
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
     align-content: center;
@@ -154,12 +163,48 @@ footer .container{
 
 .copyright{
     background-color: #182C3A;
-    width: 100%;
     margin-bottom: 0;
     padding: 7px;
     text-align: center;
     color: #3B6F91
-  }
+}
+
+.card{
+    width: 150px;
+    background: #D9D9D9;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+}
+
+.card img{
+    object-fit: cover;
+    width: 100%;
+    height: 150px;
+}
+
+.card .text{
+    padding: 5px;
+    font-size: 13px;
+}
+
+.flexbox{
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row wrap;
+}
+
+.search{
+    background-color: #D9D9D9;
+    padding: 10px 50px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.search .item{
+    margin-right: 30px;
+    padding: 5px;
+}
   
 
 /* ---------------------------------------- Animations  ---------------------------------------- */
@@ -180,5 +225,6 @@ footer .container{
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
+  
 
   
