@@ -185,6 +185,11 @@ footer .container{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
 }
 
+.card:hover{
+    top:-10px;
+    position: relative;
+}
+
 .card img{
     object-fit: cover;
     width: 100%;
@@ -260,7 +265,7 @@ footer .container{
   }
   
 
-/*------------------------------------------MODAL------------------------------------------------*/
+/*------------------------------------------MODAL LOGIN------------------------------------------------*/
 
 
   /* The popup form - hidden by default */
@@ -298,8 +303,14 @@ footer .container{
     outline: none;
   }
 
-  /* Set a style for the submit/login button */
-  .form-container .btn {
+ .form-popup h1{
+    font: 26px 'Nunito', sans-serif;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  button {
     background-color: #3C6E71;
     color: white;
     padding: 14px 20px;
@@ -324,14 +335,8 @@ footer .container{
     cursor: pointer;
   }
 
-  .form-popup h1{
-    font: 26px 'Nunito', sans-serif;
-    color: black;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
 
-/*------------------SIDEBAR----------------------------*/
+/*---------------------------------------------SIDEBAR------------------------------------------------*/
 .sidenav {
     width: 0;
     position: relative;
@@ -368,4 +373,62 @@ footer .container{
 #main {
     transition: margin-left .5s;
     padding: 20px;
+    margin:0 auto;
 }
+
+/*------------------------------------------------POP UP LOJA--------------------------------------*/
+
+    /* Center the image and position the close button */
+    .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+      position: relative;
+    }
+
+    img.avatar {
+      width: 20%;
+    }
+
+    .container {
+      padding: 16px;
+    }
+
+    span.psw {
+      float: right;
+      padding-top: 16px;
+    }
+
+    /* The Modal (background) */
+
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+      padding-top: 60px;
+    }
+
+    /* Modal Content/Box */
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto 15% auto;
+      /* 5% from the top, 15% from the bottom and centered */
+      border: 1px solid #888;
+      width: 60%;
+      /* Could be more or less, depending on screen size */
+    }

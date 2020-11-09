@@ -27,7 +27,7 @@
         </nav>
     </header>
     
-    <main class="center">
+    <main>
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="#">About</a>
@@ -36,7 +36,7 @@
             <a href="#">Contact</a>
           </div>
         
-        <div id="main">
+        <div class="center" id="main">
             <div class="member center">
                 <h1>Seja bem vindo ao FC FEUP</h1>
                 <form action="/action_page.php">
@@ -126,12 +126,10 @@
     <script>
         function openNav() {
           document.getElementById("mySidenav").style.width = "200px";
-          document.getElementById("main").style.marginLeft = "0px";
         }
         
         function closeNav() {
           document.getElementById("mySidenav").style.width = "0";
-          document.getElementById("main").style.marginLeft= "0";
         }
     </script>
 
