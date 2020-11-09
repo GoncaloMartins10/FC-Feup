@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');    /* Nunito font */
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');   /* PT Sans font */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');    /* Ubuntu font */
 
 * {
     margin: 0px;
@@ -13,15 +14,18 @@ html {
 body {
     background-color: white;
     min-height: 100%;
-    display: flex;
-    flex-direction: column;
     font-family: 'PT Sans', sans-serif;
 }
 
 main {
     display: flex;
 }
-/* ---------------------------------------- H ---------------------------------------- */
+/* ---------------------------------------- Headings ---------------------------------------- */
+
+h1{
+    font: 32px 'Ubuntu', sans-serif;
+    font-weight: bold;
+}
 
 h2{
     font: 24px 'Nunito', sans-serif;
@@ -33,6 +37,15 @@ h3{
     font: 25px 'Nunito', sans-serif;  
     color: #284b63;
     font-weight: bold;
+}
+
+/* ---------------------------------------- Center Things ---------------------------------------- */
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 /* ---------------------------------------- Header  ---------------------------------------- */
@@ -76,7 +89,7 @@ nav li:hover, .active {
 .loginandchart{
     background: #3C6E71;
 }
-.loginandchart:hover{
+.loginandchart:hover, .button:hover{
     background: #4D9093;
 }
 
@@ -112,10 +125,7 @@ footer .container{
 }
 /* ----- Partners Section ----- */
 .partners{
-    display: flex;
     justify-content: space-between;
-    align-items: center;
-    align-content: center;
 }
 .partners .box{
     width: 150px;
@@ -194,7 +204,7 @@ footer .container{
 
 .search{
     background-color: #D9D9D9;
-    padding: 10px 50px;
+    padding: 10px 15px 10px 50px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -203,6 +213,30 @@ footer .container{
 .search .item{
     margin-right: 30px;
     padding: 5px;
+}
+
+.button{
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font: 20px 'Nunito', sans-serif;
+    background: #3C6E71;
+    color: white;
+    border-radius: 20px;
+}
+
+.member{
+    background: #d9d9d9;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    flex-direction: column;
+    align-content: space-between;
+}
+
+.member .item{
+    margin: 20px 0px;
 }
   
 
@@ -308,30 +342,30 @@ footer .container{
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-  }
+}
   
-  .sidenav a {
+.sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
     display: block;
     transition: 0.3s;
-  }
+}
   
-  .sidenav a:hover {
+.sidenav a:hover {
     color: #f1f1f1;
-  }
+}
   
-  .sidenav .closebtn {
+.sidenav .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-  }
+}
   
-  #main {
+#main {
     transition: margin-left .5s;
     padding: 20px;
-  }
+}
