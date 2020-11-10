@@ -39,6 +39,11 @@ h3{
     font-weight: bold;
 }
 
+h4{
+    font: 20px 'Nunito', sans-serif;
+    font-weight: bold;
+}
+
 /* ---------------------------------------- Center Things ---------------------------------------- */
 
 .center{
@@ -177,17 +182,12 @@ footer .container{
     text-align: center;
     color: #3B6F91
 }
-
+/* ---------------------------------------- Cards  ---------------------------------------- */
 .card{
     width: 150px;
     background: #D9D9D9;
     margin: 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
-}
-
-.card:hover{
-    top:-10px;
-    position: relative;
 }
 
 .card img{
@@ -245,26 +245,6 @@ footer .container{
 }
   
 
-/* ---------------------------------------- Animations  ---------------------------------------- */
-
-.hvr-grow-shadow {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-property: box-shadow, transform;
-    transition-property: box-shadow, transform;
-  }
-  .hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
-    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-  
-
 /*------------------------------------------MODAL LOGIN------------------------------------------------*/
 
 
@@ -310,20 +290,10 @@ footer .container{
     margin-bottom: 10px;
   }
 
-  button {
-    background-color: #3C6E71;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-  }
-
   /* The Close Button (x) */
   .close {
     position: absolute;
-    right: 25px;
+    right: 10px;
     top: 0;
     color: #000;
     font-size: 35px;
@@ -378,57 +348,103 @@ footer .container{
 
 /*------------------------------------------------POP UP LOJA--------------------------------------*/
 
-    /* Center the image and position the close button */
-    .imgcontainer {
-      text-align: center;
-      margin: 24px 0 12px 0;
-      position: relative;
+/* Center the image and position the close button */
+.imgcontainer {
+    text-align: center;
+    flex: 1;
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px
+}
+
+img.avatar {
+    width: 80%;
+    margin-top: 5px;
+}
+
+.details {
+    flex: 1;
+    flex-basis: 60%;
+    margin: 10px 0px;
+    padding: 20px;
+}
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+
+.modal-content {
+    position: relative;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    margin: 10% auto 10% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #353535;
+    width: 50%;
+    /* Could be more or less, depending on screen size */
+    display: flex;
+}
+
+@media screen and (max-width: 920px) {
+    .modal-content{
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 10px;
     }
+  }
 
-    img.avatar {
-      width: 20%;
-    }
+/* ---------------------------------------- Animations  ---------------------------------------- */
 
-    .container {
-      padding: 16px;
-    }
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+  }
+  .hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
 
-    span.psw {
-      float: right;
-      padding-top: 16px;
-    }
-
-    /* The Modal (background) */
-
-    .modal {
-      display: none;
-      /* Hidden by default */
-      position: fixed;
-      /* Stay in place */
-      z-index: 1;
-      /* Sit on top */
-      left: 0;
-      top: 0;
-      width: 100%;
-      /* Full width */
-      height: 100%;
-      /* Full height */
-      overflow: auto;
-      /* Enable scroll if needed */
-      background-color: rgb(0, 0, 0);
-      /* Fallback color */
-      background-color: rgba(0, 0, 0, 0.4);
-      /* Black w/ opacity */
-      padding-top: 60px;
-    }
-
-    /* Modal Content/Box */
-
-    .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto 15% auto;
-      /* 5% from the top, 15% from the bottom and centered */
-      border: 1px solid #888;
-      width: 60%;
-      /* Could be more or less, depending on screen size */
-    }
+.hvr-grow-shadow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+}
+.hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}

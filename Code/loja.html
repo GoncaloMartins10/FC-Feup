@@ -63,7 +63,7 @@
             <h3>Sócios</h3>
 
             <div class="flexbox">
-                <div class="card" style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'">
+                <div class="card hvr-grow" style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'">
                     <img src="images/cr7.jpg">
                     <div class="text">
                         <b>Nº Sócio:</b> 1234<br>
@@ -195,31 +195,32 @@
     <div id="id01" class="modal">
 
         <form class="modal-content animate" action="/action_page.php" method="post">   
-         
-          <div class="imgcontainer">          
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          
+          <div class="imgcontainer center">
+            <h4>Camisola Oficial</h4>          
             <img src="images/cr7.jpg" alt="Avatar" class="avatar">
-
-            <h1>Nome da roupa</h1>
           </div>
     
-          <div class="container"> 
-              <h1>Descrição</h1>
-            <p>sddadsdsds</p>
+          <div class="details"> 
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+            <b>Descrição:<br></b>
+            <p>Camisola oficial dos nossos atletas para a época 2019/2020</p><br>
+            
             <label for="uname"><b>Quantidade</b></label>
             <input type="number" placeholder=0  name="uname" required><br><br>
             <label for="tamanho"><b>Tamanho</b></label>
-            <input list="tamanhos" placeholder="S" name="tamanho">
+            <input list="tamanhos" placeholder="S" name="tamanho"><br><br>
             <datalist id="tamanhos">
               <option value="S">
               <option value="M">
               <option value="L">
               <option value="XL">
               <option value="XXL">
-            </datalist>    
-            
+            </datalist>
+            <b>Preço:</b> 20,33€<br><br> 
+            <input type="submit" class="button" value="Adicionar ao carrinho"></input>
           </div>
-          <button type="submit">Adicionar ao carrinho</button>
+          
 
         </form>
       </div>
