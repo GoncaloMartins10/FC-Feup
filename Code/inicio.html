@@ -15,8 +15,8 @@
            <ul>
                <li class="active hvr-grow-shadow"><a href="inicio.html">Inicio</a></li>
                <li class="hvr-grow-shadow"><a href="membros.html">Membros</a></li>
-               <li class="hvr-grow-shadow"><a href="#">Loja</a></li>
-               <li class="hvr-grow-shadow"><a onclick="openNav()" style="cursor: pointer;">Admin </a></li>
+               <li class="hvr-grow-shadow"><a href="loja.html">Loja</a></li>
+               <li class="hvr-grow-shadow"><a href="admin.html">Admin</a></li>
            </ul> 
         </nav>
         <nav>
@@ -26,21 +26,8 @@
             </ul> 
         </nav>
     </header>
-    
-    <main >
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
-          </div>
-        
-        <div id="main">
-            
-        </div>
 
-    </main>
+    
 
 
     <footer>
@@ -79,6 +66,7 @@
         &copy 2020, Gonçalo Martins & Ricardo Martins. Todos os direitos reservados.
     </div>
 
+
     <div class="form-popup" id="myForm">
         <form action="/action_page.php" class="form-container">
             <span onclick="document.getElementById('myForm').style.display = 'none'" class="close" title="Close Modal">&times;</span>
@@ -94,16 +82,6 @@
             <button type="submit" class="btn">Login</button>
         </form>
     </div>
-
-    <script>
-        function openNav() {
-          document.getElementById("mySidenav").style.width = "200px";
-        }
-        
-        function closeNav() {
-          document.getElementById("mySidenav").style.width = "0";
-        }
-    </script>
 
 </body>
 

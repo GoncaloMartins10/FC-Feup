@@ -14,11 +14,14 @@ html {
 body {
     background-color: white;
     min-height: 100%;
+    display: flex;
+    flex-direction: column;
     font-family: 'PT Sans', sans-serif;
 }
 
 main {
-    display: flex;
+    margin: 0 30px;
+    padding: 10px;
 }
 /* ---------------------------------------- Headings ---------------------------------------- */
 
@@ -304,47 +307,6 @@ footer .container{
     color: red;
     cursor: pointer;
   }
-
-
-/*---------------------------------------------SIDEBAR------------------------------------------------*/
-.sidenav {
-    width: 0;
-    position: relative;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #141414;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-  
-.sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-  
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-  
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-}
-  
-#main {
-    transition: margin-left .5s;
-    padding: 20px;
-    margin:0 auto;
-}
 
 /*------------------------------------------------POP UP LOJA--------------------------------------*/
 

@@ -5,7 +5,8 @@
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="style.css">
-    <title>Tornar-se Sócio</title>
+    <link rel="stylesheet" href="style_admin.css">
+    <title>FC FEUP | Inicio</title>
 </head>
 
 <body>
@@ -16,7 +17,7 @@
                <li class="hvr-grow-shadow"><a href="inicio.html">Inicio</a></li>
                <li class="hvr-grow-shadow"><a href="membros.html">Membros</a></li>
                <li class="hvr-grow-shadow"><a href="loja.html">Loja</a></li>
-               <li class="hvr-grow-shadow"><a href="admin.html">Admin</a></li>          
+               <li class="active hvr-grow-shadow"><a href="admin.html">Admin</a></li>          
             </ul> 
         </nav>
         <nav>
@@ -27,37 +28,18 @@
         </nav>
     </header>
     
-    <main class="center">
-        
-            <div class="member center">
-                <h1>Seja bem vindo ao FC FEUP</h1>
-                <form action="/action_page.php">
+   
+   
+    <main>   
+        <div id="mySidenav" class="sidenav">
+            <a href="#">Pedidos Pendentes</a>
+            <a href="#">Estatísticas</a>
+            <a href="#">......</a>
+            <a href="#">......</a>
+        </div>
+        <div id="main">
 
-                    <div class="item">
-                        <label for="nome">Nome</label><br>
-                        <input type="text" id="nome" name="nome"><br>
-                    </div>
-                    <div class="item">
-                        <label for="Morada">Morada</label><br>
-                        <input type="text" id="morada" name="morada"><br>                     
-                    </div>
-                    <div class="item">
-                        <label for="telefone">Telefone</label><br>
-                        <input type="tel" id="telefone" name="telefone" pattern="[0-9]{9}"><br>
-                    </div>
-                    <div class="item">
-                        <label for="img">Imagem:</label><br>
-                        <input type="file" id="img" name="img" accept="image/*"><br>                       
-                    </div>
-                    <div class="item">
-                        <label for="pass">Password</label><br>
-                        <input type="password" id="pass" name="pass"><br>                        
-                    </div>
-                    <div class="item">
-                        <input class="button" type="submit" value="Tornar-se Sócio">
-                    </div>
-                </form> 
-            </div>
+        </div>
 
     </main>
 
