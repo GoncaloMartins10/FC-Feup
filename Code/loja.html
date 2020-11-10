@@ -5,7 +5,7 @@
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="style.css">
-    <title>FC FEUP | Membros</title>
+    <title>FC FEUP | Loja</title>
 </head>
 
 <body>
@@ -13,10 +13,10 @@
         <img class="logo" src="images/logo.png">
         <nav>
            <ul>
-                <li class="hvr-grow-shadow"><a href="inicio.html">Inicio</a></li>
-                <li class="hvr-grow-shadow"><a href="membros.html">Membros</a></li>
-                <li class="active hvr-grow-shadow"><a href="loja.html">Loja</a></li>
-                <li class="hvr-grow-shadow"><a href="admin.html">Admin</a></li>          
+                <li class="hvr-underline-from-left"><a href="inicio.html">Inicio</a></li>
+                <li class="hvr-underline-from-left"><a href="membros.html">Membros</a></li>
+                <li id="active"><a href="loja.html">Loja</a></li>
+                <li class="hvr-underline-from-left"><a href="admin.html">Admin</a></li>          
             </ul> 
         </nav>
         <nav>
@@ -54,7 +54,7 @@
             <h3>Sócios</h3>
 
             <div class="flexbox">
-                <div class="card hvr-grow" style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'">
+                <div class="card" style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'">
                     <img src="images/cr7.jpg">
                     <div class="text">
                         <b>Nº Sócio:</b> 1234<br>
@@ -178,7 +178,7 @@
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Insira a Password" name="psw" required>
     
-            <button type="submit" class="btn">Login</button>
+            <input type="submit" class="button" value="Login"></input>
         </form>
     </div>
 
