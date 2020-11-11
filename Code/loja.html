@@ -55,7 +55,7 @@
 
             <div class="flexbox">
                 <div class="card hvr-grow">
-                    <img src="images/cr7.jpg" id="img1" style="cursor: pointer;">
+                    <img src="images/cr7.jpg" id="1" style="cursor: pointer;"  onClick="reply_click(this.id)">
                     <div class="text">
                         <b>Nº Sócio:</b> 1234<br>
                         <b>Nome:</b> Cristiano Ronaldo<br>
@@ -111,14 +111,14 @@
                 
             <div class="flexbox">
                 <div class="card hvr-grow">
-                    <img src="images/marega.jpg" style="cursor: pointer;">
+                    <img src="images/marega.jpg" id="2" style="cursor: pointer;"  onClick="reply_click(this.id)">
                     <div class="text">
                         <b>Nº Sócio:</b> 1235<br>
                         <b>Nome: </b> Moussa Marega<br>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="images/biden.jpg">
+                    <img src="images/biden.jpg" id="3" style="cursor: pointer;"  onClick="reply_click(this.id)">
                     <div class="text">
                         <b>Nº Sócio:</b> 1237<br>
                         <b>Nome: </b> Joe Biden<br>
@@ -214,19 +214,15 @@
       </div>
 
       <script>
-        // Get the modal
+        // Get the modal 
         var modal = document.getElementById("id01");
-        
-        // Get the image and insert it inside the modal - use its "alt" text as a caption
-        var img = document.getElementById("img1");
-        var modalImg = document.getElementById("img01");
-        var captionText = document.getElementById("caption");
-        img.onclick = function(){
-          modal.style.display = "block";
-          modalImg.src = this.src;
-          captionText.innerHTML = this.alt;
+        function reply_click(clicked_id) {
+            // Get the image and insert it inside the modal - use its "alt" text as a caption
+            var img = document.getElementById(clicked_id);
+            var modalImg = document.getElementById("img01");
+
+            modal.style.display = "block";
+            modalImg.src = img.src;      
         }
         </script>
-    
-
 </body>
