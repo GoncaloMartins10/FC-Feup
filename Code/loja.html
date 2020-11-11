@@ -54,8 +54,8 @@
             <h3>Sócios</h3>
 
             <div class="flexbox">
-                <div class="card hvr-grow" style="cursor: pointer;" onclick="document.getElementById('id01').style.display='block'">
-                    <img src="images/cr7.jpg">
+                <div class="card hvr-grow">
+                    <img src="images/cr7.jpg" id="img1" style="cursor: pointer;">
                     <div class="text">
                         <b>Nº Sócio:</b> 1234<br>
                         <b>Nome:</b> Cristiano Ronaldo<br>
@@ -110,8 +110,8 @@
             <h3>Jogadores</h3>
                 
             <div class="flexbox">
-                <div class="card">
-                    <img src="images/marega.jpg">
+                <div class="card hvr-grow">
+                    <img src="images/marega.jpg" style="cursor: pointer;">
                     <div class="text">
                         <b>Nº Sócio:</b> 1235<br>
                         <b>Nome: </b> Moussa Marega<br>
@@ -183,12 +183,11 @@
     </div>
 
     <div id="id01" class="modal">
-
         <form class="modal-content animate" action="/action_page.php" method="post">   
           
           <div class="imgcontainer center">
             <h4>Camisola Oficial</h4>          
-            <img src="images/cr7.jpg" alt="Avatar" class="avatar">
+            <img id="img01" alt="Avatar" class="avatar">
           </div>
     
           <div class="details"> 
@@ -210,10 +209,24 @@
             <b>Preço:</b> 20,33€<br><br> 
             <input type="submit" class="button" value="Adicionar ao carrinho"></input>
           </div>
-          
 
         </form>
       </div>
+
+      <script>
+        // Get the modal
+        var modal = document.getElementById("id01");
+        
+        // Get the image and insert it inside the modal - use its "alt" text as a caption
+        var img = document.getElementById("img1");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        img.onclick = function(){
+          modal.style.display = "block";
+          modalImg.src = this.src;
+          captionText.innerHTML = this.alt;
+        }
+        </script>
     
 
 </body>
