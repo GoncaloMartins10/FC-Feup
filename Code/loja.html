@@ -29,101 +29,97 @@
 
     <form class="search" action="/action_page.php">
         <div class="item">
-            <input type="checkbox" id="jogadores" name="jogadores" value="jogador"  checked>
-            <label for="jogadores"> Jogadores</label>
-        </div>
-        <div class="item">
-            <input type="checkbox" id="presidentes" name="presidentes" value="presidente"  checked>
-            <label for="presidentes"> Presidentes</label>
-        </div>
-        <div class="item">
-            <input type="checkbox" id="socios" name="socios" value="socio"  checked>
-            <label for="socios"> Sócios</label>
+            <label for="price"> Preço:</label><br>
+            0 € <input type="range" id="price" name="price" min="0" max="100"> 100 €
         </div>
 
+
         <div class="item">
-            <input type="text" id="search" name="search" placeholder="Nº Sócio ou Nome"><br>
+            <input type="text" id="search" name="search" placeholder="Produto"><br>
         </div>
 
-        <div class="item" style="margin-left: auto;">
-            <a href="socio.html"><div class="button hvr-grow-shadow">Tornar-se Sócio</div></a>
-        </div>
     </form> 
 
     <main>        
-            <h3>Sócios</h3>
+            <h3>Produtos</h3>
 
             <div class="flexbox">
                 <div class="card hvr-grow">
                     <img src="images/cr7.jpg" id="1" style="cursor: pointer;"  onClick="reply_click(this.id)">
                     <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
                         <b>Nome:</b> Cristiano Ronaldo<br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                        <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                        <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                        </div>
-                </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                    <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
-                        <b>Nome:</b> Cristiano Ronaldo<br>
+                        <b>Preço:</b> 20,99€ <br>
+                        <b>Stock:</b> 30 Unidades <br>
                     </div>
                 </div>
                 <div class="card">
                     <img src="images/cr7.jpg">
                     <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
                         <b>Nome:</b> Cristiano Ronaldo<br>
+                        <b>Preço:</b> 20,99€ <br>
+                        <b>Stock:</b> 30 Unidades <br>
                     </div>
                 </div>
                 <div class="card">
                     <img src="images/cr7.jpg">
                     <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
                         <b>Nome:</b> Cristiano Ronaldo<br>
+                        <b>Preço:</b> 20,99€ <br>
+                        <b>Stock:</b> 30 Unidades <br>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/cr7.jpg">
+                    <div class="text">
+                        <b>Nome:</b> Cristiano Ronaldo<br>
+                        <b>Preço:</b> 20,99€ <br>
+                        <b>Stock:</b> 30 Unidades <br>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/cr7.jpg">
+                    <div class="text">
+                        <b>Nome:</b> Cristiano Ronaldo<br>
+                        <b>Preço:</b> 20,99€ <br>
+                        <b>Stock:</b> 30 Unidades <br>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/cr7.jpg">
+                    <div class="text">
+                        <b>Nome:</b> Cristiano Ronaldo<br>
+                        <b>Preço:</b> 20,99€ <br>
+                        <b>Stock:</b> 30 Unidades <br>
                     </div>
                 </div>
                     
                 <div class="card">
                     <img src="images/cr7.jpg">
                     <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
                         <b>Nome:</b> Cristiano Ronaldo<br>
+                        <b>Preço:</b> 20,99€ <br>
+                        <b>Stock:</b> 30 Unidades <br>
                     </div>
                 </div>
 
-            </div>
-            
-            <h3>Jogadores</h3>
-                
-            <div class="flexbox">
                 <div class="card hvr-grow">
                     <img src="images/marega.jpg" id="2" style="cursor: pointer;"  onClick="reply_click(this.id)">
                     <div class="text">
-                        <b>Nº Sócio:</b> 1235<br>
-                        <b>Nome: </b> Moussa Marega<br>
+                        <b>Nome:</b> Cristiano Ronaldo<br>
+                        <b>Preço:</b> 20,99€ <br>
+                        <b>Stock:</b> 30 Unidades <br>
                     </div>
                 </div>
+
                 <div class="card">
                     <img src="images/biden.jpg" id="3" style="cursor: pointer;"  onClick="reply_click(this.id)">
                     <div class="text">
-                        <b>Nº Sócio:</b> 1237<br>
-                        <b>Nome: </b> Joe Biden<br>
+                        <b>Nome:</b> Cristiano Ronaldo<br>
+                        <b>Preço:</b> 20,99€ <br>
+                        <b>Stock:</b> 30 Unidades <br>
                     </div>
                 </div>
+
             </div>
                 
     </main>
@@ -206,12 +202,13 @@
               <option value="XL">
               <option value="XXL">
             </datalist>
-            <b>Preço:</b> 20,33€<br><br> 
+            <b>Preço:</b> 20,99€<br><br> 
             <input type="submit" class="button" value="Adicionar ao carrinho"></input>
           </div>
 
         </form>
       </div>
+
 
       <script>
         // Get the modal 
@@ -224,5 +221,6 @@
             modal.style.display = "block";
             modalImg.src = img.src;      
         }
+
         </script>
 </body>
