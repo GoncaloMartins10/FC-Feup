@@ -9,6 +9,26 @@
 </head>
 
 <body>
+
+    <?php
+        //Conta GONÇALO
+        $conn = pg_connect("host=db.fe.up.pt dbname=siem2021 user=siem2021 password=uqKSXuBZ");
+        //Conta RICARDO
+        //$conn = pg_connect("host=db.fe.up.pt dbname=siem2047 user=siem2047 password=XutlXFnC");
+
+        if(!$conn){
+            echo("Ligação não foi estabelecida");
+        }
+
+        $query = "set schema 'fcfeup'";
+        pg_exec($conn, $query);
+        $query = "select* from socio";
+        $result = pg_exec($conn, $query);
+        pg_close($conn);
+
+        $row = pg_fetch_assoc($result); 
+    ?>
+
     <header>
         <img class="logo" src="images/logo.png">
         <nav>
@@ -56,56 +76,22 @@
 
             <div class="flexbox">
                 
+            <?php if(empty($row['num_socio'])){
+                    echo "nada";    
+                }
+                while(isset($row['num_socio'])){ ?>
+
                 <div class="card">
-                    <img src="images/cr7.jpg">
+                    <img src= "<?php echo $row['Imagem']; ?>">
                     <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
-                        <b>Nome:</b> Cristiano Ronaldo<br>
+                        <b>Nº Sócio:</b> <?php echo $row['num_socio']; ?><br>
+                        <b>Nome:</b> <?php echo $row['nome']; ?><br>
                     </div>
                 </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                        <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                        <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                        </div>
-                </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                    <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                    <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                    <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                    </div>
-                </div>
-                    
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                    <div class="text">
-                        <b>Nº Sócio:</b> 1234<br>
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                    </div>
-                </div>
+
+            <?php
+                $row = pg_fetch_assoc($result);
+            } ?>
 
             </div>
             
