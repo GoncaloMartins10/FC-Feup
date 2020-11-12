@@ -5,7 +5,6 @@
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style_admin.css">
     <title>FC FEUP | Admin</title>
 </head>
 
@@ -30,18 +29,39 @@
     
    
    
-    <main>   
-        <div id="mySidenav" class="sidenav">
-            <a href="#">Pedidos Pendentes</a>
-            <a href="#">Estatísticas</a>
-            <a href="#">......</a>
-            <a href="#">......</a>
-        </div>
-        <div id="main">
+    <main class="center" style="flex-direction: column; margin: 20px 0;">
 
-        </div>
-
-    </main>
+        <table id=cart>
+            <tr>
+                <th>Nº Sócio</th>
+                <th><!-- Imagem --></th>
+                <th>Nome</th>
+                <th>Morada</th>
+                <th>Telefone</th>
+                <th>Aprovar</th>
+                <th>Eliminar</th>
+            </tr>
+            <tr>
+                <td>1234</td>
+                <td><img src="images/marega.jpg"></td>
+                <td>Moussa Marega</td>
+                <td>Rua em África, 4050-31 Mali</td>
+                <td>912345678</td>
+                <td><i class="fas fa-check-circle" style="color:green;"></i></td>
+                <td><i class="fas fa-times-circle" style="color:red;"></i></td>
+            </tr>
+            <tr>
+                <td>1237</td>
+                <td><img src="images/cr7.jpg"></td>
+                <td>Cristiano Ronaldo</td>
+                <td>Rua na Madeira, 2345-291 Portugal</td>
+                <td>917777777</td>
+                <td><i class="fas fa-check-circle" style="color:green;"></i></td>
+                <td><i class="fas fa-times-circle" style="color:red;"></i></td>
+            </tr>
+      </table>
+  
+      </main>
 
 
     <footer>

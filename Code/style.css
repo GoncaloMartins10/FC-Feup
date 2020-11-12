@@ -97,7 +97,7 @@ nav li a{
     background: #3C6E71;
     border-radius: 20px;
 }
-.loginandchart:hover, .button:hover{
+.loginandchart:hover, button:hover{
     background: #4D9093;
 }
 
@@ -233,7 +233,7 @@ footer .container{
 
 /* ---------------------------------------- Button ---------------------------------------- */
 
-.button{
+button, .button{
     padding: 5px 10px;
     text-align: center;
     text-decoration: none;
@@ -241,7 +241,10 @@ footer .container{
     background: #3C6E71;
     color: white;
     border-radius: 20px;
+    border: none;
+    cursor: pointer;
 }
+
 
 /* ---------------------------------------- Became a member ---------------------------------------- */
 .member{
