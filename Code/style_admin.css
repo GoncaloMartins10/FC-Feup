@@ -2,44 +2,32 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');   /* PT Sans font */
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');    /* Ubuntu font */
 
-
-body {
-    min-height: 100%;
-    display: inline;
-    flex-direction: column;
-}
-
 main {
     display: flex;
-    margin: 0px;
-    padding: 0px;
+    margin: 20px 0;
 }
 
 /*---------------------------------------------SIDEBAR------------------------------------------------*/
 .sidenav {
-    width: 200px;
+    width: 190px;
     position: relative;
     z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #141414;
-    overflow-x: hidden;
-    padding-top: 60px;
-}
+    left: 10px;
+    background: #353535;
+    padding: 8px 0;
+    height: min-content;
+  }
   
-.sidenav a {
-    padding: 8px 8px 8px 32px;
+  .sidenav a {
+    margin: 10px ;
+    padding: 20px 0px 20px 0px;
     text-decoration: none;
-    font-size: 18px;
-    color: #818181;
+    text-align: center;
+    font-size: 20px;
+    color: white;
     display: block;
-}
+  }
   
-.sidenav a:hover {
-    color: #f1f1f1;
-}
-  
-#main {
-    padding: 20px;
-    margin:0 auto;
-}
+  .content {
+    margin: auto;
+  }
