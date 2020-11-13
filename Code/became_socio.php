@@ -50,7 +50,7 @@
             move_uploaded_file($_FILES["img"]["tmp_name"], $imagem);
             
 
-            echo "Nome: $nome <br>Morada: $morada<br>Telefone: $telefone<br> Pass: $pass<br> imagem: $imagem<br>";
+            echo "Nome: $nome <br>Morada: $morada<br>Telefone: $telefone<br> Pass: $pass<br> imagem: $imagem<br><br>";
 
             //Conta GONÇALO
             $conn = pg_connect("host=db.fe.up.pt dbname=siem2021 user=siem2021 password=uqKSXuBZ");
@@ -65,8 +65,7 @@
             
             echo "INSERT INTO socio(nome, imagem, telefone, morada, pass, aprovado) VALUES ('".$nome."', '".$imagem."', '".$telefone."', '".$morada."', '".$pass."', 'FALSE')";
             $query = "INSERT INTO socio(nome, imagem, telefone, morada, pass, aprovado) VALUES ('".$nome."', '".$imagem."', '".$telefone."', '".$morada."', '".$pass."', 'FALSE')";
-            $result = pg_exec($conn, $query);
-            echo $result;
+            pg_exec($conn, $query);
         ?>
 
 
