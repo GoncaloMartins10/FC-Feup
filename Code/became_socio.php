@@ -28,32 +28,47 @@
     </header>
     
     <main class="center">
-        
-            <div class="member center">
-                <h1>Bem-vindo ao FC FEUP</h1>
-                <form method="POST" action="became_socio.php" enctype="multipart/form-data">
 
-                    <div class="item">
-                        <input type="text" id="nome" name="nome" placeholder="Nome"><br>
-                    </div>
-                    <div class="item">
-                        <input type="text" id="morada" name="morada" placeholder="Morada"><br>                     
-                    </div>
-                    <div class="item">
-                        <input type="tel" id="telefone" name="telefone" pattern="[0-9]{9}"  placeholder="Número de Telefone"><br>
-                    </div>
-                    <div class="item">
-                        <label for="img">Imagem:</label><br>
-                        <input type="file" id="img" name="img" accept="image/*"><br>                       
-                    </div>
-                    <div class="item">
-                        <input type="password" id="pass" name="pass" placeholder="Password"><br>                        
-                    </div>
-                    <div class="item">
-                        <button type="submit">Tornar-se Sócio</button>
-                    </div>
-                </form> 
-            </div>
+        <?php
+            $nome = $morada = $telefone = $pass = $imagem = "";
+
+            if(isset($_POST['nome']))
+                $nome = $_POST['nome'];
+
+            if(isset($_POST['morada']))
+                $morada = $_POST['morada'];
+
+            if(isset($_POST['telefone']))
+                $telefone = $_POST['telefone'];
+
+            if(isset($_POST['pass']))    
+                $pass = $_POST['pass'];
+            
+            //Imagem
+            $diretorio = "images/";
+            $imagem = $diretorio . basename($_FILES["img"]["name"]);
+            move_uploaded_file($_FILES["img"]["tmp_name"], $imagem);
+            
+
+            echo "Nome: $nome <br>Morada: $morada<br>Telefone: $telefone<br> Pass: $pass<br> imagem: $imagem<br>";
+
+            //Conta GONÇALO
+            $conn = pg_connect("host=db.fe.up.pt dbname=siem2021 user=siem2021 password=uqKSXuBZ");
+            //Conta RICARDO
+            //$conn = pg_connect("host=db.fe.up.pt dbname=siem2047 user=siem2047 password=XutlXFnC");
+
+            if(!$conn){
+                echo("Ligação não foi estabelecida");
+            }
+            $query = "set schema 'fcfeup'";
+            pg_exec($conn, $query);
+            
+            echo "INSERT INTO socio(nome, imagem, telefone, morada, pass, aprovado) VALUES ('".$nome."', '".$imagem."', '".$telefone."', '".$morada."', '".$pass."', 'FALSE')";
+            $query = "INSERT INTO socio(nome, imagem, telefone, morada, pass, aprovado) VALUES ('".$nome."', '".$imagem."', '".$telefone."', '".$morada."', '".$pass."', 'FALSE')";
+            $result = pg_exec($conn, $query);
+            echo $result;
+        ?>
+
 
     </main>
 
