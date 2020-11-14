@@ -82,7 +82,7 @@
                 while(isset($row['num_socio'])){ ?>
 
                 <div class="card">
-                    <img src= "<?php echo $row['Imagem']; ?>">
+                    <img src= "<?php echo $row['imagem']; ?>">
                     <div class="text">
                         <b>Nº Sócio:</b> <?php echo $row['num_socio']; ?><br>
                         <b>Nome:</b> <?php echo $row['nome']; ?><br>

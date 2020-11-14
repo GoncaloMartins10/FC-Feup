@@ -5,7 +5,8 @@
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="style.css">
-    <title>Tornar-se Sócio</title>
+    <link rel="stylesheet" href="style_admin.css">
+    <title>FC FEUP | Admin</title>
 </head>
 
 <body>
@@ -16,7 +17,7 @@
                 <li class="hvr-underline-from-left"><a href="inicio.html">Inicio</a></li>
                 <li class="hvr-underline-from-left"><a href="membros.html">Membros</a></li>
                 <li class="hvr-underline-from-left"><a href="loja.html">Loja</a></li>
-                <li class="hvr-underline-from-left"><a href="admin.html">Admin</a></li>          
+                <li id="active"><a href="admin.html">Admin</a></li>          
             </ul> 
         </nav>
         <nav>
@@ -27,54 +28,50 @@
          </nav>
     </header>
     
-    <main class="center">
+   
+   
+    <main>
+        <div class="sidenav">
+            <a class="hvr-underline-from-left" href="admin.html">Pedidos de Sócio Pendentes</a>
+            <a class="hvr-underline-from-left" href="novoproduto.html">Adicionar Produto</a>
+            <a class="hvr-underline-from-left" href="#">Remover Produto</a>
+            <a id="active" href="#">Adicionar Jogador</a>
+            <a class="hvr-underline-from-left" href="#clients">Remover Membro</a>
+            <a class="hvr-underline-from-left" href="#contact">Estatísticas Vendas</a>
+        </div>
 
-        <?php
-            $nome = $morada = $telefone = $pass = $imagem = $num_socio = "";
-
-            if(isset($_POST['nome']))
-                $nome = $_POST['nome'];
-
-            if(isset($_POST['morada']))
-                $morada = $_POST['morada'];
-
-            if(isset($_POST['telefone']))
-                $telefone = $_POST['telefone'];
-
-            if(isset($_POST['pass']))    
-                $pass = $_POST['pass'];
-            
-            //Imagem
-            $diretorio = "images/";
-            $imagem = $diretorio . basename($_FILES["img"]["name"]);
-            move_uploaded_file($_FILES["img"]["tmp_name"], $imagem);
-        
-
-            //Conta GONÇALO
-            $conn = pg_connect("host=db.fe.up.pt dbname=siem2021 user=siem2021 password=uqKSXuBZ");
-            //Conta RICARDO
-            //$conn = pg_connect("host=db.fe.up.pt dbname=siem2047 user=siem2047 password=XutlXFnC");
-
-            if(!$conn){
-                echo("Ligação não foi estabelecida");
-            }
-            $query = "set schema 'fcfeup'";
-            pg_exec($conn, $query);
-            
-            $query = "INSERT INTO socio(nome, imagem, telefone, morada, pass, aprovado) VALUES ('".$nome."', '".$imagem."', '".$telefone."', '".$morada."', '".$pass."', 'FALSE')";
-            pg_exec($conn, $query);
-
-            // $num_socio = ????
-        ?>
-
-        <div class="note">
-            <h1>Obrigado <?php echo $nome;?>!</h1>
-            <br>
-            <p>O teu número de sócio é:</p>
-            <h4>12345<?php echo $num_socio;?></h4>
-            <p>Aguarda pacientemente a aprovoção da nossa direção</p>
-            <br>
-            <a href="inicio.html"><div class="button hvr-grow-shadow">Voltar ao Início</div></a>
+        <div class="content center">
+            <div class="member center">
+                <h1>Novo Jogador</h1>
+                <form method="POST" action="" enctype="multipart/form-data">
+    
+                    <div class="item">
+                        <input type="text" id="nome" name="nome" placeholder="Nome do Jogador" required><br>
+                    </div>
+                    <div class="item">
+                        <input list="posicoes" placeholder="Posição" name="posicao" id="posicao">
+                        <datalist id="posicoes">
+                          <option value="Guarda-Redes">
+                          <option value="Defesa">
+                          <option value="Médio">
+                          <option value="Avançado">
+                        </datalist>
+                    </div>                
+                    <div class="item">
+                        <input type="number" style="width: 40%;" id="idade" name="idade" placeholder="Idade" required>
+                    </div>
+                    <div class="item">
+                        <input type="number" style="width: 40%;" id="numero" name="numero" placeholder="Nº Camisola" min="0" max="99" required>
+                    </div>
+                    <div class="item">
+                        <label for="img">Imagem:</label><br>
+                        <input type="file" id="img" name="img" accept="image/*" required><br>                       
+                    </div>
+                    <div class="item">
+                        <button type="submit">Adicionar à Equipa</button>
+                    </div>
+                </form> 
+            </div>
         </div>
     </main>
 
