@@ -363,6 +363,16 @@ input[type=text], input[type=tel], input[type=password]{
     cursor: pointer;
   }
 
+    /* The Close Button (x) */
+  .remove {
+    position: absolute;
+    cursor: pointer;
+    right: 5px;
+    top: 0;
+    color: red;
+    font-size: 20px;
+  }
+
 /*------------------------------------------------POP UP LOJA--------------------------------------*/
 
 /* Center the image and position the close button */
