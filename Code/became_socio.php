@@ -30,7 +30,7 @@
     <main class="center">
 
         <?php
-            $nome = $morada = $telefone = $pass = $imagem = "";
+            $nome = $morada = $telefone = $pass = $imagem = $num_socio = "";
 
             if(isset($_POST['nome']))
                 $nome = $_POST['nome'];
@@ -48,9 +48,7 @@
             $diretorio = "images/";
             $imagem = $diretorio . basename($_FILES["img"]["name"]);
             move_uploaded_file($_FILES["img"]["tmp_name"], $imagem);
-            
-
-            echo "Nome: $nome <br>Morada: $morada<br>Telefone: $telefone<br> Pass: $pass<br> imagem: $imagem<br><br>";
+        
 
             //Conta GONÇALO
             $conn = pg_connect("host=db.fe.up.pt dbname=siem2021 user=siem2021 password=uqKSXuBZ");
@@ -63,12 +61,21 @@
             $query = "set schema 'fcfeup'";
             pg_exec($conn, $query);
             
-            echo "INSERT INTO socio(nome, imagem, telefone, morada, pass, aprovado) VALUES ('".$nome."', '".$imagem."', '".$telefone."', '".$morada."', '".$pass."', 'FALSE')";
             $query = "INSERT INTO socio(nome, imagem, telefone, morada, pass, aprovado) VALUES ('".$nome."', '".$imagem."', '".$telefone."', '".$morada."', '".$pass."', 'FALSE')";
             pg_exec($conn, $query);
+
+            // $num_socio = ????
         ?>
 
-
+        <div class="note">
+            <h1>Obrigado <?php echo $nome;?>!</h1>
+            <br>
+            <p>O teu número de sócio é:</p>
+            <h4>12345<?php echo $num_socio;?></h4>
+            <p>Aguarda pacientemente a aprovoção da nossa direção</p>
+            <br>
+            <a href="inicio.html"><div class="button hvr-grow-shadow">Voltar ao Início</div></a>
+        </div>
     </main>
 
 

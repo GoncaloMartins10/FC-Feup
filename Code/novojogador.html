@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style_admin.css">
@@ -11,35 +10,14 @@
 </head>
 
 <body>
-
-    <?php
-        //Conta GONÇALO
-        $conn = pg_connect("host=db.fe.up.pt dbname=siem2021 user=siem2021 password=uqKSXuBZ");
-        //Conta RICARDO
-        //$conn = pg_connect("host=db.fe.up.pt dbname=siem2047 user=siem2047 password=XutlXFnC");
-
-        if(!$conn){
-            echo("Ligação não foi estabelecida");
-        }
-
-        $query = "set schema 'fcfeup'";
-        pg_exec($conn, $query);
-        $query = "select* from socio where aprovado='FALSE';
-        ";
-        $result = pg_exec($conn, $query);
-        pg_close($conn);
-
-        $row = pg_fetch_assoc($result); 
-    ?>
-
     <header>
         <img class="logo" src="images/logo.png">
         <nav>
            <ul>
                 <li class="hvr-underline-from-left"><a href="inicio.html">Inicio</a></li>
-                <li class="hvr-underline-from-left"><a href="membros.php">Membros</a></li>
+                <li class="hvr-underline-from-left"><a href="membros.html">Membros</a></li>
                 <li class="hvr-underline-from-left"><a href="loja.html">Loja</a></li>
-                <li id="active"><a href="admin_sociopendente.php">Admin</a></li>          
+                <li id="active"><a href="admin.html">Admin</a></li>          
             </ul> 
         </nav>
         <nav>
@@ -54,46 +32,46 @@
    
     <main>
         <div class="sidenav">
-            <a id="active" href="#">Pedidos de Sócio Pendentes</a>
+            <a class="hvr-underline-from-left" href="admin.html">Pedidos de Sócio Pendentes</a>
             <a class="hvr-underline-from-left" href="novoproduto.html">Adicionar Produto</a>
-            <a class="hvr-underline-from-left" href="#services">Remover Produto</a>
-            <a class="hvr-underline-from-left" href="novojogador.html">Adicionar Jogador</a>
+            <a class="hvr-underline-from-left" href="#">Remover Produto</a>
+            <a id="active" href="#">Adicionar Jogador</a>
             <a class="hvr-underline-from-left" href="#clients">Remover Membro</a>
             <a class="hvr-underline-from-left" href="#contact">Estatísticas Vendas</a>
         </div>
 
-        <div class="content">
-            <table id=cart>
-                <tr>
-                    <th>Nº Sócio</th>
-                    <th><!-- Imagem --></th>
-                    <th>Nome</th>
-                    <th>Morada</th>
-                    <th>Telefone</th>
-                    <th>Aprovar</th>
-                    <th>Eliminar</th>
-                </tr>
-
-                <?php if(empty($row['num_socio'])){
-                        echo "nada";    
-                    }
-                    while(isset($row['num_socio'])){ ?>
-
-                    <tr>                    
-                        <td><?php echo $row['num_socio']; ?></td>
-                        <td><img src= "<?php echo $row['imagem']; ?>"></td>
-                        <td><?php echo $row['nome']; ?></td>
-                        <td><?php echo $row['morada']; ?></td>
-                        <td><?php echo $row['telefone']; ?></td>
-                        <td><i class="fas fa-check-circle" style="color:green; cursor: pointer;" onClick=" add_click(<?php echo $row['num_socio'] ?>)" > </i></td>
-                        <td><i class="fas fa-times-circle" style="color:red; cursor: pointer;" onClick="eliminate_click(<?php echo $row['num_socio'] ?>)"></i></td>    
-                    </tr>
-        
-                    <?php
-                        $row = pg_fetch_assoc($result);
-                } ?>
-
-            </table>
+        <div class="content center">
+            <div class="member center">
+                <h1>Novo Jogador</h1>
+                <form method="POST" action="" enctype="multipart/form-data">
+    
+                    <div class="item">
+                        <input type="text" id="nome" name="nome" placeholder="Nome do Jogador" required><br>
+                    </div>
+                    <div class="item">
+                        <input list="posicoes" placeholder="Posição" name="posicao" id="posicao">
+                        <datalist id="posicoes">
+                          <option value="Guarda-Redes">
+                          <option value="Defesa">
+                          <option value="Médio">
+                          <option value="Avançado">
+                        </datalist>
+                    </div>                
+                    <div class="item">
+                        <input type="number" style="width: 40%;" id="idade" name="idade" placeholder="Idade" required>
+                    </div>
+                    <div class="item">
+                        <input type="number" style="width: 40%;" id="numero" name="numero" placeholder="Nº Camisola" min="0" max="99" required>
+                    </div>
+                    <div class="item">
+                        <label for="img">Imagem:</label><br>
+                        <input type="file" id="img" name="img" accept="image/*" required><br>                       
+                    </div>
+                    <div class="item">
+                        <button type="submit">Adicionar à Equipa</button>
+                    </div>
+                </form> 
+            </div>
         </div>
     </main>
 
@@ -149,33 +127,6 @@
             <button type="submit" class="btn">Login</button>
         </form>
     </div>
-
-    <script>
-
-        function eliminate_click(socio) {
-            if (confirm("Tem a certeza que quer rejeitar o sócio")) {
-                    $.ajax({
-                        url: 'php/remove_socio.php',
-                        type: 'POST',
-                        data: {"id":socio},
-                        success: function(response) { alert("Sócio eliminado"); }
-                    });
-            }
-            window.location.reload();
-        }   
-
-        function add_click(socio) {
-            if (confirm("Tem a certeza que quer aceitar o sócio")) {
-                    $.ajax({
-                        url: 'php/add_socio.php',
-                        type: 'POST',
-                        data: {"id":socio},
-                        success: function(response) { alert("Novo sócio adicionado"); }
-                    });
-            }
-            window.location.reload();
-        } 
-    </script>
 
 </body>
 
