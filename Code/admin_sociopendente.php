@@ -89,10 +89,9 @@
                         
                         <?php
                             $row = pg_fetch_assoc($result);
-                    }
-                } ?>
-                </table> 
-                
+                        }
+                    } ?>
+                    </table>    
         </div>
     </main>
 
