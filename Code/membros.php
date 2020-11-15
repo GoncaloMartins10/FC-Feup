@@ -76,22 +76,22 @@
 
             <div class="flexbox">
                 
-            <?php if(empty($row['num_socio'])){
-                    echo "nada";    
-                }
-                while(isset($row['num_socio'])){ ?>
+                <?php if(empty($row['num_socio'])){
+                        echo "nada";    
+                    }
+                    while(isset($row['num_socio'])){ ?>
 
-                <div class="card">
-                    <img src= "<?php echo $row['imagem']; ?>">
-                    <div class="text">
-                        <b>Nº Sócio:</b> <?php echo $row['num_socio']; ?><br>
-                        <b>Nome:</b> <?php echo $row['nome']; ?><br>
+                    <div class="card">
+                        <img src= "<?php echo $row['imagem']; ?>">
+                        <div class="text">
+                            <b>Nº Sócio:</b> <?php echo $row['num_socio']; ?><br>
+                            <b>Nome:</b> <?php echo $row['nome']; ?><br>
+                        </div>
                     </div>
-                </div>
 
-            <?php
-                $row = pg_fetch_assoc($result);
-            } ?>
+                <?php
+                    $row = pg_fetch_assoc($result);
+                } ?>
 
             </div>
             
