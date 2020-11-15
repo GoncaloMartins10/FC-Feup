@@ -62,38 +62,41 @@
             <a class="hvr-underline-from-left" href="#contact">Estatísticas Vendas</a>
         </div>
 
-        <div class="content">
-            <table id=cart>
-                <tr>
-                    <th>Nº Sócio</th>
-                    <th><!-- Imagem --></th>
-                    <th>Nome</th>
-                    <th>Morada</th>
-                    <th>Telefone</th>
-                    <th>Aprovar</th>
-                    <th>Eliminar</th>
-                </tr>
+        <div class="content center">
 
-                <?php if(empty($row['num_socio'])){
-                        echo "nada";    
+                <?php if(empty($row['num_socio'])){ ?>
+                          <img src="images/empty-search.png">
+                          <h3>Não há pedidos de sócio pendentes</h3>
+                <?php
                     }
-                    while(isset($row['num_socio'])){ ?>
+                    while(isset($row['num_socio']) and !empty($row['num_socio']) ){ ?>
 
-                    <tr>                    
-                        <td><?php echo $row['num_socio']; ?></td>
-                        <td><img src= "<?php echo $row['imagem']; ?>"></td>
-                        <td><?php echo $row['nome']; ?></td>
-                        <td><?php echo $row['morada']; ?></td>
-                        <td><?php echo $row['telefone']; ?></td>
-                        <td><i class="fas fa-check-circle" style="color:green; cursor: pointer;" onClick=" add_click(<?php echo $row['num_socio'] ?>)" > </i></td>
-                        <td><i class="fas fa-times-circle" style="color:red; cursor: pointer;" onClick="eliminate_click(<?php echo $row['num_socio'] ?>)"></i></td>    
-                    </tr>
-        
+                    <table id=cart>
+                        <tr>
+                            <th>Nº Sócio</th>
+                            <th><!-- Imagem --></th>
+                            <th>Nome</th>
+                            <th>Morada</th>
+                            <th>Telefone</th>
+                            <th>Aprovar</th>
+                            <th>Eliminar</th>
+                        </tr>
+
+                        <tr>                    
+                            <td><?php echo $row['num_socio']; ?></td>
+                            <td><img src= "<?php echo $row['imagem']; ?>"></td>
+                            <td><?php echo $row['nome']; ?></td>
+                            <td><?php echo $row['morada']; ?></td>
+                            <td><?php echo $row['telefone']; ?></td>
+                            <td><i class="fas fa-check-circle" style="color:green; cursor: pointer;" onClick=" add_click(<?php echo $row['num_socio'] ?>)" > </i></td>
+                            <td><i class="fas fa-times-circle" style="color:red; cursor: pointer;" onClick="eliminate_click(<?php echo $row['num_socio'] ?>)"></i></td>    
+                        </tr>
+                    </table>
+
                     <?php
                         $row = pg_fetch_assoc($result);
                 } ?>
 
-            </table>
         </div>
     </main>
 

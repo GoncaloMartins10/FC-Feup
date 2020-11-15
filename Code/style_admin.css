@@ -29,5 +29,5 @@ main {
   }
   
   .content {
-    margin: auto;
+    flex-direction: column;
   }
