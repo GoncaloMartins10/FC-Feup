@@ -14,9 +14,9 @@
         <nav>
            <ul>
                 <li class="hvr-underline-from-left"><a href="inicio.html">Inicio</a></li>
-                <li class="hvr-underline-from-left"><a href="membros.html">Membros</a></li>
+                <li class="hvr-underline-from-left"><a href="membros.php">Membros</a></li>
                 <li class="hvr-underline-from-left"><a href="loja.html">Loja</a></li>
-                <li class="hvr-underline-from-left"><a href="admin.html">Admin</a></li>          
+                <li class="hvr-underline-from-left"><a href="admin_sociopendente.php">Admin</a></li>          
             </ul> 
         </nav>
         <nav>

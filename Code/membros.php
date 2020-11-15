@@ -22,7 +22,7 @@
 
         $query = "set schema 'fcfeup'";
         pg_exec($conn, $query);
-        $query = "select* from socio";
+        $query = "select* from socio where aprovado = 'TRUE'";
         $result = pg_exec($conn, $query);
         pg_close($conn);
 
@@ -34,9 +34,9 @@
         <nav>
            <ul>
                 <li class="hvr-underline-from-left"><a href="inicio.html">Inicio</a></li>
-                <li id="active"><a href="membros.html">Membros</a></li>
+                <li id="active" ><a href="membros.php">Membros</a></li>
                 <li class="hvr-underline-from-left"><a href="loja.html">Loja</a></li>
-                <li class="hvr-underline-from-left"><a href="admin.html">Admin</a></li>          
+                <li class="hvr-underline-from-left"><a href="admin_sociopendente.php">Admin</a></li>          
             </ul> 
         </nav>
         <nav>
@@ -82,7 +82,7 @@
                 while(isset($row['num_socio'])){ ?>
 
                 <div class="card">
-                    <img src= "<?php echo $row['Imagem']; ?>">
+                    <img src= "<?php echo $row['imagem']; ?>">
                     <div class="text">
                         <b>Nº Sócio:</b> <?php echo $row['num_socio']; ?><br>
                         <b>Nome:</b> <?php echo $row['nome']; ?><br>

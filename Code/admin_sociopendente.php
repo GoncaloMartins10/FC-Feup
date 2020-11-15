@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style_admin.css">
@@ -10,14 +11,35 @@
 </head>
 
 <body>
+
+    <?php
+        //Conta GONÇALO
+        $conn = pg_connect("host=db.fe.up.pt dbname=siem2021 user=siem2021 password=uqKSXuBZ");
+        //Conta RICARDO
+        //$conn = pg_connect("host=db.fe.up.pt dbname=siem2047 user=siem2047 password=XutlXFnC");
+
+        if(!$conn){
+            echo("Ligação não foi estabelecida");
+        }
+
+        $query = "set schema 'fcfeup'";
+        pg_exec($conn, $query);
+        $query = "select* from socio where aprovado='FALSE';
+        ";
+        $result = pg_exec($conn, $query);
+        pg_close($conn);
+
+        $row = pg_fetch_assoc($result); 
+    ?>
+
     <header>
         <img class="logo" src="images/logo.png">
         <nav>
            <ul>
                 <li class="hvr-underline-from-left"><a href="inicio.html">Inicio</a></li>
-                <li class="hvr-underline-from-left"><a href="membros.html">Membros</a></li>
+                <li class="hvr-underline-from-left"><a href="membros.php">Membros</a></li>
                 <li class="hvr-underline-from-left"><a href="loja.html">Loja</a></li>
-                <li id="active"><a href="admin.html">Admin</a></li>          
+                <li id="active"><a href="admin_sociopendente.php">Admin</a></li>          
             </ul> 
         </nav>
         <nav>
@@ -51,51 +73,26 @@
                     <th>Aprovar</th>
                     <th>Eliminar</th>
                 </tr>
-                <tr>
-                    <td>1234</td>
-                    <td><img src="images/marega.jpg"></td>
-                    <td>Moussa Marega</td>
-                    <td>Rua em África, 4050-31 Mali</td>
-                    <td>912345678</td>
-                    <td><i class="fas fa-check-circle" style="color:green;"></i></td>
-                    <td><i class="fas fa-times-circle" style="color:red;"></i></td>
-                </tr>
-                <tr>
-                    <td>1237</td>
-                    <td><img src="images/cr7.jpg"></td>
-                    <td>Cristiano Ronaldo</td>
-                    <td>Rua na Madeira, 2345-291 Portugal</td>
-                    <td>917777777</td>
-                    <td><i class="fas fa-check-circle" style="color:green;"></i></td>
-                    <td><i class="fas fa-times-circle" style="color:red;"></i></td>
-                </tr>
-                <tr>
-                    <td>1237</td>
-                    <td><img src="images/cr7.jpg"></td>
-                    <td>Cristiano Ronaldo</td>
-                    <td>Rua na Madeira, 2345-291 Portugal</td>
-                    <td>917777777</td>
-                    <td><i class="fas fa-check-circle" style="color:green;"></i></td>
-                    <td><i class="fas fa-times-circle" style="color:red;"></i></td>
-                </tr>
-                <tr>
-                    <td>1237</td>
-                    <td><img src="images/cr7.jpg"></td>
-                    <td>Cristiano Ronaldo</td>
-                    <td>Rua na Madeira, 2345-291 Portugal</td>
-                    <td>917777777</td>
-                    <td><i class="fas fa-check-circle" style="color:green;"></i></td>
-                    <td><i class="fas fa-times-circle" style="color:red;"></i></td>
-                </tr>
-                <tr>
-                    <td>1237</td>
-                    <td><img src="images/cr7.jpg"></td>
-                    <td>Cristiano Ronaldo</td>
-                    <td>Rua na Madeira, 2345-291 Portugal</td>
-                    <td>917777777</td>
-                    <td><i class="fas fa-check-circle" style="color:green;"></i></td>
-                    <td><i class="fas fa-times-circle" style="color:red;"></i></td>
-                </tr>
+
+                <?php if(empty($row['num_socio'])){
+                        echo "nada";    
+                    }
+                    while(isset($row['num_socio'])){ ?>
+
+                    <tr>                    
+                        <td><?php echo $row['num_socio']; ?></td>
+                        <td><img src= "<?php echo $row['imagem']; ?>"></td>
+                        <td><?php echo $row['nome']; ?></td>
+                        <td><?php echo $row['morada']; ?></td>
+                        <td><?php echo $row['telefone']; ?></td>
+                        <td><i class="fas fa-check-circle" style="color:green; cursor: pointer;" onClick=" add_click(<?php echo $row['num_socio'] ?>)" > </i></td>
+                        <td><i class="fas fa-times-circle" style="color:red; cursor: pointer;" onClick="eliminate_click(<?php echo $row['num_socio'] ?>)"></i></td>    
+                    </tr>
+        
+                    <?php
+                        $row = pg_fetch_assoc($result);
+                } ?>
+
             </table>
         </div>
     </main>
@@ -152,6 +149,33 @@
             <button type="submit" class="btn">Login</button>
         </form>
     </div>
+
+    <script>
+
+        function eliminate_click(socio) {
+            if (confirm("Tem a certeza que quer rejeitar o sócio")) {
+                    $.ajax({
+                        url: 'php/remove_socio.php',
+                        type: 'POST',
+                        data: {"id":socio},
+                        success: function(response) { alert("Sócio eliminado"); }
+                    });
+            }
+            window.location.reload();
+        }   
+
+        function add_click(socio) {
+            if (confirm("Tem a certeza que quer aceitar o sócio")) {
+                    $.ajax({
+                        url: 'php/add_socio.php',
+                        type: 'POST',
+                        data: {"id":socio},
+                        success: function(response) { alert("Novo sócio adicionado"); }
+                    });
+            }
+            window.location.reload();
+        } 
+    </script>
 
 </body>
 
