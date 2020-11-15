@@ -54,7 +54,7 @@
    
     <main>
         <div class="sidenav">
-            <a id="active" href="#">Pedidos de Sócio Pendentes</a>
+            <a id="active" href="admin_sociopendente.php">Pedidos de Sócio Pendentes</a>
             <a class="hvr-underline-from-left" href="novoproduto.html">Adicionar Produto</a>
             <a class="hvr-underline-from-left" href="#services">Remover Produto</a>
             <a class="hvr-underline-from-left" href="novojogador.html">Adicionar Jogador</a>
