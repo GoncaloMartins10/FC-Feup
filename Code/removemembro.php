@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="style_admin.css">
@@ -10,6 +11,26 @@
 </head>
 
 <body>
+
+    <?php
+        //Conta GONÇALO
+        $conn = pg_connect("host=db.fe.up.pt dbname=siem2021 user=siem2021 password=uqKSXuBZ");
+        //Conta RICARDO
+        //$conn = pg_connect("host=db.fe.up.pt dbname=siem2047 user=siem2047 password=XutlXFnC");
+
+        if(!$conn){
+            echo("Ligação não foi estabelecida");
+        }
+
+        $query = "set schema 'fcfeup'";
+        pg_exec($conn, $query);
+        $query = "select* from socio where aprovado = 'TRUE'";
+        $result = pg_exec($conn, $query);
+        pg_close($conn);
+
+        $row = pg_fetch_assoc($result); 
+    ?>
+
     <header>
         <img class="logo" src="images/logo.png">
         <nav>
@@ -35,43 +56,57 @@
             <a class="hvr-underline-from-left" href="admin_sociopendente.php">Pedidos de Sócio Pendentes</a>
             <a class="hvr-underline-from-left" href="novoproduto.html">Adicionar Produto</a>
             <a class="hvr-underline-from-left" href="#">Remover Produto</a>
-            <a id="active" href="novojogador.html">Adicionar Jogador</a>
-            <a class="hvr-underline-from-left" href="removemembro.php">Remover Membro</a>
+            <a class="hvr-underline-from-left" href="novojogador.html">Adicionar Jogador</a>
+            <a id="active" href="removemembro.php">Remover Membro</a>
             <a class="hvr-underline-from-left" href="#contact">Estatísticas Vendas</a>
         </div>
 
-        <div class="content center">
-            <div class="member center">
-                <h1>Novo Jogador</h1>
-                <form method="POST" action="" enctype="multipart/form-data">
-    
-                    <div class="item">
-                        <input type="text" id="nome" name="nome" placeholder="Nome do Jogador" required><br>
+        <div class="content">
+
+            <h3>Sócios</h3>
+
+            <div class="flexbox">
+                
+                <?php if(empty($row['num_socio'])){
+                        echo "nada";    
+                    }
+                    while(isset($row['num_socio'])){ ?>
+
+                    <div class="card">
+                        <span onClick="eliminate_click(<?php echo $row['num_socio'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
+                        <img src= "<?php echo $row['imagem']; ?>">
+                        <div class="text">
+                            <b>Nº Sócio:</b> <?php echo $row['num_socio']; ?><br>
+                            <b>Nome:</b> <?php echo $row['nome']; ?><br>
+                        </div>
                     </div>
-                    <div class="item">
-                        <input list="posicoes" placeholder="Posição" name="posicao" id="posicao">
-                        <datalist id="posicoes">
-                          <option value="Guarda-Redes">
-                          <option value="Defesa">
-                          <option value="Médio">
-                          <option value="Avançado">
-                        </datalist>
-                    </div>                
-                    <div class="item">
-                        <input type="number" style="width: 40%;" id="idade" name="idade" placeholder="Idade" required>
-                    </div>
-                    <div class="item">
-                        <input type="number" style="width: 40%;" id="numero" name="numero" placeholder="Nº Camisola" min="0" max="99" required>
-                    </div>
-                    <div class="item">
-                        <label for="img">Imagem:</label><br>
-                        <input type="file" id="img" name="img" accept="image/*" required><br>                       
-                    </div>
-                    <div class="item">
-                        <button type="submit">Adicionar à Equipa</button>
-                    </div>
-                </form> 
+
+                <?php
+                    $row = pg_fetch_assoc($result);
+                } ?>
+
             </div>
+
+            <h3>Jogadores</h3>
+
+            <div class="flexbox">
+                <div class="card">
+                    <img src="images/marega.jpg">
+                    <div class="text">
+                        <b>Nº Sócio:</b> 1235<br>
+                        <b>Nome: </b> Moussa Marega<br>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="images/biden.jpg">
+                    <div class="text">
+                        <b>Nº Sócio:</b> 1237<br>
+                        <b>Nome: </b> Joe Biden<br>
+                    </div>
+                </div>
+
+            </div>
+ 
         </div>
     </main>
 
@@ -127,6 +162,19 @@
             <button type="submit" class="btn">Login</button>
         </form>
     </div>
+
+    <script>
+        function eliminate_click(socio) {
+            if (confirm("Tem a certeza que quer rejeitar o sócio")) {
+                    $.ajax({
+                        url: 'php/remove_socio.php',
+                        type: 'POST',
+                        data: {"id":socio},
+                        success: function(response) { window.location.reload(); }
+                    });
+            }
+        }   
+    </script>
 
 </body>
 

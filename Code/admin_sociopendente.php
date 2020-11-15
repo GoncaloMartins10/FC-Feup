@@ -50,15 +50,13 @@
          </nav>
     </header>
     
-   
-   
     <main>
         <div class="sidenav">
             <a id="active" href="admin_sociopendente.php">Pedidos de Sócio Pendentes</a>
             <a class="hvr-underline-from-left" href="novoproduto.html">Adicionar Produto</a>
             <a class="hvr-underline-from-left" href="#services">Remover Produto</a>
             <a class="hvr-underline-from-left" href="novojogador.html">Adicionar Jogador</a>
-            <a class="hvr-underline-from-left" href="#clients">Remover Membro</a>
+            <a class="hvr-underline-from-left" href="removemembro.php">Remover Membro</a>
             <a class="hvr-underline-from-left" href="#contact">Estatísticas Vendas</a>
         </div>
 
@@ -161,10 +159,10 @@
                         url: 'php/remove_socio.php',
                         type: 'POST',
                         data: {"id":socio},
-                        success: function(response) { alert("Sócio eliminado"); }
+                        success: function(response) { window.location.reload(); }
                     });
             }
-            window.location.reload();
+            
         }   
 
         function add_click(socio) {
@@ -173,10 +171,10 @@
                         url: 'php/add_socio.php',
                         type: 'POST',
                         data: {"id":socio},
-                        success: function(response) { alert("Novo sócio adicionado"); }
+                        success: function(response) { window.location.reload(); }
                     });
             }
-            window.location.reload();
+            
         } 
     </script>
 
