@@ -77,7 +77,7 @@
         </div>
 
         <div class="item" style="margin-left: auto;">
-            <a href="socio.html"><div class="button hvr-grow-shadow">Tornar-se Sócio</div> </a>
+            <a href="socio.php"><div class="button hvr-grow-shadow">Tornar-se Sócio</div> </a>
         </div>
     </form> 
 
