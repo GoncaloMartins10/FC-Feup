@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2020-11-16T23:26:56.119Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36" etag="fjkL7Kez1YYPTL8qO6Z5" version="13.9.9" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2020-11-16T23:31:22.615Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36" etag="DxgvLFo1WI0gPBCcWWgI" version="13.9.9" type="github" pages="2">
   <diagram id="PSTHIs6FYr7qPRMGrG_t" name="modelo relacional">
     <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -49,7 +49,7 @@
         <mxCell id="uJ2hfStvjTWffT9Bk6-g-17" value="+ aprovacao: Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="uJ2hfStvjTWffT9Bk6-g-8" vertex="1">
           <mxGeometry y="182" width="150" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="Fu_4QQIWQJACm3BM5WCa-0" value="+ socio: Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="uJ2hfStvjTWffT9Bk6-g-8" vertex="1">
+        <mxCell id="Fu_4QQIWQJACm3BM5WCa-0" value="+ admin: Boolean" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="uJ2hfStvjTWffT9Bk6-g-8" vertex="1">
           <mxGeometry y="208" width="150" height="26" as="geometry" />
         </mxCell>
         <mxCell id="uJ2hfStvjTWffT9Bk6-g-18" value="Linha_Encomenda" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;strokeWidth=2;" parent="WZQHIMQqUP3LGurgCf9D-1" vertex="1">
