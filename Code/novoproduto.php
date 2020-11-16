@@ -5,7 +5,8 @@
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
     <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="style/style.css">
-    <title>FC FEUP | Membros</title>
+    <link rel="stylesheet" href="style/style_admin.css">
+    <title>FC FEUP | Admin</title>
 </head>
 
 <?php
@@ -14,31 +15,12 @@
 
 <body>
 
-    <?php
-        //Conta GONÇALO
-        $conn = pg_connect("host=db.fe.up.pt dbname=siem2021 user=siem2021 password=uqKSXuBZ");
-        //Conta RICARDO
-        //$conn = pg_connect("host=db.fe.up.pt dbname=siem2047 user=siem2047 password=XutlXFnC");
-
-        if(!$conn){
-            echo("Ligação não foi estabelecida");
-        }
-
-        $query = "set schema 'fcfeup'";
-        pg_exec($conn, $query);
-        $query = "select* from socio where aprovado = 'TRUE'";
-        $result = pg_exec($conn, $query);
-        pg_close($conn);
-
-        $row = pg_fetch_assoc($result); 
-    ?>
-
     <header>
         <img class="logo" src="images/logo.png">
         <nav>
             <ul>
                  <li class="hvr-underline-from-left"><a href="inicio.php">Inicio</a></li>
-                 <li id="active" ><a href="membros.php">Membros</a></li>
+                 <li class="hvr-underline-from-left"><a href="membros.php">Membros</a></li>
                  <li class="hvr-underline-from-left"><a href="loja.php">Loja</a></li>
                  <?php if(isset($_SESSION['num_socio']) and $_SESSION['admin']=="t") { ?>
                     <li class="hvr-underline-from-left"><a href="admin_sociopendente.php">Admin</a></li>          
@@ -57,74 +39,44 @@
             </ul> 
         </nav>
     </header>
-
-    <form class="search" action="/action_page.php">
-        <div class="item">
-            <input type="checkbox" id="jogadores" name="jogadores" value="jogador"  checked>
-            <label for="jogadores"> Jogadores</label>
-        </div>
-        <div class="item">
-            <input type="checkbox" id="presidentes" name="presidentes" value="presidente"  checked>
-            <label for="presidentes"> Presidentes</label>
-        </div>
-        <div class="item">
-            <input type="checkbox" id="socios" name="socios" value="socio"  checked>
-            <label for="socios"> Sócios</label>
+    
+   
+   
+    <main>
+        <div class="sidenav">
+            <a class="hvr-underline-from-left" href="admin_sociopendente.php">Pedidos de Sócio Pendentes</a>
+            <a id="active" href="novoproduto.php">Adicionar Produto</a>
+            <a class="hvr-underline-from-left" href="#services">Remover Produto</a>
+            <a class="hvr-underline-from-left" href="novojogador.php">Adicionar Jogador</a>
+            <a class="hvr-underline-from-left" href="removemembro.php">Remover Membro</a>
+            <a class="hvr-underline-from-left" href="#contact">Estatísticas Vendas</a>
         </div>
 
-        <div class="item">
-            <input type="text" id="search" name="search" placeholder="Nº Sócio ou Nome"><br>
-        </div>
-
-        <div class="item" style="margin-left: auto;">
-            <a href="socio.html"><div class="button hvr-grow-shadow">Tornar-se Sócio</div> </a>
-        </div>
-    </form> 
-
-    <main>        
-       
-            <h3>Sócios</h3>
-
-            <div class="flexbox">
-                
-                <?php if(empty($row['num_socio'])){
-                        echo "nada";    
-                    }
-                    while(isset($row['num_socio'])){ ?>
-
-                    <div class="card">
-                        <img src= "<?php echo $row['imagem']; ?>">
-                        <div class="text">
-                            <b>Nº Sócio:</b> <?php echo $row['num_socio']; ?><br>
-                            <b>Nome:</b> <?php echo $row['nome']; ?><br>
-                        </div>
+        <div class="content center">
+            <div class="member center">
+                <h1>Novo Produto</h1>
+                <form method="POST" action="" enctype="multipart/form-data">
+    
+                    <div class="item">
+                        <input type="text" id="nome" name="nome" placeholder="Nome do Produto" required><br>
+                    </div>                
+                    <div class="item">
+                        <textarea type="text" id="discription" name="discription" placeholder="Descrição do Produto (Opcional)"></textarea><br>
                     </div>
-
-                <?php
-                    $row = pg_fetch_assoc($result);
-                } ?>
-
+                    <div class="item">
+                        <input type="number" style="width: 34%;margin-right: 5px;" id="price" name="price" placeholder="Preço (€)" min="0.00" max="10000.00" step="0.01" required>
+                        <input type="number" style="width: 34%;" id="stock" name="stock" placeholder="Stock Inicial" required>
+                    </div>
+                    <div class="item">
+                        <label for="img">Imagem:</label><br>
+                        <input type="file" id="img" name="img" accept="image/*" required><br>                       
+                    </div>
+                    <div class="item">
+                        <button type="submit">Adicionar à loja</button>
+                    </div>
+                </form> 
             </div>
-            
-            <h3>Jogadores</h3>
-                
-            <div class="flexbox">
-                <div class="card">
-                    <img src="images/marega.jpg">
-                    <div class="text">
-                        <b>Nº Sócio:</b> 1235<br>
-                        <b>Nome: </b> Moussa Marega<br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/biden.jpg">
-                    <div class="text">
-                        <b>Nº Sócio:</b> 1237<br>
-                        <b>Nome: </b> Joe Biden<br>
-                    </div>
-                </div>
-            </div>
-                
+        </div>
     </main>
 
 
@@ -164,7 +116,6 @@
         &copy 2020, Gonçalo Martins & Ricardo Martins. Todos os direitos reservados.
     </div>
 
-
     <div class="form-popup" id="myForm">
         <form action="php/login.php" class="form-container">
             <span onclick="document.getElementById('myForm').style.display = 'none'" class="close" title="Close Modal">&times;</span>
@@ -177,8 +128,10 @@
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Insira a Password" name="psw" required>
     
-            <button type="submit">Login</button>
+            <button type="submit" class="btn">Login</button>
         </form>
     </div>
 
 </body>
+
+</html>

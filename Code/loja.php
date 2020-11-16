@@ -4,27 +4,38 @@
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
     <link rel="shortcut icon" href="images/logo.png">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style/style.css">
     <title>FC FEUP | Loja</title>
 </head>
+
+<?php
+  session_start();
+?>
 
 <body>
     <header>
         <img class="logo" src="images/logo.png">
         <nav>
             <ul>
-                 <li class="hvr-underline-from-left"><a href="inicio.html">Inicio</a></li>
+                 <li class="hvr-underline-from-left"><a href="inicio.php">Inicio</a></li>
                  <li class="hvr-underline-from-left"><a href="membros.php">Membros</a></li>
-                 <li id="active"><a href="loja.html">Loja</a></li>
-                 <li class="hvr-underline-from-left"><a href="admin_sociopendente.php">Admin</a></li>          
+                 <li id="active" ><a href="loja.php">Loja</a></li>
+                 <?php if(isset($_SESSION['num_socio']) and $_SESSION['admin']=="t") { ?>
+                    <li class="hvr-underline-from-left"><a href="admin_sociopendente.php">Admin</a></li>          
+                 <?php }?>
              </ul> 
         </nav>
         <nav>
             <ul>
+            <?php if(isset($_SESSION['num_socio']) ) { ?>
+                <li class="loginandchart hvr-grow-shadow"><a role="button" style="cursor: pointer;" href="php/logout.php">Logout <i class="fas fa-sign-in-alt"></i></a></li>
+            <?php } else {?>
                 <li class="loginandchart hvr-grow-shadow"><a role="button" onclick="document.getElementById('myForm').style.display = 'block'" style="cursor: pointer;">Login <i class="fas fa-sign-in-alt"></i></a></li>
-                <li class="loginandchart hvr-grow-shadow"><a href="carrinho.html">Carrinho <i class="fas fa-shopping-cart"></i></a></li>
+            <?php }?>
+
+                <li class="loginandchart hvr-grow-shadow"><a href="carrinho.php">Carrinho <i class="fas fa-shopping-cart"></i></a></li>
             </ul> 
-         </nav>
+        </nav>
     </header>
 
     <form class="search" action="/action_page.php">
@@ -164,7 +175,7 @@
 
 
     <div class="form-popup" id="myForm">
-        <form action="/action_page.php" class="form-container">
+        <form action="php/login.php" class="form-container">
             <span onclick="document.getElementById('myForm').style.display = 'none'" class="close" title="Close Modal">&times;</span>
 
             <h1>Login</h1>
