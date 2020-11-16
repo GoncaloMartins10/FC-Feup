@@ -16,6 +16,7 @@ main {
     background: #353535;
     padding: 8px 0;
     height: min-content;
+    margin-right: 40px;
   }
   
   .sidenav a {
@@ -31,5 +32,4 @@ main {
   .content {
     flex-direction: column;
     margin: auto;
-    padding-left: 20px;
   }
