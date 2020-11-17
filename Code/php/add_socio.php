@@ -11,7 +11,7 @@
         $query = "set schema 'fcfeup'";
         pg_exec($conn, $query);
                              
-        $query = "UPDATE socio SET aprovado = 'TRUE' WHERE num_socio = '".$socio."'";
+        $query = "UPDATE cliente SET aprovacao = 'TRUE' WHERE num_socio = '".$socio."'";
         pg_exec($conn, $query);
     } 
 

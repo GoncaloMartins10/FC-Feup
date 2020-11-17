@@ -11,7 +11,7 @@
         $query = "set schema 'fcfeup'";
         pg_exec($conn, $query);
                              
-        $query = "DELETE FROM socio WHERE num_socio = '".$socio."'";
+        $query = "DELETE FROM cliente WHERE num_socio = '".$socio."'";
         pg_exec($conn, $query);
     } 
 

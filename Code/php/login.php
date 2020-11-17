@@ -15,8 +15,8 @@
   $query = "set schema 'fcfeup'";
   pg_exec($conn, $query);
 
-  echo "SELECT * FROM socio WHERE num_socio ='".$num_socio."' and pass='".$password."' <br>";
-  $query = "SELECT * FROM socio WHERE num_socio ='".$num_socio."' and pass='".$password."'";
+  echo "SELECT * FROM cliente WHERE num_socio ='".$num_socio."' and password='".$password."' <br>";
+  $query = "SELECT * FROM cliente WHERE num_socio ='".$num_socio."' AND password ='".$password."'";
   $result=pg_exec($conn,$query);
 
   $num_registos = pg_numrows($result);
