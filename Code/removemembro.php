@@ -28,7 +28,7 @@
 
         $query = "set schema 'fcfeup'";
         pg_exec($conn, $query);
-        $query = "select* from socio where aprovado = 'TRUE'";
+        $query = "select* from cliente where aprovacao = 'TRUE'";
         $result = pg_exec($conn, $query);
         pg_close($conn);
 
@@ -78,9 +78,11 @@
 
             <div class="flexbox">
                 
-                <?php if(empty($row['num_socio'])){
-                        echo "nada";    
-                    }
+            <?php if(empty($row['num_socio'])){ ?>
+                        <img src="images/empty-search.png">
+                        <h3>Não há membros atuamente</h3>    
+            <?php  }
+             else{
                     while(isset($row['num_socio'])){ ?>
 
                     <div class="card">
@@ -92,10 +94,10 @@
                         </div>
                     </div>
 
-                <?php
-                    $row = pg_fetch_assoc($result);
+                    <?php
+                        $row = pg_fetch_assoc($result);
+                    } 
                 } ?>
-
             </div>
 
             <h3>Jogadores</h3>

@@ -18,7 +18,7 @@
 
         $query = "set schema 'fcfeup'";
         pg_exec($conn, $query);
-        $query = "select* from socio";
+        $query = "select * from cliente";
         $result = pg_exec($conn, $query);
         pg_close($conn);
 
@@ -40,10 +40,10 @@
             <tr>
                 <td><?php echo $row['num_socio']; ?></td>
                 <td><?php echo $row['nome']; ?></td>
-                <td> <img src= "<?php echo $row['Imagem']; ?>"></td>
+                <td> <img src= "<?php echo $row['imagem']; ?>"></td>
                 <td><?php echo $row['telefone']; ?></td>
                 <td><?php echo $row['morada']; ?></td>
-                <td><?php echo $row['pass']; ?></td>
+                <td><?php echo $row['password']; ?></td>
                 <td><?php echo $row['aprovado']; ?></td>
             </tr>
             

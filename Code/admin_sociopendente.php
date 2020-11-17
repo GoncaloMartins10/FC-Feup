@@ -28,7 +28,7 @@
 
         $query = "set schema 'fcfeup'";
         pg_exec($conn, $query);
-        $query = "select* from socio where aprovado='FALSE';";
+        $query = "select* from cliente where aprovacao='FALSE';";
         $result = pg_exec($conn, $query);
         pg_close($conn);
 

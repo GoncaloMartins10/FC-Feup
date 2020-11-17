@@ -71,9 +71,12 @@
             }
             $query = "set schema 'fcfeup'";
             pg_exec($conn, $query);
-            
-            $query = "INSERT INTO socio(nome, imagem, telefone, morada, pass, aprovado) VALUES ('".$nome."', '".$imagem."', '".$telefone."', '".$morada."', '".$pass."', 'FALSE') RETURNING num_socio";
+
+            $query = "INSERT INTO encomenda DEFAULT VALUES RETURNING id";
             $row = pg_fetch_row( pg_exec($conn, $query));
+            $encomendaid = $row['0'];
+            $query = "INSERT INTO cliente(nome, imagem, telefone, morada, password, encomendaid) VALUES ('".$nome."', '".$imagem."', '".$telefone."', '".$morada."', '".$pass."', '".$encomendaid."') RETURNING num_socio";
+            $num_socio = pg_fetch_row( pg_exec($conn, $query));
         
         ?>
 
@@ -81,10 +84,10 @@
             <h1>Obrigado <?php echo $nome;?>!</h1>
             <br>
             <p>O teu número de sócio é:</p>
-            <h4><?php echo $row['0'];?></h4>
+            <h4><?php echo $num_socio['0'];?></h4>
             <p>Aguarda pacientemente a aprovoção da nossa direção</p>
             <br>
-            <a href="inicio.html"><div class="button hvr-grow-shadow">Voltar ao Início</div></a>
+            <a href="inicio.php"><div class="button hvr-grow-shadow">Voltar ao Início</div></a>
         </div>
     </main>
 
