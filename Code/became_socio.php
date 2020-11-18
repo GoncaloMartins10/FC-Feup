@@ -28,7 +28,7 @@
         <nav>
             <ul>
             <?php if(isset($_SESSION['num_socio']) ) { ?>
-                <li class="loginandchart hvr-grow-shadow"><a role="button" style="cursor: pointer;" href="php/logout.php">Logout <i class="fas fa-sign-in-alt"></i></a></li>
+                <li class="loginandchart hvr-grow-shadow"><a role="button" style="cursor: pointer;" href="actions/logout.php">Logout <i class="fas fa-sign-in-alt"></i></a></li>
             <?php } else {?>
                 <li class="loginandchart hvr-grow-shadow"><a role="button" onclick="document.getElementById('myForm').style.display = 'block'" style="cursor: pointer;">Login <i class="fas fa-sign-in-alt"></i></a></li>
             <?php }?>
@@ -61,16 +61,7 @@
             move_uploaded_file($_FILES["img"]["tmp_name"], $imagem);
         
 
-            //Conta GONÇALO
-            $conn = pg_connect("host=db.fe.up.pt dbname=siem2021 user=siem2021 password=uqKSXuBZ");
-            //Conta RICARDO
-            //$conn = pg_connect("host=db.fe.up.pt dbname=siem2047 user=siem2047 password=XutlXFnC");
-
-            if(!$conn){
-                echo("Ligação não foi estabelecida");
-            }
-            $query = "set schema 'fcfeup'";
-            pg_exec($conn, $query);
+            include "database/opendb.php";
 
             $query = "INSERT INTO encomenda DEFAULT VALUES RETURNING id";
             $row = pg_fetch_row( pg_exec($conn, $query));
@@ -92,57 +83,10 @@
     </main>
 
 
-    <footer>
-        <div class="container">
-            <div class="title"><h2>Informações</h2></div>
-            <div class="info">
-                <i class="fas fa-map-marker-alt"></i>   Rua Dr. Roberto Frias, 4200-465 Porto<br>
-                <i class="fas fa-phone"></i>  929999999 <br>
-                <i class="fas fa-envelope"></i>   fcfeup@fe.up.pt 
-            </div>
-        </div>
-        <div class="container">
-            <div class="title"><h2>Parceiros</h2></div>
-            <div class="partners center">
-                <div class="box hvr-grow-shadow">
-                    <a href="https://www.inesctec.pt/" target="_blank"><img src="images/inesctec.png"></a>
-                </div>
-                <div class="box hvr-grow-shadow">
-                    <a href="https://www.inegi.pt/" target="_blank"><img src="images/inegi.jpg"></a>
-                </div>
-                <div class="box hvr-grow-shadow">
-                    <a href="https://www.aefeup.pt/" target="_blank"><img src="images/aefeup.png"></a>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="title"><h2>Redes Sociais</h2></div>
-            <div class="socialmedia">
-                <a href="https://www.facebook.com/paginafeup/" target="_blank" class="fa fa-facebook hvr-grow-shadow"></a>
-                <a href="https://www.youtube.com/user/FEUPtv" target="_blank" class="fa fa-youtube hvr-grow-shadow"></a>
-                <a href="https://www.instagram.com/feup_porto/" target="_blank" class="fa fa-instagram hvr-grow-shadow"></a>
-            </div>
-        </div>
-    </footer>
-    <div class="copyright">
-        &copy 2020, Gonçalo Martins & Ricardo Martins. Todos os direitos reservados.
-    </div>
-
-    <div class="form-popup" id="myForm">
-        <form action="php/login.php" class="form-container">
-            <span onclick="document.getElementById('myForm').style.display = 'none'" class="close" title="Close Modal">&times;</span>
-
-            <h1>Login</h1>
-    
-            <label for="numero"><b>Número de Sócio</b></label>
-             <input type="text" placeholder="Insira o número de sócio" name="numero" required>
-    
-            <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Insira a Password" name="psw" required>
-    
-            <button type="submit" class="btn">Login</button>
-        </form>
-    </div>
+    <?php 
+        include 'includes/footer.html';
+        include 'includes/modal_login.html';
+     ?>
 
 </body>
 
