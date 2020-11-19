@@ -5,6 +5,6 @@
   $_SESSION['admin'] = "";
 
   session_destroy();
-  header('Location: ../inicio.php');
+  header('Location: ../pages/inicio.php');
 
  ?>
