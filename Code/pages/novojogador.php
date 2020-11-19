@@ -54,7 +54,7 @@
         <div class="content center">
             <div class="member center">
                 <h1>Novo Jogador</h1>
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="../actions/add_jogador.php" enctype="multipart/form-data">
     
                     <div class="item">
                         <input type="text" id="nome" name="nome" placeholder="Nome do Jogador" required><br>

@@ -26,8 +26,11 @@
       else { 
         header('Location: ../pages/inicio.php');
        }
-  } else {
+  } 
+  
+  else {
     $_SESSION['erro']= "Número de Sócio ou Password inexistente! Por favor tente novamente.";
+    header('Location: ../pages/inicio.php');
   }
 
  ?>

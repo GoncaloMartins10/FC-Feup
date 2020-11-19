@@ -57,7 +57,7 @@
 
             <div class="flexbox">
                 <div class="card hvr-grow">
-                    <img src="images/cr7.jpg" id="1" style="cursor: pointer;"  onClick="reply_click(this.id)">
+                    <img src="../images/cr7.jpg" id="1" style="cursor: pointer;"  onClick="reply_click(this.id)">
                     <div class="text">
                         <b>Nome:</b> Cristiano Ronaldo<br>
                         <b>Preço:</b> 20,99€ <br>
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <img src="images/cr7.jpg">
+                    <img src="../images/cr7.jpg">
                     <div class="text">
                         <b>Nome:</b> Cristiano Ronaldo<br>
                         <b>Preço:</b> 20,99€ <br>
@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <img src="images/cr7.jpg">
+                    <img src="../images/cr7.jpg">
                     <div class="text">
                         <b>Nome:</b> Cristiano Ronaldo<br>
                         <b>Preço:</b> 20,99€ <br>
@@ -81,7 +81,15 @@
                     </div>
                 </div>
                 <div class="card">
-                    <img src="images/cr7.jpg">
+                    <img src="../images/camisola.jpg">
+                    <div class="text">
+                        <b>Nome:</b> Camisola Principal<br>
+                        <b>Preço:</b> 111.99€ <br>
+                        <b>Stock:</b> 100 Unidades <br>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="../images/cr7.jpg">
                     <div class="text">
                         <b>Nome:</b> Cristiano Ronaldo<br>
                         <b>Preço:</b> 20,99€ <br>
@@ -89,15 +97,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    <img src="images/cr7.jpg">
-                    <div class="text">
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                        <b>Preço:</b> 20,99€ <br>
-                        <b>Stock:</b> 30 Unidades <br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
+                    <img src="../images/cr7.jpg">
                     <div class="text">
                         <b>Nome:</b> Cristiano Ronaldo<br>
                         <b>Preço:</b> 20,99€ <br>
@@ -106,7 +106,7 @@
                 </div>
                     
                 <div class="card">
-                    <img src="images/cr7.jpg">
+                    <img src="../images/cr7.jpg">
                     <div class="text">
                         <b>Nome:</b> Cristiano Ronaldo<br>
                         <b>Preço:</b> 20,99€ <br>
@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="card hvr-grow">
-                    <img src="images/marega.jpg" id="2" style="cursor: pointer;"  onClick="reply_click(this.id)">
+                    <img src="../images/marega.jpg" id="2" style="cursor: pointer;"  onClick="reply_click(this.id)">
                     <div class="text">
                         <b>Nome:</b> Cristiano Ronaldo<br>
                         <b>Preço:</b> 20,99€ <br>
@@ -124,7 +124,7 @@
                 </div>
 
                 <div class="card">
-                    <img src="images/biden.jpg" id="3" style="cursor: pointer;"  onClick="reply_click(this.id)">
+                    <img src="../images/biden.jpg" id="3" style="cursor: pointer;"  onClick="reply_click(this.id)">
                     <div class="text">
                         <b>Nome:</b> Cristiano Ronaldo<br>
                         <b>Preço:</b> 20,99€ <br>
