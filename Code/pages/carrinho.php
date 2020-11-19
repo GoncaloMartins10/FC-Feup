@@ -102,6 +102,7 @@
     </table>
     
     <button class="hvr-grow-shadow">Comprar</button>
+    <button class="hvr-grow-shadow" style="background: #353535">Adicionar + Produtos</button>
 
     </main>
 
