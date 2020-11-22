@@ -12,21 +12,18 @@
 
 <?php
   session_start();
+    
+  include "../database/opendb.php";
+
+  $query = "select* from produto";
+  $result = pg_exec($conn, $query);
+  
+  pg_close($conn);
+
+  $row = pg_fetch_assoc($result); 
 ?>
 
 <body>
-
-    <?php
-        include "../database/opendb.php";
-
-        $query = "set schema 'fcfeup'";
-        pg_exec($conn, $query);
-        $query = "select* from cliente where aprovacao = 'TRUE'";
-        $result = pg_exec($conn, $query);
-        pg_close($conn);
-
-        $row = pg_fetch_assoc($result); 
-    ?>
 
     <header>
         <img class="logo" src="../images/logo.png">
@@ -59,9 +56,9 @@
         <div class="sidenav">
             <a class="hvr-underline-from-left" href="admin_sociopendente.php">Pedidos de Sócio Pendentes</a>
             <a class="hvr-underline-from-left" href="novoproduto.php">Adicionar Produto</a>
-            <a class="hvr-underline-from-left" href="removeproduto.php">Remover Produto</a>
+            <a id="active" href="removeproduto.php">Remover Produto</a>
             <a class="hvr-underline-from-left" href="novojogador.php">Adicionar Jogador</a>
-            <a id="active" href="removemembro.php">Remover Membro</a>
+            <a class="hvr-underline-from-left" href="removemembro.php">Remover Membro</a>
             <a class="hvr-underline-from-left" href="#contact">Estatísticas Vendas</a>
         </div>
 
@@ -71,18 +68,18 @@
 
             <div class="flexbox">
                 
-            <?php if(empty($row['num_socio'])){ ?>
+            <?php if(empty($row['id'])){ ?>
                         <img src="../images/empty-search.png">
                         <h3>Não há membros atuamente</h3>    
             <?php  }
              else{
-                    while(isset($row['num_socio'])){ ?>
+                    while(isset($row['id'])){ ?>
 
                     <div class="card">
-                        <span onClick="eliminate_click(<?php echo $row['num_socio'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
+                        <span onClick="eliminate_click(<?php echo $row['id'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
                         <img src= "<?php echo $row['imagem']; ?>">
                         <div class="text">
-                            <b>Nº Sócio:</b> <?php echo $row['num_socio']; ?><br>
+                            <b>Nº Sócio:</b> <?php echo $row['id']; ?><br>
                             <b>Nome:</b> <?php echo $row['nome']; ?><br>
                         </div>
                     </div>
@@ -91,26 +88,6 @@
                         $row = pg_fetch_assoc($result);
                     } 
                 } ?>
-            </div>
-
-            <h3>Jogadores</h3>
-
-            <div class="flexbox">
-                <div class="card">
-                    <img src="images/marega.jpg">
-                    <div class="text">
-                        <b>Nº Sócio:</b> 1235<br>
-                        <b>Nome: </b> Moussa Marega<br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/biden.jpg">
-                    <div class="text">
-                        <b>Nº Sócio:</b> 1237<br>
-                        <b>Nome: </b> Joe Biden<br>
-                    </div>
-                </div>
-
             </div>
  
         </div>
@@ -123,12 +100,12 @@
      ?>
 
     <script>
-        function eliminate_click(socio) {
-            if (confirm("Tem a certeza que quer rejeitar o sócio")) {
+        function eliminate_click(id) {
+            if (confirm("Tem a certeza que quer apagar o produto")) {
                     $.ajax({
-                        url: 'actions/remove_socio.php',
+                        url: '../actions/remove_produto.php',
                         type: 'POST',
-                        data: {"id":socio},
+                        data: {"id":id},
                         success: function(response) { window.location.reload(); }
                     });
             }

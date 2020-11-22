@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../style/style.css">
     <title>FC FEUP | Loja</title>
@@ -10,6 +11,15 @@
 
 <?php
   session_start();
+    
+  include "../database/opendb.php";
+
+  $query = "select* from produto";
+  $result = pg_exec($conn, $query);
+  
+  pg_close($conn);
+
+  $row = pg_fetch_assoc($result); 
 ?>
 
 <body>
@@ -56,81 +66,23 @@
             <h3>Produtos</h3>
 
             <div class="flexbox">
-                <div class="card hvr-grow">
-                    <img src="images/cr7.jpg" id="1" style="cursor: pointer;"  onClick="reply_click(this.id)">
-                    <div class="text">
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                        <b>Preço:</b> 20,99€ <br>
-                        <b>Stock:</b> 30 Unidades <br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                    <div class="text">
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                        <b>Preço:</b> 20,99€ <br>
-                        <b>Stock:</b> 30 Unidades <br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                    <div class="text">
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                        <b>Preço:</b> 20,99€ <br>
-                        <b>Stock:</b> 30 Unidades <br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                    <div class="text">
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                        <b>Preço:</b> 20,99€ <br>
-                        <b>Stock:</b> 30 Unidades <br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                    <div class="text">
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                        <b>Preço:</b> 20,99€ <br>
-                        <b>Stock:</b> 30 Unidades <br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                    <div class="text">
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                        <b>Preço:</b> 20,99€ <br>
-                        <b>Stock:</b> 30 Unidades <br>
-                    </div>
-                </div>
-                    
-                <div class="card">
-                    <img src="images/cr7.jpg">
-                    <div class="text">
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                        <b>Preço:</b> 20,99€ <br>
-                        <b>Stock:</b> 30 Unidades <br>
-                    </div>
-                </div>
+                <?php if(empty($row['id'])){
+                            echo "nada";    
+                        }
+                        while(isset($row['id'])){ ?>
 
-                <div class="card hvr-grow">
-                    <img src="images/marega.jpg" id="2" style="cursor: pointer;"  onClick="reply_click(this.id)">
-                    <div class="text">
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                        <b>Preço:</b> 20,99€ <br>
-                        <b>Stock:</b> 30 Unidades <br>
-                    </div>
-                </div>
+                        <div class="card">
+                            <img src= "<?php echo $row['imagem'];?>" id="<?php echo $row['id'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
+                            <div class="text">
+                                <b>Nome:</b> <?php echo $row['nome']; ?><br>
+                                <b>Preço:</b> <?php echo $row['preco']; ?>€<br>
+                                <b>Stock:</b> <?php echo $row['stock']; ?><br>
+                            </div>
+                        </div>
 
-                <div class="card">
-                    <img src="images/biden.jpg" id="3" style="cursor: pointer;"  onClick="reply_click(this.id)">
-                    <div class="text">
-                        <b>Nome:</b> Cristiano Ronaldo<br>
-                        <b>Preço:</b> 20,99€ <br>
-                        <b>Stock:</b> 30 Unidades <br>
-                    </div>
-                </div>
+                    <?php
+                        $row = pg_fetch_assoc($result);
+                    } ?>
 
             </div>
                 
@@ -142,51 +94,63 @@
         include '../includes/modal_login.html';
      ?>
 
-
     <div id="id01" class="modal">
+
         <form class="modal-content animate" action="/action_page.php" method="post">   
-          
-          <div class="imgcontainer center">
-            <h4>Camisola Oficial</h4>          
-            <img id="img01" alt="Avatar" class="avatar">
-          </div>
-    
-          <div class="details"> 
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <b>Descrição:<br></b>
-            <p>Camisola oficial dos nossos atletas para a época 2019/2020</p><br>
-            
-            <label for="uname"><b>Quantidade</b></label>
-            <input type="number" placeholder=0  name="uname" required><br><br>
-            <label for="tamanho"><b>Tamanho</b></label>
-            <input list="tamanhos" placeholder="S" name="tamanho"><br><br>
-            <datalist id="tamanhos">
-              <option value="S">
-              <option value="M">
-              <option value="L">
-              <option value="XL">
-              <option value="XXL">
-            </datalist>
-            <b>Preço:</b> 20,99€<br><br> 
-            <button type="submit">Adicionar ao carrinho</button>
-          </div>
+
+            <div class="imgcontainer center">
+                <h4 id="titulo"> </h4>        
+                <img id="img01" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="details"> 
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <b>Descrição:<br></b>
+                <p id="descricao"></p><br>
+                
+                <label for="uname"><b>Quantidade</b></label>
+                <input type="number" placeholder=0  name="uname" required><br><br>
+                <label for="tamanho"><b>Tamanho</b></label>
+                <input list="tamanhos" placeholder="S" name="tamanho"><br><br>
+                <datalist id="tamanhos">
+                <option value="S">
+                <option value="M">
+                <option value="L">
+                <option value="XL">
+                <option value="XXL">
+                </datalist>
+                <b>Preço:</b> <p id="preco"> </p> <br><br> 
+                <button type="submit">Adicionar ao carrinho</button>
+            </div>
 
         </form>
     </div>
 
-
     <script>
         // Get the modal 
         var modal = document.getElementById("id01");
+
         function reply_click(clicked_id) {
-            // Get the image and insert it inside the modal - use its "alt" text as a caption
+
             var img = document.getElementById(clicked_id);
             var modalImg = document.getElementById("img01");
 
-            modal.style.display = "block";
-            modalImg.src = img.src;      
-        }
+            $.ajax({
+                    url: '../actions/modal_loja.php',
+                    type: 'POST',
+                    data: {"id":clicked_id},
+                    datatype: "json",
+                    success: function(result) { 
+                        var data = JSON.parse(result);
+                        document.getElementById("titulo").innerHTML = data.nome;
+                        document.getElementById("descricao").innerHTML = data.descricao;
+                        document.getElementById("preco").innerHTML = data.preco+"€";
+                    }
+            });
 
+            modal.style.display = "block";
+            modalImg.src = img.src;    
+        }
     </script>
 
 </body>
