@@ -147,9 +147,10 @@
                         document.getElementById("preco").innerHTML = data.preco+"€";
                     }
             });
-
-            modal.style.display = "block";
-            modalImg.src = img.src;    
+            setTimeout(function() {
+                modal.style.display = "block";
+                modalImg.src = img.src;   
+            }, 100); 
         }
     </script>
 
