@@ -97,14 +97,14 @@
 
             <div class="flexbox">
                 <div class="card">
-                    <img src="images/marega.jpg">
+                    <img src="../images/marega.jpg">
                     <div class="text">
                         <b>Nº Sócio:</b> 1235<br>
                         <b>Nome: </b> Moussa Marega<br>
                     </div>
                 </div>
                 <div class="card">
-                    <img src="images/biden.jpg">
+                    <img src="../images/biden.jpg">
                     <div class="text">
                         <b>Nº Sócio:</b> 1237<br>
                         <b>Nome: </b> Joe Biden<br>

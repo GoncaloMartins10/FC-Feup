@@ -56,7 +56,7 @@
           <tr>
             <td><i class="fas fa-trash"></i></td>
             <td>#123</td>
-            <td><img src="images/marega.jpg"></td>
+            <td><img src="../images/marega.jpg"></td>
             <td>Camisola Oficial</td>
             <td>M</td>
             <td>20,00€</td>
@@ -66,7 +66,7 @@
         <tr>
           <td><i class="fas fa-trash"></i></td>
           <td>#123</td>
-          <td><img src="images/cr7.jpg"></td>
+          <td><img src="../images/cr7.jpg"></td>
           <td>Camisola Oficial</td>
           <td>M</td>
           <td>20,00€</td>
@@ -76,7 +76,7 @@
         <tr>
           <td><i class="fas fa-trash"></i></td>
           <td>#123</td>
-          <td><img src="images/biden.jpg"></td>
+          <td><img src="../images/biden.jpg"></td>
           <td>Camisola Oficial</td>
           <td>M</td>
           <td>20,00€</td>
@@ -102,6 +102,7 @@
     </table>
     
     <button class="hvr-grow-shadow">Comprar</button>
+    <button class="hvr-grow-shadow" style="background: #353535">Adicionar + Produtos</button>
 
     </main>
 

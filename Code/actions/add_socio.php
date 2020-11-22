@@ -87,7 +87,7 @@
                     <h4><?php echo $num_socio;?></h4>
                     <p>Aguarda pacientemente a aprovoção da nossa direção</p>
                     <br>
-                    <a href="../inicio.php"><div class="button hvr-grow-shadow">Voltar ao Início</div></a>
+                    <a href="../pages/inicio.php"><div class="button hvr-grow-shadow">Voltar ao Início</div></a>
                 </div>
     <?php  } ?>
 

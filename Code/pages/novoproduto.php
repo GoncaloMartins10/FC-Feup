@@ -55,10 +55,10 @@
         <div class="content center">
             <div class="member center">
                 <h1>Novo Produto</h1>
-                <form method="POST" action="" enctype="multipart/form-data">
+                <form method="POST" action="../actions/add_product.php" enctype="multipart/form-data">
     
                     <div class="item">
-                        <input type="text" id="nome" name="nome" placeholder="Nome do Produto" required><br>
+                        <input type="text" id="name" name="name" placeholder="Nome do Produto" required><br>
                     </div>                
                     <div class="item">
                         <textarea type="text" id="discription" name="discription" placeholder="Descrição do Produto (Opcional)"></textarea><br>

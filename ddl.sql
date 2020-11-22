@@ -48,7 +48,8 @@ CREATE TABLE jogador(
     num_camisola INTEGER UNIQUE NOT NULL,
     nome VARCHAR(100) NOT NULL,
     posicao VARCHAR(12) NOT NULL,
-    idade INTEGER,
+    idade INTEGER NOT NULL,
+    imagem VARCHAR(200) NOT NULL,
 
     PRIMARY KEY(num_camisola)
 );

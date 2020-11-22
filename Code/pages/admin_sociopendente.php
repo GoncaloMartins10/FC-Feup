@@ -68,7 +68,7 @@
         <div class="content center">
 
             <?php if(empty($row['num_socio'])){ ?>
-                      <img src="images/empty-search.png">
+                      <img src="../images/empty-search.png">
                       <h3>Não há pedidos de sócio pendentes</h3>
             <?php } else {?>
                     <table id=cart>

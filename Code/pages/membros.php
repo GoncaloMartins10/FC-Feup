@@ -79,9 +79,10 @@
 
             <div class="flexbox">
                 
-                <?php if(empty($row['num_socio'])){
-                        echo "nada";    
-                    }
+            <?php   if(empty($row['num_socio'])){ ?>
+                      <img src="../images/empty-search.png">
+                      <h3>Não encontramos nada. Pesquisa outra coisa!cam</h3>   
+            <?php   }
                     while(isset($row['num_socio'])){ ?>
 
                     <div class="card">
