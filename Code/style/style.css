@@ -246,7 +246,11 @@ button, .button{
     cursor: pointer;
 }
 
-
+.button-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 /* ---------------------------------------- Became a member ---------------------------------------- */
 .member{
     background: #d9d9d9;

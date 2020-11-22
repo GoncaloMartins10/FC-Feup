@@ -5,7 +5,7 @@
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../style/style.css">
-    <title>FC FEUP | Inicio</title>
+    <title>FC FEUP | Carrinho</title>
 </head>
 
 <?php
@@ -39,7 +39,7 @@
     </header>
 
 
-    <main class="center" style="flex-direction: column; margin: 20px 0;">
+    <main class="center" style="flex-direction: column; margin: 20px 0; justify-content: space-between;">
 
       <h3>Encomendas</h3>
       <table id=cart>
@@ -101,8 +101,10 @@
       </tr>
     </table>
     
-    <button class="hvr-grow-shadow">Comprar</button>
-    <button class="hvr-grow-shadow" style="background: #353535">Adicionar + Produtos</button>
+    <div class="button-container">
+      <button class="hvr-grow-shadow">Comprar</button>
+      <a href="../pages/loja.php"><button class="hvr-grow-shadow" style="background: #284b63">Adicionar mais Produtos</button></a>
+    </div>
 
     </main>
 
