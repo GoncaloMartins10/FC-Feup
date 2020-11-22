@@ -64,7 +64,7 @@
 
         <div class="content">
 
-            <h3>Sócios</h3>
+            <h3>Produtos</h3>
 
             <div class="flexbox">
                 
