@@ -18,7 +18,7 @@
     
         include "../database/opendb.php";
         
-        $s = $p = $j = FALSE;
+        $s = $j = $p = FALSE;
         $procura="";
         $cargos = $_GET['cargos'];
         
@@ -35,8 +35,8 @@
                     $p = TRUE;             
                     $query = "select * from cliente where admin = 'TRUE'";
                     if (!empty($procura) && sizeof($procura)>0) {
-                        for ($j=0; $j<sizeof($procura) ; $j++)
-                            $query .= " AND LOWER(nome) LIKE LOWER('%$procura[$j]%')";
+                        for ($k=0; $k<sizeof($procura) ; $k++)
+                            $query .= " AND LOWER(nome) LIKE LOWER('%$procura[$k]%')";
                     }
                     $presidentes = pg_exec($conn, $query);
                     $presidente = pg_fetch_assoc($presidentes);
@@ -45,18 +45,18 @@
                     $s = TRUE;
                     $query = "select * from cliente where admin = 'FALSE' AND aprovacao = 'TRUE'";
                     if (!empty($procura) && sizeof($procura)>0) {
-                        for ($j=0; $j<sizeof($procura) ; $j++)
-                            $query .= " AND LOWER(nome) LIKE LOWER('%$procura[$j]%')";
+                        for ($k=0; $k<sizeof($procura) ; $k++)
+                            $query .= " AND LOWER(nome) LIKE LOWER('%$procura[$k]%')";
                     }
                     $socios = pg_exec($conn, $query);
                     $socio = pg_fetch_assoc($socios);
                 }
-                else{
+                else {
                     $j = TRUE;  
                     $query = "select * from jogador";
                     if (!empty($procura) && sizeof($procura)>0) {
-                        for ($j=0; $j<sizeof($procura) ; $j++)
-                            $query .= " WHERE LOWER(nome) LIKE LOWER('%$procura[$j]%')";
+                        for ($k=0; $k<sizeof($procura) ; $k++)
+                            $query .= " WHERE LOWER(nome) LIKE LOWER('%$procura[$k]%')";
                     }
                     $jogadores = pg_exec($conn, $query);
                     $jogador = pg_fetch_assoc($jogadores);
@@ -90,17 +90,18 @@
         </nav>
     </header>
 
+
     <form class="search" action="membros.php" method="GET">
         <div class="item">
-            <input type="checkbox" name="cargos[]" value="jogador" checked>
+            <input type="checkbox" name="cargos[]" value="jogador" <?php if($j) echo("checked"); ?> >
             <label for="jogadores"> Jogadores</label>
         </div>
         <div class="item">
-            <input type="checkbox" name="cargos[]" value="presidente" checked>
+            <input type="checkbox" name="cargos[]" value="presidente" <?php if($p) echo("checked");?> >
             <label for="presidentes"> Presidentes</label>
         </div>
         <div class="item">
-            <input type="checkbox" name="cargos[]" value="socio" checked>
+            <input type="checkbox" name="cargos[]" value="socio" <?php if($s) echo("checked");?> >
             <label for="socios"> Sócios</label>
         </div>
 
@@ -131,7 +132,7 @@
 
             <main class="center" style="flex-direction: column;">
                 <img src="../images/empty-search.png">
-                <h3>Não encontrámos nada, procure novamente!</h3>
+                <h3>Não encontramos nada, procure novamente!</h3>
             </main>
 
 <?php       }
