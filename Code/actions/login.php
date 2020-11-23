@@ -3,10 +3,11 @@
 
     $num_socio = $_POST['numero'];
     $password = $_POST['psw'];
+    $password_md5 = md5($password);
 
   include "../database/opendb.php";
 
-  $query = "SELECT * FROM cliente WHERE num_socio ='".$num_socio."' AND password ='".$password."'";
+  $query = "SELECT * FROM cliente WHERE num_socio ='".$num_socio."' AND password ='".$password_md5."'";
   $result=pg_exec($conn,$query);
 
   pg_close($conn);

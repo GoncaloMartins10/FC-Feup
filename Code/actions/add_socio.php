@@ -24,8 +24,10 @@
   if(isset($_POST['telefone']))
       $telefone = $_POST['telefone'];
 
-  if(isset($_POST['pass']))    
+  if(isset($_POST['pass'])){    
       $pass = $_POST['pass'];
+      $password_md5 = md5($pass);
+  }
   
   //Imagem
   $diretorio = "../images/";
@@ -71,7 +73,7 @@
             }
             else{
                 /* Insere Cliente */
-                $query = "INSERT INTO cliente(nome, imagem, telefone, morada, password) VALUES ('".$nome."', '".$imagem."', '".$telefone."', '".$morada."', '".$pass."') RETURNING num_socio";
+                $query = "INSERT INTO cliente(nome, imagem, telefone, morada, password) VALUES ('".$nome."', '".$imagem."', '".$telefone."', '".$morada."', '".$password_md5."') RETURNING num_socio";
                 $row = pg_fetch_row( pg_exec($conn, $query));
                 $num_socio = $row['0'];
                 /* Cria Carrinho */
