@@ -21,11 +21,16 @@
 
         $query = "set schema 'fcfeup'";
         pg_exec($conn, $query);
-        $query = "select* from cliente where aprovacao = 'TRUE'";
-        $result = pg_exec($conn, $query);
+        $query = "select * from cliente where aprovacao = 'TRUE'";
+        $socios = pg_exec($conn, $query);
+
+        $query = "select * from jogador";
+        $jogadores = pg_exec($conn, $query);
+
         pg_close($conn);
 
-        $row = pg_fetch_assoc($result); 
+        $socio = pg_fetch_assoc($socios); 
+        $jogador = pg_fetch_assoc($jogadores); 
     ?>
 
     <header>
@@ -71,24 +76,24 @@
 
             <div class="flexbox">
                 
-            <?php if(empty($row['num_socio'])){ ?>
+            <?php if(empty($socio['num_socio'])){ ?>
                         <img src="../images/empty-search.png">
-                        <h3>Não há membros atuamente</h3>    
+                        <h3>Não há membros atualmente</h3>    
             <?php  }
              else{
-                    while(isset($row['num_socio'])){ ?>
+                    while(isset($socio['num_socio'])){ ?>
 
                     <div class="card">
-                        <span onClick="eliminate_click(<?php echo $row['num_socio'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
-                        <img src= "<?php echo $row['imagem']; ?>">
+                        <span onClick="eliminate_click(<?php echo $socio['num_socio'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
+                        <img src= "<?php echo $socio['imagem']; ?>">
                         <div class="text">
-                            <b>Nº Sócio:</b> <?php echo $row['num_socio']; ?><br>
-                            <b>Nome:</b> <?php echo $row['nome']; ?><br>
+                            <b>Nº Sócio:</b> <?php echo $socio['num_socio']; ?><br>
+                            <b>Nome:</b> <?php echo $socio['nome']; ?><br>
                         </div>
                     </div>
 
                     <?php
-                        $row = pg_fetch_assoc($result);
+                        $socio = pg_fetch_assoc($socios);
                     } 
                 } ?>
             </div>
@@ -96,22 +101,28 @@
             <h3>Jogadores</h3>
 
             <div class="flexbox">
-                <div class="card">
-                    <img src="../images/marega.jpg">
-                    <div class="text">
-                        <b>Nº Sócio:</b> 1235<br>
-                        <b>Nome: </b> Moussa Marega<br>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="../images/biden.jpg">
-                    <div class="text">
-                        <b>Nº Sócio:</b> 1237<br>
-                        <b>Nome: </b> Joe Biden<br>
-                    </div>
-                </div>
+                
+            <?php if(empty($jogador['num_camisola'])){ ?>
+                        <img src="../images/empty-search.png">
+                        <h3>Não há membros atualmente</h3>    
+            <?php  }
+             else{
+                    while(isset($jogador['num_camisola'])){ ?>
 
-            </div>
+                    <div class="card">
+                        <span onClick="eliminate_click(<?php echo $jogador['num_camisola'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
+                        <img src= "<?php echo $jogador['imagem']; ?>">
+                        <div class="text">
+                            <b>Nº Camisola:</b> <?php echo $jogador['num_camisola']; ?><br>
+                            <b>Nome:</b> <?php echo $jogador['nome']; ?><br>
+                            <b>Posição:</b> <?php echo $jogador['posicao']; ?><br>
+                        </div>
+                    </div>
+
+                    <?php
+                        $jogador = pg_fetch_assoc($jogadores);
+                    } 
+                } ?>
  
         </div>
     </main>
