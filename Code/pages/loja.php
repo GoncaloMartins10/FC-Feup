@@ -10,16 +10,64 @@
 </head>
 
 <?php
-  session_start();
+    session_start();
+        
+    include "../database/opendb.php";
+
+    $maxprice = "";
+    $minprice = "";
+    $price = "";
+    $procura = "";
+    $sort = "";
+
+    /* Preços*/
+    $query = "SELECT MAX(preco) FROM produto";
+    $result = pg_exec($conn, $query);
+    $row = pg_fetch_assoc($result);
+    $maxprice = $row['max'];
+
+    $query = "SELECT MIN(preco) FROM produto";
+    $result = pg_exec($conn, $query);
+    $row = pg_fetch_assoc($result);
+    $minprice = $row['min'];
+
+    if(isset($_GET['price'])) 
+        $price = $_GET['price'];
+    else
+        $price = $maxprice;
+
+    /* Organiza por preço */
+    if ( !empty($_GET['sort']) && $_GET['sort'] == 'asc' ) {
+        $sort=" ORDER BY preco ASC";
+    } 
+    if ( !empty($_GET['sort']) && $_GET['sort'] == 'desc' ) {
+        $sort=" ORDER BY preco DESC";
+    }
+    /* Organiza por ordem alfabetica */
+    if ( !empty($_GET['sort']) && $_GET['sort'] == 'az' ) {
+        $sort=" ORDER BY nome ASC";
+    } 
+    if ( !empty($_GET['sort']) && $_GET['sort'] == 'za' ) {
+        $sort=" ORDER BY nome DESC";
+    }
+
+    /* Procura */
+    if(isset($_GET['search'])) {
+        $procura = $_GET['search'];
+        $procura = explode(" ", $procura);
+    }
+
+    $query = "select * from produto WHERE preco <= $price";
+    if (!empty($procura) && sizeof($procura)>0) {
+        for ($k=0; $k<sizeof($procura) ; $k++)
+            $query .= " AND LOWER(nome) LIKE LOWER('%$procura[$k]%')";
+    }
+    $query .= $sort;
+    $produtos = pg_exec($conn, $query);
     
-  include "../database/opendb.php";
+    pg_close($conn);
 
-  $query = "select* from produto";
-  $result = pg_exec($conn, $query);
-  
-  pg_close($conn);
-
-  $row = pg_fetch_assoc($result); 
+    $produto = pg_fetch_assoc($produtos); 
 ?>
 
 <body>
@@ -48,11 +96,12 @@
         </nav>
     </header>
 
-    <form class="search" action="/action_page.php">
+    <form class="search" action="loja.php" method="GET">
+
         <div class="item">
             <label for="price"> Preço:</label><br>
-            0 € <input type="range" id="price" value="100" min ="0" max="100" oninput="this.nextElementSibling.value = this.value">
-            <output>100</output> €
+            <?php echo($minprice); ?> € <input type="range" id="price" name="price" value="<?php echo($price); ?>" min ="<?php echo($minprice); ?>" max="<?php echo($maxprice); ?>" oninput="this.nextElementSibling.value = this.value">
+            <output><?php echo($price); ?></output> €
         </div>
 
 
@@ -60,34 +109,53 @@
             <input type="text" id="search" name="search" placeholder="Produto"><br>
         </div>
 
+        <div class="item">
+            <select id="sort" name="sort">
+                <option value="">-- Ordenar --</option>
+                <option value="asc">Preço mais baixo</option>
+                <option value="desc">Preço mais alto</option>
+                <option value="az">A-Z</option>
+                <option value="za">Z-A</option>
+            </select>
+        </div>
+
+        <div class="item">
+            <button type="submit" name="procura"><i class="fas fa-search"></i></button>
+        </div>
+
     </form> 
 
-    <main>        
+    <?php if(empty($produto['id'])){ ?> 
+
+        <main class="center" style="flex-direction: column;">
+                <img src="../images/empty-search.png">
+                <h3>Não encontramos nada, procure novamente!</h3>
+        </main>  
+
+    <?php } else { ?> 
+
+        <main>
             <h3>Produtos</h3>
-
             <div class="flexbox">
-                <?php if(empty($row['id'])){
-                            echo "nada";    
-                        }
-                        while(isset($row['id'])){ ?>
+                <?php  while(isset($produto['id'])){ ?>
 
-                        <div class="card">
-                            <img src= "<?php echo $row['imagem'];?>" id="<?php echo $row['id'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
-                            <div class="text">
-                                <b>Nome:</b> <?php echo $row['nome']; ?><br>
-                                <b>Preço:</b> <?php echo $row['preco']; ?>€<br>
-                                <b>Stock:</b> <?php echo $row['stock']; ?><br>
-                            </div>
+                <div class="card">
+                        <img src= "<?php echo $produto['imagem'];?>" id="<?php echo $produto['id'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
+                        <div class="text">
+                            <b>Nome:</b> <?php echo $produto['nome']; ?><br>
+                            <b>Preço:</b> <?php echo $produto['preco']; ?>€<br>
+                            <b>Stock:</b> <?php echo $produto['stock']; ?><br>
                         </div>
+                </div>    
 
-                    <?php
-                        $row = pg_fetch_assoc($result);
-                    } ?>
+                <?php
+                    $produto = pg_fetch_assoc($produtos);
+                } ?>    
 
             </div>
-                
-    </main>
+        </main>
 
+    <?php } ?>
 
     <?php 
         include '../includes/footer.html';

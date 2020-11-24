@@ -63,6 +63,9 @@
                 }
             }
         }
+
+        pg_close($conn);
+        
     ?>
 
     <header>
@@ -106,7 +109,7 @@
         </div>
 
         <div class="item">
-            <input type="text" id="search" name="search" placeholder="Nº Sócio ou Nome">
+            <input type="text" id="search" name="search" placeholder="Membro">
         </div>
 
         <div class="item">
