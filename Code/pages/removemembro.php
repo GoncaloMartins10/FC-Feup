@@ -137,7 +137,7 @@
         function eliminate_click(socio) {
             if (confirm("Tem a certeza que quer rejeitar o sócio")) {
                     $.ajax({
-                        url: 'actions/remove_socio.php',
+                        url: '../actions/remove_socio.php',
                         type: 'POST',
                         data: {"id":socio},
                         success: function(response) { window.location.reload(); }
