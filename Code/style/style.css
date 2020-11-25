@@ -331,8 +331,8 @@ textarea {
 /*------------------------------------------MODAL LOGIN------------------------------------------------*/
 
 
-  /* The popup form - hidden by default */
-  .form-popup {
+/* The popup form - hidden by default */
+.form-popup {
     display: none;
     position: absolute;
     top: 100px;
@@ -341,16 +341,16 @@ textarea {
     max-width: 300px;
     border: 3px solid #141414;
     z-index: 9;
-  }
+}
 
-  /* Add styles to the form container */
-  .form-container { 
+/* Add styles to the form container */
+.form-container { 
     padding: 10px;
     background-color: white;
-  }
+}
 
-  /* Full-width input fields */
-  .form-container input[type=text], .form-container input[type=password] {
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -358,45 +358,55 @@ textarea {
     border: 1px solid #ccc;
     box-sizing: border-box;
     background: #f1f1f1;
-  }
+}
 
-  /* When the inputs get focus, do something */
-  .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
     background-color: #ddd;
     outline: none;
-  }
+}
 
- .form-popup h1{
+.form-popup h1{
     font: 26px 'Nunito', sans-serif;
     color: black;
     font-weight: bold;
     margin-bottom: 10px;
-  }
+}
 
-  /* The Close Button (x) */
-  .close {
+/* The Close Button (x) */
+.close {
     position: absolute;
     right: 10px;
     top: 0;
     color: #000;
     font-size: 35px;
     font-weight: bold;
-  }
+}
 
-  .close:hover, .close:focus {
+.close:hover, .close:focus {
     color: red;
     cursor: pointer;
-  }
+}
 
-    /* The Close Button (x) */
-  .remove {
+/* The Close Button (x) */
+.remove {
     position: absolute;
     cursor: pointer;
     right: 5px;
     top: 0;
-    color: red;
+    color:red ;
     font-size: 20px;
-  }
+}
+
+.edit {
+    position: absolute;
+    cursor: pointer;
+    left: 5px;
+    top: 0;
+    color:black ;
+    font-size: 20px;
+}
+
 
 /*------------------------------------------------POP UP LOJA--------------------------------------*/
 

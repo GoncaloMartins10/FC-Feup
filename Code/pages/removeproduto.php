@@ -77,6 +77,7 @@
 
                     <div class="card">
                         <span onClick="eliminate_click(<?php echo $row['id'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
+                        <span onClick="eliminate_click(<?php echo $row['id'] ?>)" class="edit"><i class="fas fa-edit"></i></span>
                         <img src= "<?php echo $row['imagem']; ?>">
                         <div class="text">
                             <b>Nº Sócio:</b> <?php echo $row['id']; ?><br>
