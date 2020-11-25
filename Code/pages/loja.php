@@ -164,7 +164,7 @@
 
     <div id="id01" class="modal">
 
-        <form class="modal-content animate" action="/action_page.php" method="post">   
+        <form class="modal-content animate" action="../actions/add_carrinho.php" method="post" name="modal_loja">   
 
             <div class="imgcontainer center">
                 <h4 id="titulo"> </h4>        
@@ -176,10 +176,13 @@
                 <b>Descrição:<br></b>
                 <p id="descricao"></p><br>
                 
+                <input type="number" name="id" value=''>
+
                 <label for="uname"><b>Quantidade</b></label>
-                <input type="number" placeholder=0  name="uname" required><br><br>
+                <input type="number" placeholder=0  name="quantidade" required><br><br>
+
                 <label for="tamanho"><b>Tamanho</b></label>
-                <input list="tamanhos" placeholder="S" name="tamanho"><br><br>
+                <input list="tamanhos" placeholder="S" name="tamanho" required><br><br>
                 <datalist id="tamanhos">
                 <option value="S">
                 <option value="M">
@@ -187,6 +190,7 @@
                 <option value="XL">
                 <option value="XXL">
                 </datalist>
+
                 <b>Preço:</b> <p id="preco"> </p> <br><br> 
                 <button type="submit">Adicionar ao carrinho</button>
             </div>
@@ -213,6 +217,9 @@
                         document.getElementById("titulo").innerHTML = data.nome;
                         document.getElementById("descricao").innerHTML = data.descricao;
                         document.getElementById("preco").innerHTML = data.preco+"€";
+                        
+                        document.forms['modal_loja']['id'].value = clicked_id;
+                        document.forms['modal_loja']['id'].type = "hidden";
                     }
             });
             setTimeout(function() {
