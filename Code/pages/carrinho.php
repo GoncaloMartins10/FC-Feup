@@ -69,7 +69,7 @@
 
 
     <?php if(empty($row['id'])){ ?>
-                      <img src="../images/empty-search.png">
+                      <img style="width: 200px" src="../images/carrinho.png">
                       <h3>Carrinho Vazio</h3>
     <?php } else {?>
             <h3>Encomendas</h3>
@@ -101,7 +101,7 @@
                 }
             } ?>
             </table>
-
+            <br><br><br>
 
             <?php if(empty($row2['id'])){ ?>
                       <img src="../images/empty-search.png">
