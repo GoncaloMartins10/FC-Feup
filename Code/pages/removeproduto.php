@@ -77,7 +77,7 @@
 
                     <div class="card">
                         <span onClick="eliminate_click(<?php echo $row['id'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
-                        <span onClick="eliminate_click(<?php echo $row['id'] ?>)" class="edit"><i class="fas fa-edit"></i></span>
+                        <span onClick="edit_click(<?php echo $row['id'] ?>)" class="edit"><i class="fas fa-edit"></i></span>
                         <img src= "<?php echo $row['imagem']; ?>">
                         <div class="text">
                             <b>Nº Sócio:</b> <?php echo $row['id']; ?><br>
@@ -100,6 +100,40 @@
         include '../includes/modal_login.html';
      ?>
 
+
+
+    <div id="id01" class="modal">
+        <div class="content center">
+
+            <div class="member center">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>  
+                <h1>Editar Produto</h1>
+                <form method="POST" action="../actions/edit_product.php" enctype="multipart/form-data" name="modal_lojaadmin">
+                    
+                    <input type="number" name="id" value=''>
+
+                    <div class="item">
+                        <input type="text" id="nome" name="nome" value="" required><br>
+                    </div>   
+
+                    <div class="item">
+                        <textarea type="text" id="descricao" name="descricao" value=""></textarea><br>
+                    </div>
+
+                    <div class="item">
+                        <input type="number" style="width: 34%;margin-right: 5px;" id="preco" name="preco" value="" min="0.00" max="10000.00" step="0.01" required>
+                        <input type="number" style="width: 34%;" id="stock" name="stock" value="" required>
+                    </div>
+
+                    <div class="item">
+                        <button type="submit">Editar</button>
+                    </div>
+                </form> 
+            </div>
+        </div>
+    </div>
+    
+
     <script>
         function eliminate_click(id) {
             if (confirm("Tem a certeza que quer apagar o produto")) {
@@ -111,6 +145,33 @@
                     });
             }
         }   
+
+        // Get the modal 
+        var modal = document.getElementById("id01");
+
+        function edit_click(clicked_id) {
+            var img = document.getElementById(clicked_id);
+
+            $.ajax({
+                    url: '../actions/modal_loja.php',
+                    type: 'POST',
+                    data: {"id":clicked_id},
+                    datatype: "json",
+                    success: function(result) { 
+                        var data = JSON.parse(result);
+                        document.getElementById("nome").value = data.nome;
+                        document.getElementById("descricao").value = data.descricao;
+                        document.getElementById("preco").value = data.preco;
+                        document.getElementById("stock").value = data.stock;
+
+                        document.forms['modal_lojaadmin']['id'].value = clicked_id;
+                        document.forms['modal_lojaadmin']['id'].type = "hidden";
+                    }
+            });
+            setTimeout(function() {
+                modal.style.display = "block";
+            }, 100); 
+        }
     </script>
 
 </body>

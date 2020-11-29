@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../style/style.css">
     <title>FC FEUP | Membros</title>
@@ -151,7 +152,7 @@
                     <?php while(isset($presidente['num_socio'])){ ?>
 
                         <div class="card">
-                            <img src= "<?php echo $presidente['imagem']; ?>">
+                            <img src= "<?php echo $presidente['imagem']; ?>" id="<?php echo $presidente['num_socio'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
                             <div class="text">
                                 <b>Nº Sócio:</b> <?php echo $presidente['num_socio']; ?><br>
                                 <b>Nome:</b> <?php echo $presidente['nome']; ?><br>
@@ -173,7 +174,7 @@
                     <?php while(isset($socio['num_socio'])){ ?>
 
                         <div class="card">
-                            <img src= "<?php echo $socio['imagem']; ?>">
+                            <img src= "<?php echo $socio['imagem']; ?>" id="<?php echo $socio['num_socio'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
                             <div class="text">
                                 <b>Nº Sócio:</b> <?php echo $socio['num_socio']; ?><br>
                                 <b>Nome:</b> <?php echo $socio['nome']; ?><br>
@@ -220,5 +221,68 @@
         include '../includes/footer.html';
         include '../includes/modal_login.html';
      ?>
+    
+    <div id="id01" class="modal">
+
+        <form class="modal-content animate" action="../actions/add_carrinho.php" method="post" name="modal_membrosocio">   
+
+            <div class="imgcontainer center">
+                <img id="img01" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="details"> 
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <h3>Detalhes</h3>
+                <table id=cart>
+                    <tr>
+                        <th>Nome:</th>
+                        <td id="nome"> </td>
+                    </tr>
+                    <tr>
+                        <th>Número Sócio:</th>
+                        <td id="num_socio"> </td>
+                    </tr>
+                    <tr>
+                        <th>Morada:</th>
+                        <td id="morada"> </td>
+                    </tr>
+                    <tr>
+                        <th>Telefone:</th>
+                        <td id="telefone"> </td>
+                    </tr>
+                </table>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+    // Get the modal 
+    var modal = document.getElementById("id01");
+
+    function reply_click(clicked_id) {
+
+        var img = document.getElementById(clicked_id);
+        var modalImg = document.getElementById("img01");
+
+        $.ajax({
+                url: '../actions/modal_membrosocio.php',
+                type: 'POST',
+                data: {"id":clicked_id},
+                datatype: "json",
+                success: function(result) { 
+                    var data = JSON.parse(result);
+                    document.getElementById("nome").innerHTML = data.nome;
+                    document.getElementById("morada").innerHTML = data.morada;
+                    document.getElementById("telefone").innerHTML = data.telefone;
+                    document.getElementById("num_socio").innerHTML = data.num_socio;
+                }
+        });
+        setTimeout(function() {
+            modal.style.display = "block";
+            modalImg.src = img.src;   
+        }, 100); 
+    }
+    </script>
 
 </body>
