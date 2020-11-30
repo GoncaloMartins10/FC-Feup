@@ -19,9 +19,6 @@
         
         include "../database/opendb.php";
 
-        $query = "set schema 'fcfeup'";
-        pg_exec($conn, $query);
-
         $query = "SELECT linha_encomenda.id, imagem, nome, tamanho, preco, quantidade, linha_encomenda.total FROM linha_encomenda
                   JOIN encomenda ON (encomendaid = encomenda.id) 
                   JOIN produto ON (produtoid = produto.id)  
@@ -103,30 +100,27 @@
             </table>
             <br><br><br>
 
-            <?php if(empty($row2['id'])){ ?>
-                      <img src="../images/empty-search.png">
-                      <h3>Carrinho Vazio</h3>
-            <?php } else {?>
-                        <?php while(isset($row2['id']) and !empty($row2['id']) ){ ?>
-                          <h3>Sumário</h3> 
-                            <table id=cart>
-                            <tr>
-                              <th>Quantidade Produtos:</th>                    
-                              <td><?php echo $row2['num_produtos']; ?></td>
-                            </tr>
-                            <tr>
-                              <th>Data Entrega:</th>
-                              <td><?php echo $row2['data_entrega']; ?></td>
-                            </tr>
-                            <tr>
-                              <th>Total:</th>
-                              <td><?php echo $row2['total']; ?></td>
-                            </tr>
-                        <?php
-                            $row2 = pg_fetch_assoc($result);
-                        }
-                    } ?>
-                    </table>
+            <?php if(!empty($row2['id'])){ 
+                while(isset($row2['id']) and !empty($row2['id']) ){ ?>
+                  <h3>Sumário</h3> 
+                    <table id=cart>
+                    <tr>
+                      <th>Quantidade Produtos:</th>                    
+                      <td><?php echo $row2['num_produtos']; ?></td>
+                    </tr>
+                    <tr>
+                      <th>Data Entrega:</th>
+                      <td><?php echo $row2['data_entrega']; ?></td>
+                    </tr>
+                    <tr>
+                      <th>Total:</th>
+                      <td><?php echo $row2['total']; ?></td>
+                    </tr>
+                <?php
+                    $row2 = pg_fetch_assoc($result);
+                }
+            } ?>
+            </table>
 
 
     <div class="button-container">

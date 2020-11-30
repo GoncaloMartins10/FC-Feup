@@ -70,7 +70,7 @@
                 
             <?php if(empty($row['id'])){ ?>
                         <img src="../images/empty-search.png">
-                        <h3>Não há membros atuamente</h3>    
+                        <h3>Não há produtos na loja</h3>    
             <?php  }
              else{
                     while(isset($row['id'])){ ?>
@@ -80,8 +80,9 @@
                         <span onClick="edit_click(<?php echo $row['id'] ?>)" class="edit"><i class="fas fa-edit"></i></span>
                         <img src= "<?php echo $row['imagem']; ?>">
                         <div class="text">
-                            <b>Nº Sócio:</b> <?php echo $row['id']; ?><br>
                             <b>Nome:</b> <?php echo $row['nome']; ?><br>
+                            <b>Preço:</b> <?php echo $row['preco']; ?>€<br>
+                            <b>Stock:</b> <?php echo $row['stock']; ?><br>
                         </div>
                     </div>
 
@@ -105,23 +106,28 @@
     <div id="id01" class="modal">
         <div class="content center">
 
-            <div class="member center">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>  
+            <div class="member center" style="position: relative;">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <h1>Editar Produto</h1>
                 <form method="POST" action="../actions/edit_product.php" enctype="multipart/form-data" name="modal_lojaadmin">
                     
                     <input type="number" name="id" value=''>
 
                     <div class="item">
+                        <label for="nome">Nome</label><br>
                         <input type="text" id="nome" name="nome" value="" required><br>
                     </div>   
 
                     <div class="item">
+                        <label for="descricao">Descrição</label><br>
                         <textarea type="text" id="descricao" name="descricao" value=""></textarea><br>
                     </div>
 
                     <div class="item">
+                        <label for="preco" style="margin-right: 72px;">Preço</label>
+                        <label for="stock">Stock</label><br>
                         <input type="number" style="width: 34%;margin-right: 5px;" id="preco" name="preco" value="" min="0.00" max="10000.00" step="0.01" required>
+
                         <input type="number" style="width: 34%;" id="stock" name="stock" value="" required>
                     </div>
 

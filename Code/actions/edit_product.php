@@ -18,7 +18,7 @@
 
     if($id =="" OR $nome == "" OR $descricao == "" OR $preco == "" OR $stock == ""){
         $_SESSION['error'] = "Por favor preencha todos os campos do formulário";
-        header('Location: ../pages/novoproduto.php');
+        header('Location: ../pages/removeproduto.php');
     }
     else{
         $query = "UPDATE produto 
@@ -31,6 +31,6 @@
       echo $query;
         pg_exec($conn, $query);
         pg_close($conn);
-
+        header('Location: ../pages/removeproduto.php');
     }
 ?>
