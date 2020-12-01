@@ -100,8 +100,7 @@
             </table>
             <br><br><br>
 
-            <?php if(!empty($row2['id'])){ 
-                while(isset($row2['id']) and !empty($row2['id']) ){ ?>
+          <?php if($row2['num_produtos'] != 0){ ?>
                   <h3>Sumário</h3> 
                     <table id=cart>
                     <tr>
@@ -116,15 +115,15 @@
                       <th>Total:</th>
                       <td><?php echo $row2['total']; ?></td>
                     </tr>
-                <?php
-                    $row2 = pg_fetch_assoc($result);
-                }
-            } ?>
-            </table>
+                </table>
+        <?php } ?>
+            
 
 
     <div class="button-container">
+    <?php if($row2['num_produtos']!= 0){?>
       <a href="../actions/comprar_carrinho.php"> <button class="hvr-grow-shadow">Comprar</button></a>
+    <?php } ?>
       <a href="../pages/loja.php"><button class="hvr-grow-shadow" style="background: #284b63">Adicionar mais Produtos</button></a>
     </div>
 

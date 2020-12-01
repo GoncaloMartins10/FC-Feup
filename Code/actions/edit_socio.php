@@ -32,6 +32,6 @@
       echo $query;
         pg_exec($conn, $query);
         pg_close($conn);
-        header('Location: ../pages/membros.php');
+        header('Location: ../pages/socio_dados.php');
     }
 ?>

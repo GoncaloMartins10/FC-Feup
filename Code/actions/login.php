@@ -24,11 +24,10 @@
       if(isset($_SESSION['num_socio']) and $_SESSION['admin']=="t") {
         header('Location: ../pages/admin_sociopendente.php'); 
       }
-      else { 
-        header('Location: ../pages/inicio.php');
+      elseif(isset($_SESSION['num_socio']) and $_SESSION['admin']=="f") { 
+        header('Location: ../pages/socio_dados.php');
        }
   } 
-  
   else {
     $_SESSION['erro']= "Número de Sócio ou Password inexistente! Por favor tente novamente.";
     header('Location: ../pages/inicio.php');

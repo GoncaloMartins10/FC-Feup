@@ -477,6 +477,33 @@ img.avatar {
     }
   }
 
+/* ---------------------------------------- Client Info ---------------------------------------- */
+.infobox {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    text-align: left;
+    margin: 20px;
+}
+
+.infobox img{
+    width: 200px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.infobox table{
+    margin-top: 20px;
+}
+
+.infobox th, td {
+    padding: 5px;
+}
+
+
+
 /* ---------------------------------------- Animations  ---------------------------------------- */
 
 /* Card */

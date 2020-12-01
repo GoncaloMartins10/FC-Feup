@@ -27,9 +27,16 @@
 
         $dados = pg_fetch_assoc($dados);
 
+        $num_socio = $dados['num_socio'];
         $nome = $dados['nome'];
         $telefone = $dados['telefone'];
-        $morada = $dados['morada'];        
+        $morada = $dados['morada']; 
+        $imagem = $dados['imagem'];
+        
+        if($dados['admin']=="t")
+            $cargo = "Presidente";
+        else
+            $cargo = "Sócio";
  
     ?>
 
@@ -62,13 +69,41 @@
     
     <main>
         <div class="sidenav">
-            <a class="hvr-underline-from-left" href="encomendas.php">Histórico de Encomendas</a>
             <a id="active"  href="socio_dados.php">Dados Pessoais</a>
+            <a class="hvr-underline-from-left" href="encomendas.php">Histórico de Encomendas</a>
         </div>
 
         <div class="content center">
+            <h3>Dados Pessoais</h3>
 
-        <div class="member center">
+            <div class="infobox">
+                <img class="logo" src=<?php echo($imagem);?>>
+                <div>
+                    <h1><?php echo($nome);?></h1>
+                    <table>
+                        <tr>
+                            <th>Nº Sócio:</th>
+                            <td><?php echo($num_socio);?></td>
+                        </tr>
+                        <tr>
+                            <th>Morada:</th>
+                            <td><?php echo($morada);?></td>
+                        </tr>
+                        <tr>
+                            <th>Telefone:</th>
+                            <td><?php echo($telefone);?></td>
+                        </tr>
+                        <tr>
+                            <th>Cargo:</th>
+                            <td><?php echo($cargo);?></td>
+                        </tr>
+                    </table>
+                    
+                </div>
+            </div>
+
+
+            <div class="member">
                 <h1>Editar Dados Pessoais</h1>
                 <form method="POST" action="../actions/edit_socio.php" enctype="multipart/form-data">
 

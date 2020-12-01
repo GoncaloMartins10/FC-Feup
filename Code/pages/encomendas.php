@@ -20,7 +20,11 @@
 
         include "../database/opendb.php";
 
-        $query = "SELECT * FROM encomenda WHERE clienteid = '".$_SESSION['num_socio']."' AND comprado = 'TRUE'";
+        $query = "SELECT linha_encomenda.id, imagem, nome, tamanho, quantidade, data_entrega, linha_encomenda.total FROM linha_encomenda
+                  JOIN encomenda ON (encomendaid = encomenda.id) 
+                  JOIN produto ON (produtoid = produto.id)  
+                  WHERE clienteid = '".$_SESSION['num_socio']."' AND comprado = 'TRUE' ";
+
         $encomendas = pg_exec($conn, $query);
 
         pg_close($conn);
@@ -57,8 +61,8 @@
     
     <main>
         <div class="sidenav">
-            <a id="active" href="encomendas.php">Histórico de Encomendas</a>
             <a class="hvr-underline-from-left" href="socio_dados.php">Dados Pessoais</a>
+            <a id="active" href="encomendas.php">Histórico de Encomendas</a>
         </div>
 
         <div class="content center">
@@ -67,26 +71,34 @@
                       <img style="width: 350px" src="../images/empty_box.png">
                       <h3>Não realizou qualquer encomenda</h3>
             <?php } else {?>
-                    <table id=cart>
-                        <tr>
-                            <th>ID</th>
-                            <th>Quantidade de Produtos</th>
-                            <th>Data de Entrega</th>
-                            <th>Total</th>
-                        </tr>
-                        <?php while(isset($encomenda['id']) and !empty($encomenda['id']) ){ ?>
-                            <tr>                    
-                                <td><?php echo $encomenda['id']; ?></td>
-                                <td><?php echo $encomenda['num_produtos']; ?></td>
-                                <td><?php echo $encomenda['data_entrega']; ?></td>
-                                <td><?php echo $encomenda['total']; ?></td>
-                            </tr>
-                        
-                        <?php
-                            $encomenda = pg_fetch_assoc($encomendas);
-                        }
-                    } ?>
-                    </table>    
+
+            <h3>Histórico de Encomendas</h3>
+            <table id=cart>
+              <tr>
+                <th>ID</th>
+                <th><!-- Foto --></th>
+                <th>Produto</th>
+                <th>Tamanho</th>
+                <th>Quantidade</th>
+                <th>Data</th>
+                <th>Total</th>
+              </tr>
+                <?php while(isset($encomenda['id'])){ ?>
+                    <tr>
+                      <td>#<?php echo $encomenda['id']; ?></td>
+                      <td><img src= "<?php echo $encomenda['imagem']; ?>"></td>
+                      <td><?php echo $encomenda['nome']; ?></td>
+                      <td><?php echo $encomenda['tamanho']; ?></td>
+                      <td><?php echo $encomenda['quantidade']; ?></td>
+                      <td><?php echo $encomenda['data_entrega']; ?></td>
+                      <td><?php echo $encomenda['total']; ?> €</td>
+                    </tr>
+                
+                <?php
+                    $encomenda = pg_fetch_assoc($encomendas);
+                }
+            } ?>
+            </table>
         </div>
     </main>
 

@@ -24,7 +24,7 @@
                     <li class="hvr-underline-from-left"><a href="admin_sociopendente.php">Admin</a></li>          
                  <?php }?>
                  <?php if(isset($_SESSION['num_socio']) and $_SESSION['admin']=="f") { ?>
-                    <li class="hvr-underline-from-left" ><a href="encomendas.php">Sócio</a></li>          
+                    <li class="hvr-underline-from-left" ><a href="socio_dados.php">Sócio</a></li>          
                  <?php }?>
              </ul> 
         </nav>
