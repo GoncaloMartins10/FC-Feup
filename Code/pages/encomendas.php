@@ -20,11 +20,7 @@
 
         include "../database/opendb.php";
 
-        $query = "SELECT linha_encomenda.id, imagem, nome, tamanho, quantidade, data_entrega, linha_encomenda.total FROM linha_encomenda
-                  JOIN encomenda ON (encomendaid = encomenda.id) 
-                  JOIN produto ON (produtoid = produto.id)  
-                  WHERE clienteid = '".$_SESSION['num_socio']."' AND comprado = 'TRUE' ";
-
+        $query = "SELECT * FROM encomenda WHERE comprado = 'TRUE' AND clienteid = '".$_SESSION['num_socio']."' ";
         $encomendas = pg_exec($conn, $query);
 
         pg_close($conn);
@@ -76,22 +72,18 @@
             <table id=cart>
               <tr>
                 <th>ID</th>
-                <th><!-- Foto --></th>
-                <th>Produto</th>
-                <th>Tamanho</th>
-                <th>Quantidade</th>
-                <th>Data</th>
+                <th>Quantidade de Produtos</th>
+                <th>Data de Entrega</th>
                 <th>Total</th>
+                <th>Detalhes</th>
               </tr>
                 <?php while(isset($encomenda['id'])){ ?>
-                    <tr>
+                   <tr>
                       <td>#<?php echo $encomenda['id']; ?></td>
-                      <td><img src= "<?php echo $encomenda['imagem']; ?>"></td>
-                      <td><?php echo $encomenda['nome']; ?></td>
-                      <td><?php echo $encomenda['tamanho']; ?></td>
-                      <td><?php echo $encomenda['quantidade']; ?></td>
+                      <td><?php echo $encomenda['num_produtos']; ?></td>
                       <td><?php echo $encomenda['data_entrega']; ?></td>
-                      <td><?php echo $encomenda['total']; ?> €</td>
+                      <td><?php echo $encomenda['total']; ?></td>
+                      <td><i class="fas fa-search" style="cursor: pointer;" onClick ="reply_click(<?php echo $encomenda['id'];?>)"></i></td>
                     </tr>
                 
                 <?php
@@ -99,6 +91,9 @@
                 }
             } ?>
             </table>
+            <!-- Historico de Encomendas-->
+            <div id="div1"> </div>
+
         </div>
     </main>
 
@@ -107,6 +102,25 @@
         include '../includes/footer.html';
         include '../includes/modal_login.html';
      ?>
+
+    
+
+<script>
+
+function reply_click(clicked_id) {
+
+$.ajax({
+        url: '../actions/modal_encomenda.php',
+        type: 'POST',
+        data: {"id":clicked_id},
+        success: function(result) { 
+            $("#div1").html(result);
+            console.log(result);
+        }
+});
+
+}
+</script>
 
 
 </body>
