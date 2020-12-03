@@ -41,6 +41,24 @@
         </nav>
     </header>
 
+    <div id="cover">
+        <img src="../images/logo.png">
+        <h3>Futebol Clube da FEUP</h3>
+        <h2>Um Engenherio também sabe jogar à bola</h2>
+        <br>
+        <p style="color: white;">
+            Gonçalo Martins &emsp;-&emsp; Ricardo Martins<br>
+            up201604140@fe.up.pt &emsp;-&emsp;  up201608378@fe.up.pt<br>
+        </p>
+
+        <div class="iconbox">
+            <img class="hvr-grow-shadow" src="../images/zip-flat.svg">
+            <img class="hvr-grow-shadow" src="../images/css-flat.svg">
+            <img class="hvr-grow-shadow" src="../images/ppt-flat.svg">
+        </div>
+        
+    </div>
+
     <?php 
         include '../includes/footer.html';
         include '../includes/modal_login.html';
