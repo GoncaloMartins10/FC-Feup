@@ -20,52 +20,73 @@
         include "../database/opendb.php";
         
         $s = $j = $p = FALSE;
-        $procura="";
+        $procura = "first";
+        $query_search = "";
+        $query_search_alt = "";
 
-        if(isset($_GET['search'])) {
-            $cargos = $_GET['cargos'];
-        }
-        
+        /*Queries*/
+        $query_presidente = "select * from cliente where admin = 'TRUE'";
+        $query_socio = "select * from cliente where admin = 'FALSE' AND aprovacao = 'TRUE'";
+        $query_jogador = "select * from jogador";
+
+        /* Pesquisa */
         if(isset($_GET['search'])) {
             $procura = $_GET['search'];
             $procura = explode(" ", $procura);
+
+            for ($k=0; $k<sizeof($procura); $k++){
+                $query_search .= " AND LOWER(nome) LIKE LOWER('%$procura[$k]%')";
+
+                if($k == 0) 
+                    $query_search_alt = " WHERE LOWER(nome) LIKE LOWER('%$procura[$k]%')";
+                else{
+                    $query_search_alt .= " AND LOWER(nome) LIKE LOWER('%$procura[$k]%')";
+                }
+            }    
         }
 
-        if(!empty($cargos)){
-            
+        /* Filtro dos Cargos*/
+        if(isset($_GET['cargos'])) {
+            $cargos = $_GET['cargos'];
+
             for($i=0; $i < count($cargos); $i++)
             {
                 if( $cargos[$i]=="presidente"){  
-                    $p = TRUE;             
-                    $query = "select * from cliente where admin = 'TRUE'";
-                    if (!empty($procura) && sizeof($procura)>0) {
-                        for ($k=0; $k<sizeof($procura) ; $k++)
-                            $query .= " AND LOWER(nome) LIKE LOWER('%$procura[$k]%')";
-                    }
+                    $p = TRUE;  
+                    $query = $query_presidente . $query_search;       
                     $presidentes = pg_exec($conn, $query);
                     $presidente = pg_fetch_assoc($presidentes);
                 }
                 elseif($cargos[$i]=="socio"){
                     $s = TRUE;
-                    $query = "select * from cliente where admin = 'FALSE' AND aprovacao = 'TRUE'";
-                    if (!empty($procura) && sizeof($procura)>0) {
-                        for ($k=0; $k<sizeof($procura) ; $k++)
-                            $query .= " AND LOWER(nome) LIKE LOWER('%$procura[$k]%')";
-                    }
+                    $query = $query_socio . $query_search;  
                     $socios = pg_exec($conn, $query);
                     $socio = pg_fetch_assoc($socios);
                 }
                 else {
                     $j = TRUE;  
-                    $query = "select * from jogador";
-                    if (!empty($procura) && sizeof($procura)>0) {
-                        for ($k=0; $k<sizeof($procura) ; $k++)
-                            $query .= " WHERE LOWER(nome) LIKE LOWER('%$procura[$k]%')";
-                    }
+                    $query = $query_jogador . $query_search_alt; 
                     $jogadores = pg_exec($conn, $query);
                     $jogador = pg_fetch_assoc($jogadores);
                 }
             }
+        }
+        /* Seleciona Todos */
+        else{
+            if($procura == "first")
+                $s = $j = $p = TRUE;
+            else
+                $s = $j = $p = FALSE;
+        
+            $presidentes = pg_exec($conn, $query_presidente);
+            $presidente = pg_fetch_assoc($presidentes);
+
+            $socios = pg_exec($conn, $query_socio);
+            $socio = pg_fetch_assoc($socios);
+
+            $jogadores = pg_exec($conn, $query_jogador);
+            $jogador = pg_fetch_assoc($jogadores);
+
         }
 
         pg_close($conn);
@@ -131,7 +152,7 @@
 
     </form> 
 
-<?php   if(empty($cargos)){ ?>
+<?php   if($p == FALSE AND $s == FALSE AND $j == FALSE){ ?>
             <main class="center" style="flex-direction: column;">
                 <img src="../images/empty-search.png">
                 <h3>Não selecionou nenhum cargo</h3>
