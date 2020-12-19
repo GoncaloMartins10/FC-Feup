@@ -64,9 +64,10 @@
         <div class="sidenav">
             <a class="hvr-underline-from-left" href="admin_sociopendente.php">Pedidos de Sócio Pendentes</a>
             <a class="hvr-underline-from-left" href="novoproduto.php">Adicionar Produto</a>
-            <a class="hvr-underline-from-left" href="removeproduto.php">Remover Produto</a>
+            <a class="hvr-underline-from-left" href="removeproduto.php">Remover/Editar Produto</a>
             <a class="hvr-underline-from-left" href="novojogador.php">Adicionar Jogador</a>
             <a id="active" href="removemembro.php">Remover Membro</a>
+            <a class="hvr-underline-from-left" href="admin_encomendas.php">Histórico Encomendas</a>
             <a class="hvr-underline-from-left" href="#contact">Estatísticas Vendas</a>
         </div>
 

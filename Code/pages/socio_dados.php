@@ -74,7 +74,7 @@
         </div>
 
         <div class="content center">
-            <h3>Dados Pessoais</h3>
+            <h3>Dados Pessoais <span onClick="edit_click(<?php echo $row['id'] ?>)"><i class="fas fa-edit" style="color: black;"></i></span></h3>
 
             <div class="infobox">
                 <img class="logo" src=<?php echo($imagem);?>>
@@ -102,34 +102,39 @@
                 </div>
             </div>
 
+        <div id="id01" class="modal">
+            <div class="content center">
 
-            <div class="member">
-                <h1>Editar Dados Pessoais</h1>
-                <form method="POST" action="../actions/edit_socio.php" enctype="multipart/form-data">
+                <div class="member center" style="position: relative;">
+                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <h1>Editar Dados Pessoais</h1>
+                    <form method="POST" action="../actions/edit_socio.php" enctype="multipart/form-data">
 
-                    <div class="item">
-                        <label for="nome">Nome</label><br>
-                        <input type="text" id="nome" name="nome" value ="<?php echo($nome);?>" required><br>
-                    </div>
-                    <div class="item">
-                        <label for="morada">Morada</label><br>
-                        <input type="text" id="morada" name="morada" value ="<?php echo($morada);?>" required><br>                     
-                    </div>
-                    <div class="item">
-                        <label for="telefone">Telefone</label><br>
-                        <input type="tel" id="telefone" name="telefone" pattern="[0-9]{9}" value ="<?php echo($telefone);?>" required><br>
-                    </div>
-                    <div class="item">
-                        <label for="pass">Password</label><br>
-                        <input type="password" id="pass" name="pass" placeholder="Password" required><br>                        
-                    </div>
-                    <div class="item">
-                        <button type="submit">Editar Dados</button>
-                    </div>
-                </form> 
-            </div>
-
+                        <div class="item">
+                            <label for="nome">Nome</label><br>
+                            <input type="text" id="nome" name="nome" value ="<?php echo($nome);?>" required><br>
+                        </div>
+                        <div class="item">
+                            <label for="morada">Morada</label><br>
+                            <input type="text" id="morada" name="morada" value ="<?php echo($morada);?>" required><br>                     
+                        </div>
+                        <div class="item">
+                            <label for="telefone">Telefone</label><br>
+                            <input type="tel" id="telefone" name="telefone" pattern="[0-9]{9}" value ="<?php echo($telefone);?>" required><br>
+                        </div>
+                        <div class="item">
+                            <label for="pass">Password</label><br>
+                            <input type="password" id="pass" name="pass" placeholder="Password" required><br>                        
+                        </div>
+                        <div class="item">
+                            <button type="submit">Editar Dados</button>
+                        </div>
+                    </form> 
+                </div>
         </div>
+    </div>
+
+
     </main>
 
 
@@ -139,5 +144,19 @@
      ?>
 
 </body>
+
+    <script>
+        // Get the modal 
+        var modal = document.getElementById("id01");
+
+        function edit_click(clicked_id) {
+            var img = document.getElementById(clicked_id);
+
+
+            setTimeout(function() {
+                modal.style.display = "block";
+            }, 100); 
+        }
+    </script>
 
 </html>

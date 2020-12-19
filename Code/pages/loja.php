@@ -182,7 +182,7 @@
                 <input type="number" name="id" value=''>
 
                 <label for="uname"><b>Quantidade</b></label>
-                <input type="number" placeholder=0  name="quantidade" required><br><br>
+                <input type="number" min="1" max ="" name="quantidade" required><br><br>
 
                 <label for="tamanho"><b>Tamanho</b></label>
                 <input list="tamanhos" placeholder="S" name="tamanho" required><br><br>
@@ -223,6 +223,9 @@
                         
                         document.forms['modal_loja']['id'].value = clicked_id;
                         document.forms['modal_loja']['id'].type = "hidden";
+
+                        document.forms['modal_loja']['quantidade'].max = data.stock;
+                        document.forms['modal_loja']['quantidade'].value = 1;
                     }
             });
             setTimeout(function() {

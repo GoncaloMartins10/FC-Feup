@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/style_admin.css">
-    <title>FC FEUP | Sócio</title>
+    <title>FC FEUP | Admin</title>
 </head>
 
 <?php
@@ -20,12 +20,15 @@
 
         include "../database/opendb.php";
 
-        $query = "SELECT * FROM encomenda WHERE comprado = 'TRUE' AND clienteid = '".$_SESSION['num_socio']."' ";
+        $query = "SELECT id, clienteid, nome, num_produtos, data_entrega, total  FROM encomenda 
+                  JOIN cliente ON (clienteid = cliente.num_socio)
+                  WHERE comprado = 'TRUE'";
         $encomendas = pg_exec($conn, $query);
 
         pg_close($conn);
 
         $encomenda = pg_fetch_assoc($encomendas); 
+        
     ?>
 
     <header>    
@@ -56,22 +59,29 @@
     </header>
     
     <main>
-        <div class="sidenav">
-            <a class="hvr-underline-from-left" href="socio_dados.php">Dados Pessoais</a>
-            <a id="active" href="encomendas.php">Histórico de Encomendas</a>
+    <div class="sidenav">
+            <a class="hvr-underline-from-left" href="admin_sociopendente.php">Pedidos de Sócio Pendentes</a>
+            <a class="hvr-underline-from-left" href="novoproduto.php">Adicionar Produto</a>
+            <a class="hvr-underline-from-left" href="removeproduto.php">Remover/Editar Produto</a>
+            <a class="hvr-underline-from-left" href="novojogador.php">Adicionar Jogador</a>
+            <a class="hvr-underline-from-left" href="removemembro.php">Remover Membro</a>
+            <a id="active" href="#">Histórico Encomendas</a>
+            <a class="hvr-underline-from-left" href="#contact">Estatísticas Vendas</a>
         </div>
 
         <div class="content center">
 
             <?php if(empty($encomenda['id'])){ ?>
                       <img style="width: 350px" src="../images/empty_box.png">
-                      <h3>Não realizou qualquer encomenda</h3>
+                      <h3>Não há registo de nenhuma encomenda</h3>
             <?php } else {?>
 
             <h3>Histórico de Encomendas</h3>
             <table id=cart>
               <tr>
                 <th>ID</th>
+                <th>Nº Sócio</th>
+                <th>Cliente</th>
                 <th>Quantidade de Produtos</th>
                 <th>Data de Entrega</th>
                 <th>Total</th>
@@ -80,10 +90,12 @@
                 <?php while(isset($encomenda['id'])){ ?>
                    <tr>
                       <td>#<?php echo $encomenda['id']; ?></td>
+                      <td><?php echo $encomenda['clienteid']; ?></td>
+                      <td><?php echo $encomenda['nome']; ?></td>
                       <td><?php echo $encomenda['num_produtos']; ?></td>
                       <td><?php echo $encomenda['data_entrega']; ?></td>
                       <td><?php echo $encomenda['total']; ?> €</td>
-                      <td><i class="fas fa-search" style="cursor: pointer;" onClick ="reply_click(<?php echo $encomenda['id'];?>)"></i></td>
+                      <td><i class="fas fa-search" style="cursor: pointer;" onClick ="reply_click(<?php echo "".$encomenda['id'].",".$encomenda['clienteid'];?> )"></i></td>
                     </tr>
                 
                 <?php
@@ -107,12 +119,12 @@
 
 <script>
 
-function reply_click(clicked_id) {
+function reply_click(clicked_id,clicked_client) {
 
 $.ajax({
-        url: '../actions/modal_encomenda.php',
+        url: '../actions/modal_encomenda_admin.php',
         type: 'POST',
-        data: {"id":clicked_id},
+        data: {"id":clicked_id, "cliente":clicked_client},
         success: function(result) { 
             $("#div1").html(result);
             console.log(result);

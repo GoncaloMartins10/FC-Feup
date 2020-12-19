@@ -43,7 +43,7 @@
 
     <div id="cover">
         <img src="../images/logo.png">
-        <h3>Futebol Clube da FEUP</h3>
+        <h5>Futebol Clube da FEUP</h5>
         <h2>Um Engenherio também sabe jogar à bola</h2>
         <br>
         <p style="color: white;">

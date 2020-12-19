@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');    /* Nunito font */
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');   /* PT Sans font */
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');    /* Ubuntu font */
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap'); /* Russo One Font */
 
 * {
     margin: 0px;
@@ -44,6 +45,12 @@ h3{
 
 h4{
     font: 20px 'Nunito', sans-serif;
+    font-weight: bold;
+}
+
+h5{
+    font: 40px 'Russo One', sans-serif;
+    color: #4D9093;
     font-weight: bold;
 }
 
@@ -510,6 +517,7 @@ img.avatar {
     align-items: center;
     text-align: left;
     margin: 20px;
+    border: 2px solid red;
 }
 
 .infobox img{
