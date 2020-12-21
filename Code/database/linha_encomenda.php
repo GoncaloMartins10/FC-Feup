@@ -49,7 +49,4 @@
     return pg_exec($conn, $query);
   }
 
-
-
-
 ?>

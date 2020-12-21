@@ -67,7 +67,7 @@
                       <td><?php echo $encomenda['num_produtos']; ?></td>
                       <td><?php echo $encomenda['data_entrega']; ?></td>
                       <td><?php echo $encomenda['total']; ?> €</td>
-                      <td><i class="fas fa-search" style="cursor: pointer;" onClick ="click_modalEncomendaAdmin(<?php echo "".$encomenda['id'].",".$encomenda['clienteid'];?> )"></i></td>
+                      <td><i class="fas fa-search" style="cursor: pointer;" onClick ="click_modalEncomenda(<?php echo "".$encomenda['id'].",".$encomenda['clienteid'];?> )"></i></td>
                     </tr>
                 
                 <?php

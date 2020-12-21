@@ -21,12 +21,10 @@
     <?php
 
         include "../../includes/opendb.php";
+        include "../../database/encomenda.php";
 
-        $query = "SELECT * FROM encomenda WHERE comprado = 'TRUE' AND clienteid = '".$_SESSION['num_socio']."' ";
-        $encomendas = pg_exec($conn, $query);
-
+        $encomendas = getallEncomendas($_SESSION['num_socio']);
         pg_close($conn);
-
         $encomenda = pg_fetch_assoc($encomendas); 
     ?>
 
@@ -63,7 +61,7 @@
                       <td><?php echo $encomenda['num_produtos']; ?></td>
                       <td><?php echo $encomenda['data_entrega']; ?></td>
                       <td><?php echo $encomenda['total']; ?> €</td>
-                      <td><i class="fas fa-search" style="cursor: pointer;" onClick ="click_modalEncomenda(<?php echo $encomenda['id'];?>)"></i></td>
+                      <td><i class="fas fa-search" style="cursor: pointer;" onClick ="click_modalEncomenda(<?php echo $encomenda['id'];?>,<?php echo $_SESSION['num_socio']?>)"></i></td>
                     </tr>
                 
                 <?php

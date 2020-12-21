@@ -5,7 +5,7 @@
         include "../includes/opendb.php";
         include "../database/linha_encomenda.php";
                              
-        $encomendas = getLinha_encomenda($_SESSION['num_socio'],$_POST['id']);
+        $encomendas = getLinha_encomenda($_POST['cliente'],$_POST['id']);
         $encomenda = pg_fetch_assoc($encomendas);
 
         pg_close($conn);

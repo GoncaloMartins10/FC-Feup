@@ -44,4 +44,11 @@
         return pg_exec($conn, $query);
     }
     
+    function getallEncomendas($cliente){
+
+        global $conn;
+
+        $query = "SELECT * FROM encomenda WHERE comprado = 'TRUE' AND clienteid = '".$cliente."' ";
+        return pg_exec($conn, $query);
+    }
 ?>

@@ -1,20 +1,8 @@
-function click_modalEncomendaAdmin(clicked_id,clicked_client) {
-    $.ajax({
-            url: '../../actions/modal_encomenda_admin.php',
-            type: 'POST',
-            data: {"id":clicked_id, "cliente":clicked_client},
-            success: function(result) { 
-                $("#div1").html(result);
-                console.log(result);
-            }
-    });
-}
-
-function click_modalEncomenda(clicked_id) {
+function click_modalEncomenda(clicked_id,clicked_client) {
     $.ajax({
             url: '../../actions/modal_encomenda.php',
             type: 'POST',
-            data: {"id":clicked_id},
+            data: {"id":clicked_id, "cliente":clicked_client},
             success: function(result) { 
                 $("#div1").html(result);
                 console.log(result);
