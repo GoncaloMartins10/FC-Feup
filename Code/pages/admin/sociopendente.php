@@ -62,8 +62,8 @@
                                 <td><?php echo $row['nome']; ?></td>
                                 <td><?php echo $row['morada']; ?></td>
                                 <td><?php echo $row['telefone']; ?></td>
-                                <td><i class="fas fa-check-circle" style="color:green; cursor: pointer;" onClick=" add_click(<?php echo $row['num_socio'] ?>)" > </i></td>
-                                <td><i class="fas fa-times-circle" style="color:red; cursor: pointer;" onClick="eliminate_click(<?php echo $row['num_socio'] ?>)"></i></td>    
+                                <td><i class="fas fa-check-circle" style="color:green; cursor: pointer;" onClick=" click_acceptSocio(<?php echo $row['num_socio'] ?>)" > </i></td>
+                                <td><i class="fas fa-times-circle" style="color:red; cursor: pointer;" onClick="click_eliminateSocio(<?php echo $row['num_socio'] ?>)"></i></td>    
                             </tr>
                         
                         <?php
@@ -74,35 +74,12 @@
         </div>
     </main>
 
-
     <?php 
         include '../../includes/footer.html';
         include '../../includes/modal_login.html';
      ?>
 
-    <script>
-        function eliminate_click(socio) {
-            if (confirm("Tem a certeza que quer rejeitar o sócio")) {
-                    $.ajax({
-                        url: '../../actions/remove_socio.php',
-                        type: 'POST',
-                        data: {"id":socio},
-                        success: function(response) { window.location.reload(); }
-                    });
-            }
-        }   
-
-        function add_click(socio) {
-            if (confirm("Tem a certeza que quer aceitar o sócio")) {
-                    $.ajax({
-                        url: '../../actions/accept_socio.php',
-                        type: 'POST',
-                        data: {"id":socio},
-                        success: function(response) { window.location.reload(); }
-                    });
-            }
-        } 
-    </script>
+    <script src="../../javascript/ajax.js"> </script>
 
 </body>
 

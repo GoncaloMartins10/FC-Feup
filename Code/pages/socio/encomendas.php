@@ -58,7 +58,7 @@
                       <td><?php echo $encomenda['num_produtos']; ?></td>
                       <td><?php echo $encomenda['data_entrega']; ?></td>
                       <td><?php echo $encomenda['total']; ?> €</td>
-                      <td><i class="fas fa-search" style="cursor: pointer;" onClick ="reply_click(<?php echo $encomenda['id'];?>)"></i></td>
+                      <td><i class="fas fa-search" style="cursor: pointer;" onClick ="click_modalEncomenda(<?php echo $encomenda['id'];?>)"></i></td>
                     </tr>
                 
                 <?php
@@ -78,26 +78,9 @@
         include '../../includes/modal_login.html';
      ?>
 
-    
-
-<script>
-
-function reply_click(clicked_id) {
-
-$.ajax({
-        url: '../../actions/modal_encomenda.php',
-        type: 'POST',
-        data: {"id":clicked_id},
-        success: function(result) { 
-            $("#div1").html(result);
-            console.log(result);
-        }
-});
-
-}
-</script>
-
 
 </body>
+
+<script src="../../javascript/ajax.js"> </script>
 
 </html>

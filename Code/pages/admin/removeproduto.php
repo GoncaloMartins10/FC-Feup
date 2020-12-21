@@ -49,7 +49,7 @@
                     while(isset($row['id'])){ ?>
 
                     <div class="card">
-                        <span onClick="eliminate_click(<?php echo $row['id'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
+                        <span onClick="click_eliminateProduto(<?php echo $row['id'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
                         <span onClick="edit_click(<?php echo $row['id'] ?>)" class="edit"><i class="fas fa-edit"></i></span>
                         <img src= "../<?php echo $row['imagem']; ?>">
                         <div class="text">
@@ -110,20 +110,8 @@
         </div>
     </div>
     
-
-    <script>
-        function eliminate_click(id) {
-            if (confirm("Tem a certeza que quer apagar o produto")) {
-                    $.ajax({
-                        url: '../../actions/remove_produto.php',
-                        type: 'POST',
-                        data: {"id":id},
-                        success: function(response) { 
-                            window.location.reload(); }
-                    });
-            }
-        }   
-
+    <script src="../../javascript/ajax.js">  </script>
+    <script> 
         // Get the modal 
         var modal = document.getElementById("id01");
 

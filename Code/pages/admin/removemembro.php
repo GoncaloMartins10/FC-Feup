@@ -58,7 +58,7 @@
                     while(isset($socio['num_socio'])){ ?>
 
                     <div class="card">
-                        <span onClick="eliminate_click(<?php echo $socio['num_socio'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
+                        <span onClick="click_eliminateSocio(<?php echo $socio['num_socio'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
                         <img src= "../<?php echo $socio['imagem']; ?>">
                         <div class="text">
                             <b>Nº Sócio:</b> <?php echo $socio['num_socio']; ?><br>
@@ -84,7 +84,7 @@
                     while(isset($jogador['num_camisola'])){ ?>
 
                     <div class="card">
-                        <span onClick="eliminate_clickk(<?php echo $jogador['num_camisola'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
+                        <span onClick="click_eliminateJogador(<?php echo $jogador['num_camisola'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
                         <img src= "../<?php echo $jogador['imagem']; ?>">
                         <div class="text">
                             <b>Nº Camisola:</b> <?php echo $jogador['num_camisola']; ?><br>
@@ -107,28 +107,7 @@
         include '../../includes/modal_login.html';
      ?>
 
-    <script>
-        function eliminate_click(socio) {
-            if (confirm("Tem a certeza que quer eliminar o sócio")) {
-                    $.ajax({
-                        url: '../../actions/remove_socio.php',
-                        type: 'POST',
-                        data: {"id":socio},
-                        success: function(response) { window.location.reload(); }
-                    });
-            }
-        }   
-        function eliminate_clickk(jogador) {
-            if (confirm("Tem a certeza que quer eliminar o jogador")) {
-                    $.ajax({
-                        url: '../../actions/remove_jogador.php',
-                        type: 'POST',
-                        data: {"id":jogador},
-                        success: function(response) { window.location.reload(); }
-                    });
-            }
-        } 
-    </script>
+    <script src="../../javascript/ajax.js"> </script>
 
 </body>
 

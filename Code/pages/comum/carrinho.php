@@ -55,7 +55,7 @@
               </tr>
                 <?php while(isset($row['id']) and !empty($row['id']) ){ ?>
                     <tr>
-                      <td><i class="fas fa-trash"  style="cursor: pointer;" onClick=" eliminate_click(<?php echo $row['id'] ?>)" ></i></td>
+                      <td><i class="fas fa-trash"  style="cursor: pointer;" onClick=" click_eliminateLinhaEncomenda(<?php echo $row['id'] ?>)" ></i></td>
                       <td>#<?php echo $row['id']; ?></td>
                       <td><img src= "../<?php echo $row['imagem']; ?>"></td>
                       <td><?php echo $row['nome']; ?></td>
@@ -107,19 +107,8 @@
      ?>
 
 
-    <script>
-      function eliminate_click(id) {
-          if (confirm("Tem a certeza que quer apagar")) {
-                  $.ajax({
-                      url: '../../actions/remove_linhaencomenda.php',
-                      type: 'POST',
-                      data: {"id":id},
-                      success: function(response) { window.location.reload();}
-                  });
-          }
-      }  
-    </script>
-
 </body>
+
+<script src="../../javascript/ajax.js"> </script>
 
 </html>
