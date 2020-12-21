@@ -335,6 +335,7 @@ textarea {
     background-color: #353535;
     color: white;
     padding: 8px;
+    cursor: pointer;
 }
 
 #cart td{
@@ -517,7 +518,6 @@ img.avatar {
     align-items: center;
     text-align: left;
     margin: 20px;
-    border: 2px solid red;
 }
 
 .infobox img{
@@ -598,3 +598,5 @@ i:hover, i:focus, i:active {
   .hvr-underline-from-left:hover:before, .hvr-underline-from-left:focus:before, .hvr-underline-from-left:active:before {
     right: 0;
   }
+
+  
