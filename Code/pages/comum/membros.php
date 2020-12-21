@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="shortcut icon" href="../images/logo.png">
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../style/style.css">
     <title>FC FEUP | Membros</title>
 </head>
 
@@ -17,7 +17,7 @@
 
     <?php
     
-        include "../database/opendb.php";
+        include "../../includes/opendb.php";
         
         $s = $j = $p = FALSE;
         $procura = "first";
@@ -93,33 +93,7 @@
         
     ?>
 
-    <header>
-        <img class="logo" src="../images/logo.png">
-        <nav>
-            <ul>
-                 <li class="hvr-underline-from-left"><a href="inicio.php">Inicio</a></li>
-                 <li id="active" ><a href="membros.php">Membros</a></li>
-                 <li class="hvr-underline-from-left"><a href="loja.php">Loja</a></li>
-                 <?php if(isset($_SESSION['num_socio']) and $_SESSION['admin']=="t") { ?>
-                    <li class="hvr-underline-from-left"><a href="admin_sociopendente.php">Admin</a></li>          
-                 <?php }?>
-                 <?php if(isset($_SESSION['num_socio']) and $_SESSION['admin']=="f") { ?>
-                    <li class="hvr-underline-from-left" ><a href="socio_dados.php">Sócio</a></li>          
-                 <?php }?>
-             </ul> 
-        </nav>
-        <nav>
-            <ul>
-            <?php if(isset($_SESSION['num_socio']) ) { ?>
-                <li class="loginandchart hvr-grow-shadow"><a role="button" style="cursor: pointer;" href="../actions/logout.php">Logout <i class="fas fa-sign-in-alt"></i></a></li>
-            <?php } else {?>
-                <li class="loginandchart hvr-grow-shadow"><a role="button" onclick="document.getElementById('myForm').style.display = 'block'" style="cursor: pointer;">Login <i class="fas fa-sign-in-alt"></i></a></li>
-            <?php }?>
-
-                <li class="loginandchart hvr-grow-shadow"><a href="carrinho.php">Carrinho <i class="fas fa-shopping-cart"></i></a></li>
-            </ul> 
-        </nav>
-    </header>
+    <?php include "../../includes/header.php" ?>
 
 
     <form class="search" action="membros.php" method="GET">
@@ -154,7 +128,7 @@
 
 <?php   if($p == FALSE AND $s == FALSE AND $j == FALSE){ ?>
             <main class="center" style="flex-direction: column;">
-                <img src="../images/empty-search.png">
+                <img src="../../images/empty-search.png">
                 <h3>Não selecionou nenhum cargo</h3>
             </main>
 <?php   } 
@@ -162,7 +136,7 @@
             if(empty($presidente['num_socio']) AND empty($socio['num_socio']) AND empty($jogador['num_camisola']) ){ ?>
 
             <main class="center" style="flex-direction: column;">
-                <img src="../images/empty-search.png">
+                <img src="../../images/empty-search.png">
                 <h3>Não encontramos nada, procure novamente!</h3>
             </main>
 
@@ -179,7 +153,7 @@
                     <?php while(isset($presidente['num_socio'])){ ?>
 
                         <div class="card">
-                            <img src= "<?php echo $presidente['imagem']; ?>" id="<?php echo $presidente['num_socio'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
+                            <img src= "../<?php echo $presidente['imagem']; ?>" id="<?php echo $presidente['num_socio'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
                             <div class="text">
                                 <b>Nº Sócio:</b> <?php echo $presidente['num_socio']; ?><br>
                                 <b>Nome:</b> <?php echo $presidente['nome']; ?><br>
@@ -201,7 +175,7 @@
                     <?php while(isset($socio['num_socio'])){ ?>
 
                         <div class="card">
-                            <img src= "<?php echo $socio['imagem']; ?>" id="<?php echo $socio['num_socio'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
+                            <img src= "../<?php echo $socio['imagem']; ?>" id="<?php echo $socio['num_socio'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
                             <div class="text">
                                 <b>Nº Sócio:</b> <?php echo $socio['num_socio']; ?><br>
                                 <b>Nome:</b> <?php echo $socio['nome']; ?><br>
@@ -223,7 +197,7 @@
                     <?php while(isset($jogador['num_camisola'])){ ?>
 
                         <div class="card">
-                            <img src= "<?php echo $jogador['imagem']; ?>">
+                            <img src= "../<?php echo $jogador['imagem']; ?>">
                             <div class="text">
                                 <b>Nº Camisola:</b> <?php echo $jogador['num_camisola']; ?><br>
                                 <b>Nome:</b> <?php echo $jogador['nome']; ?><br>
@@ -245,13 +219,13 @@
         } ?>
 
     <?php 
-        include '../includes/footer.html';
-        include '../includes/modal_login.html';
+        include '../../includes/footer.html';
+        include '../../includes/modal_login.html';
      ?>
     
     <div id="id01" class="modal">
 
-        <form class="modal-content animate" action="../actions/add_carrinho.php" method="post" name="modal_membrosocio">   
+        <form class="modal-content animate" action="../../actions/add_carrinho.php" method="post" name="modal_membrosocio">   
 
             <div class="imgcontainer center">
                 <img id="img01" alt="Avatar" class="avatar">
@@ -293,7 +267,7 @@
         var modalImg = document.getElementById("img01");
 
         $.ajax({
-                url: '../actions/modal_membrosocio.php',
+                url: '../../actions/modal_membrosocio.php',
                 type: 'POST',
                 data: {"id":clicked_id},
                 datatype: "json",

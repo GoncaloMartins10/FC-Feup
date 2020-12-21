@@ -1,10 +1,10 @@
 <?php
 
     include "../includes/opendb.php";
-    include "../database/socio.php";
+    include "../database/jogador.php";
 
     if (isset($_POST['id'])) {
-        removesocioById($_POST['id']);
+        removejogadorById($_POST['id']);
     }    
     
 ?>

@@ -1,4 +1,5 @@
 <?php
+ 
     //Conta GONÇALO
     $conn = pg_connect("host=db.fe.up.pt dbname=siem2021 user=siem2021 password=uqKSXuBZ");
     //Conta RICARDO

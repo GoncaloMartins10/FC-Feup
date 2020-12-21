@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
-    <link rel="shortcut icon" href="../images/logo.png">
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../style/style.css">
     <title>Bem-Vindo ao FC FEUP</title>
 </head>
 
 <?php
   session_start();
 
-  include "../database/opendb.php";
+  include "../../includes/opendb.php";
+  include "../../database/socio.php";
+  include "../../database/encomenda.php";
 
   $nome = $morada = $telefone = $pass = $imagem = $num_socio = "";
 
@@ -39,7 +41,7 @@
 <body>
 
     <header>
-        <img class="logo" src="../images/logo.png">
+        <img class="logo" src="../../images/logo.png">
         <nav>
             <ul>
                  <li class="hvr-underline-from-left"><a href="../inicio.php">Inicio</a></li>
@@ -73,12 +75,10 @@
             }
             else{
                 /* Insere Cliente */
-                $query = "INSERT INTO cliente(nome, imagem, telefone, morada, password) VALUES ('".$nome."', '".$imagem."', '".$telefone."', '".$morada."', '".$password_md5."') RETURNING num_socio";
-                $row = pg_fetch_row( pg_exec($conn, $query));
+                $row = createSocio($nome, $imagem, $telefone, $morada, $password_md5);
                 $num_socio = $row['0'];
                 /* Cria Carrinho */
-                $query = "INSERT INTO encomenda(clienteID) VALUES ('".$num_socio."')";
-                pg_exec($conn, $query);
+                createEncomenda($num_socio);
                 pg_close($conn);
         ?>
 
@@ -89,7 +89,7 @@
                     <h4><?php echo $num_socio;?></h4>
                     <p>Aguarda pacientemente a aprovoção da nossa direção</p>
                     <br>
-                    <a href="../pages/inicio.php"><div class="button hvr-grow-shadow">Voltar ao Início</div></a>
+                    <a href="../../pages/inicio.php"><div class="button hvr-grow-shadow">Voltar ao Início</div></a>
                 </div>
     <?php  } ?>
 
@@ -97,8 +97,8 @@
 
 
     <?php 
-        include '../includes/footer.html';
-        include '../includes/modal_login.html';
+        include '../../includes/footer.html';
+        include '../../includes/modal_login.html';
      ?>
 
 </body>

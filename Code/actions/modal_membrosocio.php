@@ -1,11 +1,11 @@
 <?php
 
     if (isset($_POST['id'])) {
-        include "../database/opendb.php";
-                             
-        $query = "select* from cliente where num_socio = '".$_POST['id']."'";
-        
-        $result = pg_exec($conn, $query);
+        include "../includes/opendb.php";
+        include "../database/socio.php";
+
+                                     
+        $result = getsocioByNum($_POST['id']);
         $row = pg_fetch_assoc($result);
         echo json_encode($row);
 

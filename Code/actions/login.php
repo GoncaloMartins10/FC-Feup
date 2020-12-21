@@ -1,14 +1,13 @@
 <?php
   session_start();
+  include "../includes/opendb.php";
+  include "../database/socio.php";
 
-    $num_socio = $_POST['numero'];
-    $password = $_POST['psw'];
-    $password_md5 = md5($password);
+  $num_socio = $_POST['numero'];
+  $password = $_POST['psw'];
+  $password_md5 = md5($password);
 
-  include "../database/opendb.php";
-
-  $query = "SELECT * FROM cliente WHERE num_socio ='".$num_socio."' AND password ='".$password_md5."'";
-  $result=pg_exec($conn,$query);
+  $result = getsocioByNumPass($num_socio, $password_md5);
 
   pg_close($conn);
 
@@ -22,15 +21,15 @@
     $_SESSION['num_socio'] = $row['num_socio'];
     $_SESSION['admin'] = $row['admin'];
       if(isset($_SESSION['num_socio']) and $_SESSION['admin']=="t") {
-        header('Location: ../pages/admin_sociopendente.php'); 
+        header('Location: ../pages/admin/sociopendente.php'); 
       }
       elseif(isset($_SESSION['num_socio']) and $_SESSION['admin']=="f") { 
-        header('Location: ../pages/socio_dados.php');
+        header('Location: ../pages/socio/socio_dados.php');
        }
   } 
   else {
     $_SESSION['erro']= "Número de Sócio ou Password inexistente! Por favor tente novamente.";
-    header('Location: ../pages/inicio.php');
+    header('Location: ../pages/comum/inicio.php');
   }
 
  ?>

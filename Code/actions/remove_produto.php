@@ -1,15 +1,9 @@
 <?php
-    function remove_click($id) {
 
-        include "../database/opendb.php";;
-                             
-        $query = "DELETE FROM produto WHERE id = '".$id."'";
-        pg_exec($conn, $query);
-
-        pg_close($conn);
-    } 
+    include "../includes/opendb.php";
+    include "../database/produto.php";
 
     if (isset($_POST['id'])) {
-        remove_click($_POST['id']);
+        deleteProduto($_POST['id']);      
     }
 ?>

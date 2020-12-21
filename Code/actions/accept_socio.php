@@ -1,15 +1,10 @@
 <?php
-    function add_click($socio) {
 
-        include "../database/opendb.php";
-                             
-        $query = "UPDATE cliente SET aprovacao = 'TRUE' WHERE num_socio = '".$socio."'";
-        pg_exec($conn, $query);
-        
-        pg_close($conn);
-    } 
+    include "../includes/opendb.php";
+    include "../database/socio.php";
 
     if (isset($_POST['id'])) {
-        add_click($_POST['id']);
+        $socio = $_POST['id'];                             
+        aprovasocioById($socio);
     }
 ?>

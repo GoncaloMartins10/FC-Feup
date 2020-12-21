@@ -1,7 +1,7 @@
 <?php
     session_start();
-
-    include "../database/opendb.php";
+    include "../includes/opendb.php";
+    include "../database/produto.php";
 
     $nome = $descricao = $preco = $stock = $imagem = "";
 
@@ -25,10 +25,9 @@
     }
     else{
         //Insere Produto
-        $query = "INSERT INTO produto(nome, descricao, imagem, preco, stock) VALUES ('".$nome."','".$descricao."','".$imagem."','".$preco."','".$stock."')";
-        pg_exec($conn, $query);
+        createProduto($nome, $descricao, $imagem, $preco, $stock);
         pg_close($conn);
-        header('Location: ../pages/loja.php');        
+        header('Location: ../pages/comum/loja.php');        
 
     }
 

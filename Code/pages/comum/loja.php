@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="shortcut icon" href="../images/logo.png">
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../style/style.css">
     <title>FC FEUP | Loja</title>
 </head>
 
 <?php
     session_start();
         
-    include "../database/opendb.php";
+    include "../../includes/opendb.php";
 
     $maxprice = "";
     $minprice = "";
@@ -71,33 +71,7 @@
 ?>
 
 <body>
-    <header>
-        <img class="logo" src="../images/logo.png">
-        <nav>
-            <ul>
-                 <li class="hvr-underline-from-left"><a href="inicio.php">Inicio</a></li>
-                 <li class="hvr-underline-from-left"><a href="membros.php">Membros</a></li>
-                 <li id="active" ><a href="loja.php">Loja</a></li>
-                 <?php if(isset($_SESSION['num_socio']) and $_SESSION['admin']=="t") { ?>
-                    <li class="hvr-underline-from-left"><a href="admin_sociopendente.php">Admin</a></li>          
-                 <?php }?>
-                 <?php if(isset($_SESSION['num_socio']) and $_SESSION['admin']=="f") { ?>
-                    <li class="hvr-underline-from-left" ><a href="socio_dados.php">Sócio</a></li>          
-                 <?php }?>
-             </ul> 
-        </nav>
-        <nav>
-            <ul>
-            <?php if(isset($_SESSION['num_socio']) ) { ?>
-                <li class="loginandchart hvr-grow-shadow"><a role="button" style="cursor: pointer;" href="../actions/logout.php">Logout <i class="fas fa-sign-in-alt"></i></a></li>
-            <?php } else {?>
-                <li class="loginandchart hvr-grow-shadow"><a role="button" onclick="document.getElementById('myForm').style.display = 'block'" style="cursor: pointer;">Login <i class="fas fa-sign-in-alt"></i></a></li>
-            <?php }?>
-
-                <li class="loginandchart hvr-grow-shadow"><a href="carrinho.php">Carrinho <i class="fas fa-shopping-cart"></i></a></li>
-            </ul> 
-        </nav>
-    </header>
+    <?php include "../../includes/header.php" ?>
 
     <form class="search" action="loja.php" method="GET">
 
@@ -131,7 +105,7 @@
     <?php if(empty($produto['id'])){ ?> 
 
         <main class="center" style="flex-direction: column;">
-                <img src="../images/empty-search.png">
+                <img src="../../images/empty-search.png">
                 <h3>Não encontramos nada, procure novamente!</h3>
         </main>  
 
@@ -143,7 +117,7 @@
                 <?php  while(isset($produto['id'])){ ?>
 
                 <div class="card">
-                        <img src= "<?php echo $produto['imagem'];?>" id="<?php echo $produto['id'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
+                        <img src= "../<?php echo $produto['imagem'];?>" id="<?php echo $produto['id'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
                         <div class="text">
                             <b>Nome:</b> <?php echo $produto['nome']; ?><br>
                             <b>Preço:</b> <?php echo $produto['preco']; ?>€<br>
@@ -161,13 +135,13 @@
     <?php } ?>
 
     <?php 
-        include '../includes/footer.html';
-        include '../includes/modal_login.html';
+        include '../../includes/footer.html';
+        include '../../includes/modal_login.html';
      ?>
 
     <div id="id01" class="modal">
 
-        <form class="modal-content animate" action="../actions/add_carrinho.php" method="post" name="modal_loja">   
+        <form class="modal-content animate" action="../../actions/add_carrinho.php" method="post" name="modal_loja">   
 
             <div class="imgcontainer center">
                 <h4 id="titulo"> </h4>        
@@ -211,7 +185,7 @@
             var modalImg = document.getElementById("img01");
 
             $.ajax({
-                    url: '../actions/modal_loja.php',
+                    url: '../../actions/modal_loja.php',
                     type: 'POST',
                     data: {"id":clicked_id},
                     datatype: "json",

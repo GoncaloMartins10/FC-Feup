@@ -1,7 +1,10 @@
 <?php
     session_start();
 
-    include "../database/opendb.php";
+    include "../includes/opendb.php";
+    include "../database/produto.php";
+    include "../database/linha_encomenda.php";
+    include "../database/encomenda.php";
 
     $id = $quantidade = $tamanho = "";
 
@@ -18,20 +21,15 @@
         header('Location: ../pages/loja.php');
     }
     else{
-        //Insere Encomenda no Carrinho
-        $query = "SELECT preco from produto WHERE id= '".$id."'"; 
-        $result = pg_exec($conn, $query);
+        $result = getPrecoprodutoById($id);
         $row = pg_fetch_assoc($result);
         $total = $row['preco'] * $quantidade;
     
-        $query = "INSERT INTO linha_encomenda(quantidade, tamanho, total, produtoid, encomendaid) VALUES ('".$quantidade."','".$tamanho."','".$total."','".$id."',(SELECT id FROM encomenda WHERE clienteid ='".$_SESSION['num_socio']."' AND comprado = 'FALSE'))";
-        pg_exec($conn, $query);
-        
-        $query = "UPDATE encomenda SET num_produtos=num_produtos + ".$quantidade.", total=total + ".$total."  WHERE clienteid = '".$_SESSION['num_socio']."' AND comprado = 'FALSE'";
-        pg_exec($conn, $query);
-
+        createlinha_encomenda($quantidade, $tamanho, $total, $id);
+        updateEncomenda($quantidade, $total, $_SESSION['num_socio']);
         pg_close($conn);
-        header('Location: ../pages/carrinho.php');
+        
+        header('Location: ../pages/comum/carrinho.php');
     }
 
  ?>

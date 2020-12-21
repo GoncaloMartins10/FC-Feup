@@ -1,16 +1,14 @@
 <?php
     session_start();
     
-    include "../database/opendb.php";
+    include "../includes/opendb.php";
+    include "../database/encomenda.php";
                             
-    $query = "UPDATE encomenda SET comprado = 'TRUE' WHERE clienteid = '".$_SESSION['num_socio']."' AND comprado = 'FALSE' ";
-    pg_exec($conn, $query);
-
+    updateEncomendaComprado($_SESSION['num_socio']);
     /* Cria Carrinho */
-    $query = "INSERT INTO encomenda(clienteID) VALUES ('".$_SESSION['num_socio']."')";
-    pg_exec($conn, $query);
+    createEncomenda($_SESSION['num_socio']);
 
     pg_close($conn);
     
-    header('Location: ../pages/inicio.php');
+    header('Location: ../pages/comum/inicio.php');
 ?>

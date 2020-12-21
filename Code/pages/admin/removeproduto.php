@@ -4,62 +4,34 @@
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="shortcut icon" href="../images/logo.png">
-    <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="../style/style_admin.css">
+    <link rel="shortcut icon" href="../../images/logo.png">
+    <link rel="stylesheet" href="../../style/style.css">
+    <link rel="stylesheet" href="../../style/style_admin.css">
     <title>FC FEUP | Admin</title>
 </head>
 
 <?php
   session_start();
     
-  include "../database/opendb.php";
-
-  $query = "select* from produto";
-  $result = pg_exec($conn, $query);
-  
+  include "../../includes/opendb.php";
+  include "../../database/produto.php";
+  $result = getAllproduto();  
   pg_close($conn);
-
   $row = pg_fetch_assoc($result); 
 ?>
 
 <body>
 
-    <header>
-        <img class="logo" src="../images/logo.png">
-        <nav>
-            <ul>
-                 <li class="hvr-underline-from-left"><a href="inicio.php">Inicio</a></li>
-                 <li class="hvr-underline-from-left"><a href="membros.php">Membros</a></li>
-                 <li class="hvr-underline-from-left"><a href="loja.php">Loja</a></li>
-                 <?php if(isset($_SESSION['num_socio']) and $_SESSION['admin']=="t") { ?>
-                    <li class="hvr-underline-from-left"><a href="admin_sociopendente.php">Admin</a></li>          
-                 <?php }?>
-             </ul> 
-        </nav>
-        <nav>
-            <ul>
-            <?php if(isset($_SESSION['num_socio']) ) { ?>
-                <li class="loginandchart hvr-grow-shadow"><a role="button" style="cursor: pointer;" href="../actions/logout.php">Logout <i class="fas fa-sign-in-alt"></i></a></li>
-            <?php } else {?>
-                <li class="loginandchart hvr-grow-shadow"><a role="button" onclick="document.getElementById('myForm').style.display = 'block'" style="cursor: pointer;">Login <i class="fas fa-sign-in-alt"></i></a></li>
-            <?php }?>
+    <?php include "../../includes/header.php" ?>
 
-                <li class="loginandchart hvr-grow-shadow"><a href="carrinho.php">Carrinho <i class="fas fa-shopping-cart"></i></a></li>
-            </ul> 
-        </nav>
-    </header>
-    
-   
-   
     <main>
         <div class="sidenav">
-            <a class="hvr-underline-from-left" href="admin_sociopendente.php">Pedidos de Sócio Pendentes</a>
+            <a class="hvr-underline-from-left" href="sociopendente.php">Pedidos de Sócio Pendentes</a>
             <a class="hvr-underline-from-left" href="novoproduto.php">Adicionar Produto</a>
             <a id="active" href="removeproduto.php">Remover/Editar Produto</a>
             <a class="hvr-underline-from-left" href="novojogador.php">Adicionar Jogador</a>
             <a class="hvr-underline-from-left" href="removemembro.php">Remover Membro</a>
-            <a class="hvr-underline-from-left" href="admin_encomendas.php">Histórico Encomendas</a>
+            <a class="hvr-underline-from-left" href="encomendas.php">Histórico Encomendas</a>
             <a class="hvr-underline-from-left" href="#contact">Estatísticas Vendas</a>
         </div>
 
@@ -79,7 +51,7 @@
                     <div class="card">
                         <span onClick="eliminate_click(<?php echo $row['id'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
                         <span onClick="edit_click(<?php echo $row['id'] ?>)" class="edit"><i class="fas fa-edit"></i></span>
-                        <img src= "<?php echo $row['imagem']; ?>">
+                        <img src= "../<?php echo $row['imagem']; ?>">
                         <div class="text">
                             <b>Nome:</b> <?php echo $row['nome']; ?><br>
                             <b>Preço:</b> <?php echo $row['preco']; ?>€<br>
@@ -98,11 +70,9 @@
 
 
     <?php 
-        include '../includes/footer.html';
-        include '../includes/modal_login.html';
+        include '../../includes/footer.html';
+        include '../../includes/modal_login.html';
      ?>
-
-
 
     <div id="id01" class="modal">
         <div class="content center">
@@ -110,7 +80,7 @@
             <div class="member center" style="position: relative;">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <h1>Editar Produto</h1>
-                <form method="POST" action="../actions/edit_product.php" enctype="multipart/form-data" name="modal_lojaadmin">
+                <form method="POST" action="../../actions/edit_product.php" enctype="multipart/form-data" name="modal_lojaadmin">
                     
                     <input type="number" name="id" value=''>
 
@@ -145,10 +115,11 @@
         function eliminate_click(id) {
             if (confirm("Tem a certeza que quer apagar o produto")) {
                     $.ajax({
-                        url: '../actions/remove_produto.php',
+                        url: '../../actions/remove_produto.php',
                         type: 'POST',
                         data: {"id":id},
-                        success: function(response) { window.location.reload(); }
+                        success: function(response) { 
+                            window.location.reload(); }
                     });
             }
         }   
@@ -160,7 +131,7 @@
             var img = document.getElementById(clicked_id);
 
             $.ajax({
-                    url: '../actions/modal_loja.php',
+                    url: '../../actions/modal_loja.php',
                     type: 'POST',
                     data: {"id":clicked_id},
                     datatype: "json",

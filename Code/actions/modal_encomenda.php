@@ -2,14 +2,10 @@
     session_start();
 
     if (isset($_POST['id'])) {
-        include "../database/opendb.php";
+        include "../includes/opendb.php";
+        include "../database/linha_encomenda.php";
                              
-        $query = "SELECT linha_encomenda.id, imagem, nome, tamanho, quantidade, data_entrega, linha_encomenda.total FROM linha_encomenda
-                  JOIN encomenda ON (encomendaid = encomenda.id) 
-                  JOIN produto ON (produtoid = produto.id)  
-                  WHERE clienteid = '".$_SESSION['num_socio']."' AND comprado = 'TRUE' AND encomendaid = '".$_POST['id']."'";
-        
-        $encomendas = pg_exec($conn, $query);
+        $encomendas = getLinha_encomenda($_SESSION['num_socio'],$_POST['id']);
         $encomenda = pg_fetch_assoc($encomendas);
 
         pg_close($conn);
@@ -45,7 +41,7 @@
                 <?php while(isset($encomenda['id'])){ ?>
                     <tr>
                       <td>#<?php echo $encomenda['id']; ?></td>
-                      <td><img src= "<?php echo $encomenda['imagem']; ?>"></td>
+                      <td><img src= "../<?php echo $encomenda['imagem']; ?>"></td>
                       <td><?php echo $encomenda['nome']; ?></td>
                       <td><?php echo $encomenda['tamanho']; ?></td>
                       <td><?php echo $encomenda['quantidade']; ?></td>

@@ -1,7 +1,8 @@
 <?php
     session_start();
 
-    include "../database/opendb.php";
+    include "../includes/opendb.php";
+    include "../database/socio.php";
 
     $num_socio = $_SESSION['num_socio'];
     $nome = $morada = $telefone = $pass = "";
@@ -22,15 +23,7 @@
         header('Location: ../pages/socio_dados.php');
     }
     else{
-        $query = "UPDATE cliente 
-        SET nome = '".$nome."', 
-        telefone = '".$telefone."',
-        morada = '".$morada."',
-        password = '".$password_md5."'
-        WHERE num_socio = '".$num_socio."' ";
-      
-      echo $query;
-        pg_exec($conn, $query);
+        updateSocio($nome, $telefone, $morada, $password_md5, $num_socio);
         pg_close($conn);
         header('Location: ../pages/socio_dados.php');
     }

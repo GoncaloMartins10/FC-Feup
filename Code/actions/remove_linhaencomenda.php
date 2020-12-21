@@ -2,17 +2,16 @@
     session_start();
 
     if (isset($_POST['id'])) {
-        include "../database/opendb.php";
+        include "../includes/opendb.php";
+        include "../database/linha_encomenda.php";
+        include "../database/encomenda.php";
 
-        $query = "SELECT quantidade,total FROM linha_encomenda WHERE id = '".$_POST['id']."' ";
-        $result = pg_exec($conn, $query);
+        $result = getLinha_encomendaQuantTot($_POST['id']);
         $row = pg_fetch_assoc($result); 
 
-        $query = "UPDATE encomenda SET num_produtos=num_produtos - ".$row['quantidade'].", total=total - ".$row['total']."  WHERE clienteid = '".$_SESSION['num_socio']."' AND comprado = 'FALSE'";
-        pg_exec($conn, $query);
+        updateEncomenda($row['quantidade'], $row['total'], $_SESSION['num_socio']);
                              
-        $query = "DELETE FROM linha_encomenda WHERE id = '".$_POST['id']."' ";
-        pg_exec($conn, $query);
+        deleteLinha_encomenda($_POST['id']);
 
         pg_close($conn);
     }
