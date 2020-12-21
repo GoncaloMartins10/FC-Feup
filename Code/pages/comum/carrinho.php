@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../javascript/sort-table.js"></script>                                    <!-- Sort tables script -->
     <link rel="shortcut icon" href="../../images/logo.png">
     <link rel="stylesheet" href="../../style/style.css">
     <title>FC FEUP | Carrinho</title>
@@ -42,17 +43,20 @@
                       <h3>Carrinho Vazio</h3>
     <?php } else {?>
             <h3>Encomendas</h3>
-            <table id=cart>
+            <table id="cart" class="js-sort-table">
+            <thead>
               <tr>
                 <th></th>
-                <th>ID</th>
+                <th class="js-sort-number">ID</th>
                 <th></th>
-                <th>Produto</th>
-                <th>Tamanho</th>
-                <th>Preço</th>
-                <th>Quantidade</th>
-                <th>Total</th>
+                <th class="js-sort-string">Produto</th>
+                <th class="js-sort-string">Tamanho</th>
+                <th class="js-sort-number">Preço</th>
+                <th class="js-sort-number">Quantidade</th>
+                <th class="js-sort-number">Total</th>
               </tr>
+              </thead>
+              <tbody>
                 <?php while(isset($row['id']) and !empty($row['id']) ){ ?>
                     <tr>
                       <td><i class="fas fa-trash"  style="cursor: pointer;" onClick=" click_eliminateLinhaEncomenda(<?php echo $row['id'] ?>)" ></i></td>
@@ -62,13 +66,14 @@
                       <td><?php echo $row['tamanho']; ?></td>
                       <td><?php echo $row['preco']; ?></td>
                       <td><?php echo $row['quantidade']; ?></td>
-                      <td><?php echo $row['total']; ?></td>
+                      <td><?php echo $row['total']; ?>€</td>
                     </tr>
                 
                 <?php
                     $row = pg_fetch_assoc($result);
                 }
             } ?>
+            </tbody>
             </table>
             <br><br><br>
 
@@ -85,7 +90,7 @@
                     </tr>
                     <tr>
                       <th>Total:</th>
-                      <td><?php echo $row2['total']; ?></td>
+                      <td><?php echo $row2['total']; ?>€</td>
                     </tr>
                 </table>
         <?php } ?>

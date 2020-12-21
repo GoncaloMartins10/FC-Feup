@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="../../javascript/sort-table.js"></script>                                    <!-- Sort tables script -->
     <link rel="shortcut icon" href="../../images/logo.png">
     <link rel="stylesheet" href="../../style/style.css">
     <link rel="stylesheet" href="../../style/style_admin.css">
@@ -45,16 +46,19 @@
                       <img src="../../images/empty-search.png">
                       <h3>Não há pedidos de sócio pendentes</h3>
             <?php } else {?>
-                    <table id=cart>
+                    <table id="cart" class="js-sort-table">
+                    <thead>
                         <tr>
-                            <th>Nº Sócio</th>
+                            <th class="js-sort-number">Nº Sócio</th>
                             <th><!-- Imagem --></th>
-                            <th>Nome</th>
-                            <th>Morada</th>
-                            <th>Telefone</th>
+                            <th class="js-sort-string">Nome</th>
+                            <th class="js-sort-string">Morada</th>
+                            <th class="js-sort-number">Telefone</th>
                             <th>Aprovar</th>
                             <th>Eliminar</th>
                         </tr>
+                    </thead>
+                    <tbody>
                         <?php while(isset($row['num_socio']) and !empty($row['num_socio']) ){ ?>
                             <tr>                    
                                 <td><?php echo $row['num_socio']; ?></td>
@@ -70,6 +74,7 @@
                             $row = pg_fetch_assoc($result);
                         }
                     } ?>
+                    </tbody>
                     </table>    
         </div>
     </main>
