@@ -47,7 +47,7 @@
         </div>
 
         <div class="content center">
-            <h3>Dados Pessoais <span onClick="edit_click(<?php echo $row['id'] ?>)"><i class="fas fa-edit" style="color: black;"></i></span></h3>
+        <h3>Dados Pessoais <span onClick="edit_click(<?php echo $num_socio; ?>)"><i class="fas fa-edit" style="color: black; cursor: pointer;"></i></span></h3>
 
             <div class="infobox">
                 <img class="logo" src= "../<?php echo($imagem);?>">
