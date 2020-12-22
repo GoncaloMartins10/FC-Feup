@@ -153,7 +153,7 @@
                     <?php while(isset($presidente['num_socio'])){ ?>
 
                         <div class="card">
-                            <img src= "../<?php echo $presidente['imagem']; ?>" id="<?php echo $presidente['num_socio'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
+                            <img src= "../<?php echo $presidente['imagem']; ?>" id="<?php echo $presidente['num_socio'];?>" style="cursor: pointer;"  onClick="click_modalMembro(this.id)">
                             <div class="text">
                                 <b>Nº Sócio:</b> <?php echo $presidente['num_socio']; ?><br>
                                 <b>Nome:</b> <?php echo $presidente['nome']; ?><br>
@@ -175,7 +175,7 @@
                     <?php while(isset($socio['num_socio'])){ ?>
 
                         <div class="card">
-                            <img src= "../<?php echo $socio['imagem']; ?>" id="<?php echo $socio['num_socio'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
+                            <img src= "../<?php echo $socio['imagem']; ?>" id="<?php echo $socio['num_socio'];?>" style="cursor: pointer;"  onClick="click_modalMembro(this.id)">
                             <div class="text">
                                 <b>Nº Sócio:</b> <?php echo $socio['num_socio']; ?><br>
                                 <b>Nome:</b> <?php echo $socio['nome']; ?><br>
@@ -257,33 +257,8 @@
         </form>
     </div>
 
-    <script>
-    // Get the modal 
-    var modal = document.getElementById("id01");
-
-    function reply_click(clicked_id) {
-
-        var img = document.getElementById(clicked_id);
-        var modalImg = document.getElementById("img01");
-
-        $.ajax({
-                url: '../../actions/modal_membrosocio.php',
-                type: 'POST',
-                data: {"id":clicked_id},
-                datatype: "json",
-                success: function(result) { 
-                    var data = JSON.parse(result);
-                    document.getElementById("nome").innerHTML = data.nome;
-                    document.getElementById("morada").innerHTML = data.morada;
-                    document.getElementById("telefone").innerHTML = data.telefone;
-                    document.getElementById("num_socio").innerHTML = data.num_socio;
-                }
-        });
-        setTimeout(function() {
-            modal.style.display = "block";
-            modalImg.src = img.src;   
-        }, 100); 
-    }
-    </script>
-
 </body>
+
+<script src="../../javascript/ajax.js"> </script>
+
+</html>

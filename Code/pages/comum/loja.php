@@ -117,7 +117,7 @@
                 <?php  while(isset($produto['id'])){ ?>
 
                 <div class="card">
-                        <img src= "../<?php echo $produto['imagem'];?>" id="<?php echo $produto['id'];?>" style="cursor: pointer;"  onClick="reply_click(this.id)">
+                        <img src= "../<?php echo $produto['imagem'];?>" id="<?php echo $produto['id'];?>" style="cursor: pointer;"  onClick="click_modalLoja(this.id)">
                         <div class="text">
                             <b>Nome:</b> <?php echo $produto['nome']; ?><br>
                             <b>Preço:</b> <?php echo $produto['preco']; ?>€<br>
@@ -175,38 +175,8 @@
         </form>
     </div>
 
-    <script>
-        // Get the modal 
-        var modal = document.getElementById("id01");
-
-        function reply_click(clicked_id) {
-
-            var img = document.getElementById(clicked_id);
-            var modalImg = document.getElementById("img01");
-
-            $.ajax({
-                    url: '../../actions/modal_loja.php',
-                    type: 'POST',
-                    data: {"id":clicked_id},
-                    datatype: "json",
-                    success: function(result) { 
-                        var data = JSON.parse(result);
-                        document.getElementById("titulo").innerHTML = data.nome;
-                        document.getElementById("descricao").innerHTML = data.descricao;
-                        document.getElementById("preco").innerHTML = data.preco+"€";
-                        
-                        document.forms['modal_loja']['id'].value = clicked_id;
-                        document.forms['modal_loja']['id'].type = "hidden";
-
-                        document.forms['modal_loja']['quantidade'].max = data.stock;
-                        document.forms['modal_loja']['quantidade'].value = 1;
-                    }
-            });
-            setTimeout(function() {
-                modal.style.display = "block";
-                modalImg.src = img.src;   
-            }, 100); 
-        }
-    </script>
-
 </body>
+
+<script src="../../javascript/ajax.js"> </script>
+
+</html>

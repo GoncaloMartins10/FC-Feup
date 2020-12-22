@@ -50,7 +50,7 @@
 
                     <div class="card">
                         <span onClick="click_eliminateProduto(<?php echo $row['id'] ?>)" class="remove"><i class="fas fa-times-circle"></i></span>
-                        <span onClick="edit_click(<?php echo $row['id'] ?>)" class="edit"><i class="fas fa-edit"></i></span>
+                        <span onClick="click_modalEditProduto(<?php echo $row['id'] ?>)" class="edit"><i class="fas fa-edit"></i></span>
                         <img src= "../<?php echo $row['imagem']; ?>">
                         <div class="text">
                             <b>Nome:</b> <?php echo $row['nome']; ?><br>
@@ -110,36 +110,6 @@
         </div>
     </div>
     
-    <script src="../../javascript/ajax.js">  </script>
-    <script> 
-        // Get the modal 
-        var modal = document.getElementById("id01");
-
-        function edit_click(clicked_id) {
-            var img = document.getElementById(clicked_id);
-
-            $.ajax({
-                    url: '../../actions/modal_loja.php',
-                    type: 'POST',
-                    data: {"id":clicked_id},
-                    datatype: "json",
-                    success: function(result) { 
-                        var data = JSON.parse(result);
-                        document.getElementById("nome").value = data.nome;
-                        document.getElementById("descricao").value = data.descricao;
-                        document.getElementById("preco").value = data.preco;
-                        document.getElementById("stock").value = data.stock;
-
-                        document.forms['modal_lojaadmin']['id'].value = clicked_id;
-                        document.forms['modal_lojaadmin']['id'].type = "hidden";
-                    }
-            });
-            setTimeout(function() {
-                modal.style.display = "block";
-            }, 100); 
-        }
-    </script>
-
 </body>
-
+<script src="../../javascript/ajax.js">  </script>
 </html>

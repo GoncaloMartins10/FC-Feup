@@ -1,6 +1,5 @@
 <?php
     session_start();
-    
     include "../includes/opendb.php";
     include "../database/encomenda.php";
                             
