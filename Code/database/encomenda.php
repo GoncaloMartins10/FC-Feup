@@ -27,7 +27,7 @@
         
         global $conn;
 
-        $query = "SELECT id, clienteid, nome, num_produtos, data_entrega, total  FROM encomenda 
+        $query = "SELECT id, clienteid, nome, num_produtos, to_char(data_entrega,'DD/MM/YYYY') AS data_entrega, total  FROM encomenda 
                   JOIN cliente ON (clienteid = cliente.num_socio)
                   WHERE comprado = 'TRUE'";
     

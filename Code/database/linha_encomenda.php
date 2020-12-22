@@ -49,4 +49,43 @@
     return pg_exec($conn, $query);
   }
 
+  function getVendasProduto(){
+
+    global $conn;
+
+    $query = "SELECT nome, SUM(quantidade) AS unidades_vendidas FROM linha_encomenda
+              JOIN encomenda ON (encomendaid = encomenda.id) 
+              JOIN produto ON (produtoid = produto.id)
+              WHERE comprado = 'TRUE'
+              GROUP BY produto.nome";
+
+    return pg_exec($conn, $query);
+  }
+
+  
+  function getVendasDiarias(){
+
+    global $conn;
+
+    $query = "SELECT data_entrega, to_char(data_entrega,'DD/MM/YYYY') AS dia, SUM(total) AS receita FROM encomenda
+              WHERE comprado = 'TRUE'
+              GROUP BY data_entrega
+              ORDER BY data_entrega ASC";
+
+    return pg_exec($conn, $query);
+  }
+
+  function getCompras($cliente){
+
+    global $conn;
+
+    $query = "SELECT nome, SUM(quantidade) AS unidades_vendidas FROM linha_encomenda
+              JOIN encomenda ON (encomendaid = encomenda.id) 
+              JOIN produto ON (produtoid = produto.id)
+              WHERE comprado = 'TRUE' AND clienteid = '".$cliente."'
+              GROUP BY produto.nome";
+                
+    return pg_exec($conn, $query);
+  }
+
 ?>

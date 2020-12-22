@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <script src="https://kit.fontawesome.com/ef5be7179f.js" crossorigin="anonymous"></script> <!-- Icons library-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <link rel="shortcut icon" href="../../images/logo.png">
     <link rel="stylesheet" href="../../style/style.css">
     <link rel="stylesheet" href="../../style/style_admin.css">
@@ -17,31 +18,99 @@
 <body>
 
     <?php
-        include "../includes/opendb.php";
+        include "../../includes/opendb.php";
         include "../../includes/header.php";
+        include "../../database/linha_encomenda.php";
+
+        $vendasProduto = getVendasProduto();
+        $produto = pg_fetch_assoc($vendasProduto);
+
+        $vendasDiarias = getVendasDiarias();
+        $vendas = pg_fetch_assoc($vendasDiarias);
+
+        pg_close($conn);
     ?>
 
    
     <main>
         <div class="sidenav">
-            <a id="active" href="sociopendente.php">Pedidos de Sócio Pendentes</a>
+            <a class="hvr-underline-from-left" href="sociopendente.php">Pedidos de Sócio Pendentes</a>
             <a class="hvr-underline-from-left" href="novoproduto.php">Adicionar Produto</a>
             <a class="hvr-underline-from-left" href="removeproduto.php">Remover/Editar Produto</a>
             <a class="hvr-underline-from-left" href="novojogador.php">Adicionar Jogador</a>
             <a class="hvr-underline-from-left" href="removemembro.php">Remover Membro</a>
             <a class="hvr-underline-from-left" href="encomendas.php">Histórico Encomendas</a>
-            <a id="active" href="#contact">Estatísticas Vendas</a>
+            <a id="active" href="estatisticas.php">Estatísticas Vendas</a>
         </div>
 
         <div class="content center">
  
+            <script type="text/javascript">
+                google.charts.load("current", {packages:["corechart"]});
+                google.charts.setOnLoadCallback(drawChart);
+                function drawChart() {
+                    var data = google.visualization.arrayToDataTable([
+                        ["Produto", "Quantidade", { role: "style" } ],
+                        <?php while(isset($produto['nome'])){ ?>
+                            ["<?php echo $produto['nome']; ?>", <?php echo $produto['unidades_vendidas']; ?>, "#284b63"],
+                        
+                        <?php $produto = pg_fetch_assoc($vendasProduto); } ?>
+                    ]);
+
+                    var view = new google.visualization.DataView(data);
+                    var options = {
+                        title: "Unidades Vendidas por Produto",
+                        width: 900,
+                        height: 500,
+                        bar: {groupWidth: "95%"},
+                        legend: { position: "none" },
+                    };
+
+                    var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+                    chart.draw(view, options);
+                }
+            </script>
+            <div id="barchart_values" ></div>
+
+            <script type="text/javascript">
+                google.charts.load('current', {packages: ['corechart', 'line']});
+                google.charts.setOnLoadCallback(drawBasic);
+                function drawBasic() {
+                    var data = new google.visualization.DataTable();
+                    data.addColumn('string', 'X');
+                    data.addColumn('number', 'Vendas');
+
+                    data.addRows([<?php while(isset($vendas['dia'])){ ?>
+                        ["<?php echo $vendas['dia']; ?>", <?php echo $vendas['receita']; ?>],
+                        <?php $vendas = pg_fetch_assoc($vendasDiarias); } ?>
+                    ]);
+
+                    var options = {
+                                    width: 900,
+                                    height: 500,
+                                    hAxis: {
+                                    title: 'Data'
+                                    },
+                                    vAxis: {
+                                    title: 'Valor vendas diárias (euros)'
+                                    }
+                    };
+
+                    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+                    chart.draw(data, options);
+                }
+
+            </script>
+            <div id="chart_div"></div>
+
         </div>
     </main>
 
 
     <?php 
-        include '../includes/footer.html';
-        include '../includes/modal_login.html';
+        include '../../includes/footer.html';
+        include '../../includes/modal_login.html';
      ?>
 
 </body>

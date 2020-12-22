@@ -26,7 +26,7 @@
             <a id="active" href="novojogador.php">Adicionar Jogador</a>
             <a class="hvr-underline-from-left" href="removemembro.php">Remover Membro</a>
             <a class="hvr-underline-from-left" href="encomendas.php">Histórico Encomendas</a>
-            <a class="hvr-underline-from-left" href="#contact">Estatísticas Vendas</a>
+            <a class="hvr-underline-from-left" href="estatisticas.php">Estatísticas Vendas</a>
         </div>
 
         <div class="content center">

@@ -44,6 +44,7 @@
         <div class="sidenav">
             <a id="active"  href="socio_dados.php">Dados Pessoais</a>
             <a class="hvr-underline-from-left" href="encomendas.php">Histórico de Encomendas</a>
+            <a class="hvr-underline-from-left" href="estatisticas.php">Estatísticas</a>
         </div>
 
         <div class="content center">

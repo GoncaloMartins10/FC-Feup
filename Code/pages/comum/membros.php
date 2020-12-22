@@ -18,6 +18,8 @@
     <?php
     
         include "../../includes/opendb.php";
+        include "../../database/jogador.php";
+        include "../../database/socio.php";
         
         $s = $j = $p = FALSE;
         $procura = "first";

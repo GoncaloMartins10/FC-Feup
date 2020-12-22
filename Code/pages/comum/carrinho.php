@@ -64,7 +64,7 @@
                       <td><img src= "../<?php echo $row['imagem']; ?>"></td>
                       <td><?php echo $row['nome']; ?></td>
                       <td><?php echo $row['tamanho']; ?></td>
-                      <td><?php echo $row['preco']; ?></td>
+                      <td><?php echo $row['preco']; ?>€</td>
                       <td><?php echo $row['quantidade']; ?></td>
                       <td><?php echo $row['total']; ?>€</td>
                     </tr>

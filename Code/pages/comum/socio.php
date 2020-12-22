@@ -19,7 +19,7 @@
         
             <div class="member center">
                 <h1>Bem-vindo ao FC FEUP</h1>
-                <form method="POST" action="add_socio.php" enctype="multipart/form-data">
+                <form method="POST" action="../../actions/add_socio.php" enctype="multipart/form-data">
 
                     <div class="item">
                         <input type="text" id="nome" name="nome" placeholder="Nome" required><br>
