@@ -16,12 +16,12 @@
 
     if($num_socio =="" OR $passantiga == "" OR $passnova == "" OR $passnovaa == ""){
         $_SESSION['error'] = "Por favor preencha todos os campos do formulário";
-        header('Location: ../pages/socio/socio_ddados.php');
+        header('Location: ../pages/socio/socio_dados.php');
     }
     else{
-
-        if(pass){
-            updatePass($pass_md5, $num_socio);
+        
+        if( md5($passantiga) == pg_fetch_assoc(getPass($num_socio))['password'] ){
+            updatePass(md5($passnova), $num_socio);
             pg_close($conn);
             header('Location: ../pages/socio/socio_dados.php');
         }

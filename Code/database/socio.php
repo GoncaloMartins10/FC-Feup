@@ -22,6 +22,13 @@
         return pg_exec($conn, $query);
     }
 
+    function getPass($num_socio){
+        global $conn;
+
+        $query = "SELECT password FROM cliente WHERE num_socio ='".$num_socio."'";
+        return pg_exec($conn, $query);
+    }
+
     function getsocioNotAprovado(){
         global $conn;
 
