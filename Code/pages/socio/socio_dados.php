@@ -76,6 +76,9 @@
                 </div>
             </div>
 
+        <h3>Alterar Password <span onClick="click_modalEditPass(<?php echo $num_socio; ?>)"><i class="fas fa-key" style="color: black; cursor: pointer;"></i></span></h3>
+
+
         <div id="id01" class="modal">
             <div class="content center">
 
@@ -97,16 +100,40 @@
                             <input type="tel" id="telefone" name="telefone" pattern="[0-9]{9}" value ="<?php echo($telefone);?>" required><br>
                         </div>
                         <div class="item">
-                            <label for="pass">Password</label><br>
-                            <input type="password" id="pass" name="pass" placeholder="Password" required><br>                        
+                            <button type="submit">Editar Dados</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </div>
+        
+        <div id="id02" class="modal">
+            <div class="content center">
+
+                <div class="member center" style="position: relative;">
+                    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    <h1>Alterar Password</h1>
+                    <form method="POST" action="../../actions/edit_pass.php" enctype="multipart/form-data">
+
+                        <div class="item">
+                            <label for="pass_antiga">Password Antiga</label><br>
+                            <input type="password" id="pass_antiga" name="pass_antiga" required><br>
+                        </div>
+                        <div class="item">
+                            <label for="pass_nova">Password Nova</label><br>
+                            <input type="password" id="pass_nova" name="pass_nova" required><br>                     
+                        </div>
+                        <div class="item">
+                            <label for="pass_novaa">Confirme Password Nova</label><br>
+                            <input type="password" id="pass_novaa" name="pass_novaa" required><br>
                         </div>
                         <div class="item">
                             <button type="submit">Editar Dados</button>
                         </div>
                     </form> 
                 </div>
+            </div>
         </div>
-    </div>
 
 
     </main>

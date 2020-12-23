@@ -15,6 +15,14 @@
         pg_exec($conn, $query);
     }
 
+    function updateEncomendaMenos($quantidade, $total, $socio){
+
+        global $conn;
+
+        $query = "UPDATE encomenda SET num_produtos=num_produtos - ".$quantidade.", total=total - ".$total."  WHERE clienteid = '".$socio."' AND comprado = 'FALSE'";
+        pg_exec($conn, $query);
+    }
+
     function updateEncomendaComprado($socio){
 
         global $conn;

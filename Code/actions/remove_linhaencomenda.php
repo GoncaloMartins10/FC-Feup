@@ -9,7 +9,7 @@
         $result = getLinha_encomendaQuantTot($_POST['id']);
         $row = pg_fetch_assoc($result); 
 
-        updateEncomenda($row['quantidade'], $row['total'], $_SESSION['num_socio']);
+        updateEncomendaMenos($row['quantidade'], $row['total'], $_SESSION['num_socio']);
                              
         deleteLinha_encomenda($_POST['id']);
 

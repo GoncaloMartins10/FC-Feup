@@ -88,10 +88,14 @@ function click_modalMembro(clicked_id) {
 }
 
 function click_modalEditDados(clicked_id) {
-    var img = document.getElementById(clicked_id);
-
     setTimeout(function() {
         document.getElementById("id01").style.display = "block";
+    }, 100); 
+}
+
+function click_modalEditPass(clicked_id) {
+    setTimeout(function() {
+        document.getElementById("id02").style.display = "block";
     }, 100); 
 }
 

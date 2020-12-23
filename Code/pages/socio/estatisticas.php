@@ -51,15 +51,21 @@
                     ]);
 
                     var options = {
-                    is3D: true,
-                    };
+                        titleTextStyle: {                                           
+                                            color: '#284b63',    // any HTML string color ('red', '#cc00cc')                                        
+                                            fontName: 'Nunito', // i.e. 'Times New Roman'
+                                            fontSize: 25, // 12, 18 whatever you want (don't specify px)
+                                            bold: true,    // true or false
+                                        },
+                        title: "Produtos Comprados",
 
+                        is3D: true
+                    };
                     var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
                     chart.draw(data, options);
                 }
             </script>
 
-            <h3>Produtos Comprados</h3>
             <div id="piechart_3d" style="width: 900px; height: 450px;"></div>
         </div>
     </main>

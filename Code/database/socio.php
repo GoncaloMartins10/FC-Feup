@@ -50,14 +50,26 @@
         pg_exec($conn, $query);        
     }
 
-    function updateSocio($nome, $telefone, $morada, $password_md5, $num_socio){
+    function updateSocio($nome, $telefone, $morada, $num_socio){
+        global $conn;
+
         $query = "UPDATE cliente 
-                SET nome = '".$nome."', 
-                    telefone = '".$telefone."',
-                    morada = '".$morada."',
-                    password = '".$password_md5."'
-                WHERE num_socio = '".$num_socio."' ";
+                  SET nome = '".$nome."', 
+                      telefone = '".$telefone."',
+                      morada = '".$morada."'
+                  WHERE num_socio = '".$num_socio."' ";
 
         pg_exec($conn, $query);
     }
+
+    function updatePass($password, $num_socio){
+        global $conn;
+
+        $query = "UPDATE cliente 
+                  SET password = '".$password."'
+                  WHERE num_socio = '".$num_socio."' ";
+
+        pg_exec($conn, $query);
+    }
+
 ?>

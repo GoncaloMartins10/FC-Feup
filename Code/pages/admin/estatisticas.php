@@ -59,12 +59,19 @@
 
                     var view = new google.visualization.DataView(data);
                     var options = {
+                        titleTextStyle: {
+                                            color: '#284b63',    // any HTML string color ('red', '#cc00cc')
+                                            fontName: 'Nunito', // i.e. 'Times New Roman'
+                                            fontSize: 25, // 12, 18 whatever you want (don't specify px)
+                                            bold: true,    // true or false
+                                        },
                         title: "Unidades Vendidas por Produto",
                         width: 900,
                         height: 500,
                         bar: {groupWidth: "95%"},
                         legend: { position: "none" },
                     };
+                    
 
                     var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
                     chart.draw(view, options);
@@ -86,14 +93,21 @@
                     ]);
 
                     var options = {
+                                    titleTextStyle: {                                           
+                                            color: '#284b63',    // any HTML string color ('red', '#cc00cc')                                        
+                                            fontName: 'Nunito', // i.e. 'Times New Roman'
+                                            fontSize: 25, // 12, 18 whatever you want (don't specify px)
+                                            bold: true,    // true or false
+                                        },
+                                    title: "Vendas Diárias",
                                     width: 900,
                                     height: 500,
                                     hAxis: {
-                                    title: 'Data'
-                                    },
+                                            title: 'Data'
+                                           },
                                     vAxis: {
-                                    title: 'Valor vendas diárias (euros)'
-                                    }
+                                            title: 'Valor vendas diárias (euros)'
+                                           }
                     };
 
                     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
