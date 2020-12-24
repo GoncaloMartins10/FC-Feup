@@ -24,6 +24,8 @@
             updatePass(md5($passnova), $num_socio);
             pg_close($conn);
             header('Location: ../pages/socio/socio_dados.php');
+        }else{
+            header('Location: ../pages/socio/socio_dados.php');
         }
 
     }

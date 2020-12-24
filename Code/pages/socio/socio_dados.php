@@ -117,15 +117,18 @@
 
                         <div class="item">
                             <label for="pass_antiga">Password Antiga</label><br>
-                            <input type="password" id="pass_antiga" name="pass_antiga" required><br>
+                            <input type="password" id="pass_antiga" name="pass_antiga"  onkeyup='confirmPassOld(this);' required>
+                            <span id='message1' ><i class='fas fa-times-circle' style="color:red" ></i></span><br>
                         </div>
                         <div class="item">
                             <label for="pass_nova">Password Nova</label><br>
-                            <input type="password" id="pass_nova" name="pass_nova" required><br>                     
+                            <input type="password" id="pass_nova" name="pass_nova" onkeyup='confirmPassNew(this);' required> 
+                            <span id='message2' ><i class='fas fa-times-circle' style="color:red" ></i></span><br>                   
                         </div>
                         <div class="item">
                             <label for="pass_novaa">Confirme Password Nova</label><br>
-                            <input type="password" id="pass_novaa" name="pass_novaa" required><br>
+                            <input type="password" id="pass_novaa" name="pass_novaa" onkeyup='checkPass();' required>
+                            <span id='message3' ><i class='fas fa-times-circle' style="color:red" ></i></span><br>
                         </div>
                         <div class="item">
                             <button type="submit">Editar Dados</button>
@@ -145,6 +148,33 @@
      ?>
 
 </body>
+<script>
+
+    var confirmPassOld = function(pass) {
+        
+        if ( pass.value )  { 
+            pass.classList.add("is-valid");
+            document.getElementById('message1').style.color = 'green';
+            document.getElementById('message1').innerHTML = "<i class='fas fa-check-circle'></i>";
+        } else {
+            document.getElementById('message1').style.color = 'red';
+            document.getElementById('message1').innerHTML = "<i class='fas fa-times-circle'></i>";
+        }
+    }
+
+    var confirmPassNew = function(pass) {
+        
+        if ( pass.value )  { 
+            pass.classList.add("is-valid");
+            document.getElementById('message2').style.color = 'green';
+            document.getElementById('message2').innerHTML = "<i class='fas fa-check-circle'></i>";
+        } else {
+            document.getElementById('message2').style.color = 'red';
+            document.getElementById('message2').innerHTML = "<i class='fas fa-times-circle'></i>";
+        }
+    }
+
+</script>
 
 <script src="../../javascript/ajax.js"> </script>
 

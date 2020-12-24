@@ -154,3 +154,13 @@ function click_eliminateLinhaEncomenda(id) {
             });
     }
 }  
+
+var checkPass = function() {
+    if ( document.getElementById('pass_nova').value == document.getElementById('pass_novaa').value ) {
+      document.getElementById('message3').style.color = 'green';
+      document.getElementById('message3').innerHTML = "<i class='fas fa-check-circle'></i>";
+    } else {
+      document.getElementById('message3').style.color = 'red';
+      document.getElementById('message3').innerHTML = "<i class='fas fa-times-circle'></i>";
+    }
+}
