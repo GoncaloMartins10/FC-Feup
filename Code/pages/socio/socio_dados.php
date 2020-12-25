@@ -117,8 +117,10 @@
 
                         <div class="item">
                             <label for="pass_antiga">Password Antiga</label><br>
-                            <input type="password" id="pass_antiga" name="pass_antiga"  onkeyup='confirmPassOld(this);' required>
+                            <input type="password" id="pass_antiga" name="pass_antiga"  onkeyup='confirmPassOld(this); keyup(this);' required>
                             <span id='message1' ><i class='fas fa-times-circle' style="color:red" ></i></span><br>
+                            <span style="color:red; font-size:15px;"> <?php if(isset($_SESSION['erro_pass'])) echo $_SESSION['erro_pass'];?> </span> <br>
+
                         </div>
                         <div class="item">
                             <label for="pass_nova">Password Nova</label><br>
@@ -144,7 +146,7 @@
 
     <?php 
         include '../../includes/footer.html';
-        include '../../includes/modal_login.html';
+        include '../../includes/modal_login.php';
      ?>
 
 </body>
@@ -153,7 +155,6 @@
     var confirmPassOld = function(pass) {
         
         if ( pass.value )  { 
-            pass.classList.add("is-valid");
             document.getElementById('message1').style.color = 'green';
             document.getElementById('message1').innerHTML = "<i class='fas fa-check-circle'></i>";
         } else {
@@ -165,13 +166,26 @@
     var confirmPassNew = function(pass) {
         
         if ( pass.value )  { 
-            pass.classList.add("is-valid");
             document.getElementById('message2').style.color = 'green';
             document.getElementById('message2').innerHTML = "<i class='fas fa-check-circle'></i>";
         } else {
             document.getElementById('message2').style.color = 'red';
             document.getElementById('message2').innerHTML = "<i class='fas fa-times-circle'></i>";
         }
+    }
+
+</script>
+
+<script>
+    <?php if(isset($_SESSION['erro_pass'])) {
+            if( $_SESSION['erro_pass'] == "Password antiga errada. Tente Novamente." ) { ?>
+                document.getElementById('id02').style.display = "block";
+                document.getElementById('pass_antiga').style.border = "2px solid red";
+    <?php   } 
+          }?>
+
+    var keyup = function(input) {
+        document.getElementById(input.id).style.border = "";
     }
 
 </script>

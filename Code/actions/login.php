@@ -14,7 +14,7 @@
   $num_registos = pg_numrows($result);
 
   /*Verificação do login, com diferentes outputs*/
-  
+  $_SESSION['erro'] = "";
   if ($num_registos > 0) {
 
     $row = pg_fetch_assoc($result);

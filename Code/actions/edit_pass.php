@@ -26,6 +26,7 @@
             header('Location: ../pages/socio/socio_dados.php');
         }else{
             header('Location: ../pages/socio/socio_dados.php');
+            $_SESSION['erro_pass'] = "Password antiga errada. Tente Novamente.";
         }
 
     }

@@ -104,7 +104,7 @@
 
     <?php 
         include '../../includes/footer.html';
-        include '../../includes/modal_login.html';
+        include '../../includes/modal_login.php';
      ?>
 
     <script src="../../javascript/ajax.js"> </script>

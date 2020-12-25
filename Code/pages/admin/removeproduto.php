@@ -71,7 +71,7 @@
 
     <?php 
         include '../../includes/footer.html';
-        include '../../includes/modal_login.html';
+        include '../../includes/modal_login.php';
      ?>
 
     <div id="id01" class="modal">
