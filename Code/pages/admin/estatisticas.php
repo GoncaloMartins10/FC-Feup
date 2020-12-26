@@ -102,15 +102,21 @@
                                     title: "Vendas Diárias",
                                     width: 900,
                                     height: 500,
+                                    
                                     hAxis: {
                                             title: 'Data'
                                            },
                                     vAxis: {
-                                            title: 'Valor vendas diárias (euros)'
+                                            format: "#,### €",
+                                            title: 'Lucro (€)'
                                            }
                     };
 
                     var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+                    var formatter = new google.visualization.NumberFormat({
+                        suffix: '€'
+                    });
+                    formatter.format(data, 1);
 
                     chart.draw(data, options);
                 }

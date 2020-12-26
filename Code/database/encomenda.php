@@ -35,7 +35,7 @@
         
         global $conn;
 
-        $query = "SELECT id, clienteid, nome, num_produtos, to_char(data_entrega,'DD/MM/YYYY') AS data_entrega, total  FROM encomenda 
+        $query = "SELECT id, clienteid, nome, num_produtos, data_compra, total  FROM encomenda 
                   JOIN cliente ON (clienteid = cliente.num_socio)
                   WHERE comprado = 'TRUE'";
     
@@ -45,6 +45,12 @@
     function getCarrinho($cliente){
 
         global $conn;
+
+        $query = "UPDATE encomenda
+                  SET data_compra = current_date
+                  WHERE clienteid = '".$cliente."' AND comprado = 'FALSE' ";
+        
+        pg_exec($conn, $query);
 
         $query = "SELECT * FROM encomenda
                   WHERE clienteid = '".$cliente."' AND comprado = 'FALSE' ";

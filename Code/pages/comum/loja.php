@@ -13,6 +13,7 @@
     session_start();
         
     include "../../includes/opendb.php";
+    include "../../database/produto.php";
 
     $maxprice = "";
     $minprice = "";
@@ -21,15 +22,10 @@
     $sort = "";
 
     /* Preços*/
-    $query = "SELECT MAX(preco) FROM produto";
-    $result = pg_exec($conn, $query);
-    $row = pg_fetch_assoc($result);
-    $maxprice = $row['max'];
-
-    $query = "SELECT MIN(preco) FROM produto";
-    $result = pg_exec($conn, $query);
-    $row = pg_fetch_assoc($result);
-    $minprice = $row['min'];
+    $precos = getPrecosMaxMin();
+    $maxprice = $precos['max'];
+    $minprice = $precos['min'];
+    
 
     if(isset($_GET['price'])) 
         $price = $_GET['price'];
@@ -57,17 +53,11 @@
         $procura = explode(" ", $procura);
     }
 
-    $query = "select * from produto WHERE preco <= $price";
-    if (!empty($procura) && sizeof($procura)>0) {
-        for ($k=0; $k<sizeof($procura) ; $k++)
-            $query .= " AND LOWER(nome) LIKE LOWER('%$procura[$k]%')";
-    }
-    $query .= $sort;
-    $produtos = pg_exec($conn, $query);
+    $produtos = getProdutoFilter($price, $procura, $sort);
+    $produto = pg_fetch_assoc($produtos); 
     
     pg_close($conn);
-
-    $produto = pg_fetch_assoc($produtos); 
+  
 ?>
 
 <body>

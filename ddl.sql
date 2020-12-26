@@ -15,7 +15,7 @@ CREATE TABLE encomenda (
     id SERIAL,
     total DECIMAL(10,2) DEFAULT 0,
     num_produtos INTEGER DEFAULT 0,
-    data_entrega DATE DEFAULT current_date,
+    data_compra DATE DEFAULT current_date,
     comprado BOOLEAN DEFAULT FALSE,
     clienteID INTEGER,
 

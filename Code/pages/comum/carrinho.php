@@ -86,7 +86,7 @@
                     </tr>
                     <tr>
                       <th>Data Entrega:</th>
-                      <td><?php echo $row2['data_entrega']; ?></td>
+                      <td><?php echo date("d/m/Y",strtotime($row2['data_compra']. ' + 2 days')); ?></td>
                     </tr>
                     <tr>
                       <th>Total:</th>

@@ -29,6 +29,29 @@
         return pg_exec($conn, $query);
     }
 
+    function getSocio(){
+        global $conn;
+
+        $query = "SELECT * FROM cliente 
+                  WHERE aprovacao='TRUE' AND admin = 'FALSE';";
+
+        return pg_exec($conn, $query);
+    }
+
+    function getSocioByName($procura){
+        global $conn;
+
+        $query = "SELECT * FROM cliente 
+                  WHERE aprovacao='TRUE' AND admin = 'FALSE'";
+
+        if (!empty($procura) && sizeof($procura)>0) {
+            for ($k=0; $k<sizeof($procura) ; $k++)
+                $query .= " AND LOWER(nome) LIKE LOWER('%$procura[$k]%')";
+        }
+
+        return pg_exec($conn, $query);
+    }
+
     function getsocioNotAprovado(){
         global $conn;
 
@@ -40,6 +63,29 @@
         global $conn;
 
         $query = "SELECT* FROM cliente WHERE aprovacao='TRUE';";
+        return pg_exec($conn, $query);
+    }
+
+    function getPresidente(){
+        global $conn;
+
+        $query = "SELECT * FROM cliente 
+                  WHERE admin = 'TRUE'";
+
+        return pg_exec($conn, $query);
+    }
+
+    function getPresidenteByName($procura){
+        global $conn;
+
+        $query = "SELECT * FROM cliente 
+                  WHERE admin = 'TRUE'";
+
+        if (!empty($procura) && sizeof($procura)>0) {
+            for ($k=0; $k<sizeof($procura) ; $k++)
+                $query .= " AND LOWER(nome) LIKE LOWER('%$procura[$k]%')";
+        }
+
         return pg_exec($conn, $query);
     }
 

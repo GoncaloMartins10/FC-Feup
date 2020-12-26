@@ -29,7 +29,7 @@
 
     global $conn;
 
-    $query = "SELECT linha_encomenda.id, imagem, nome, tamanho, quantidade, data_entrega, linha_encomenda.total FROM linha_encomenda
+    $query = "SELECT linha_encomenda.id, imagem, nome, tamanho, quantidade, data_compra, linha_encomenda.total FROM linha_encomenda
     JOIN encomenda ON (encomendaid = encomenda.id) 
     JOIN produto ON (produtoid = produto.id)  
     WHERE clienteid = '".$cliente."' AND comprado = 'TRUE' AND encomendaid = '".$encomenda."'";
@@ -67,10 +67,10 @@
 
     global $conn;
 
-    $query = "SELECT data_entrega, to_char(data_entrega,'DD/MM/YYYY') AS dia, SUM(total) AS receita FROM encomenda
+    $query = "SELECT data_compra, to_char(data_compra,'DD/MM/YYYY') AS dia, SUM(total) AS receita FROM encomenda
               WHERE comprado = 'TRUE'
-              GROUP BY data_entrega
-              ORDER BY data_entrega ASC";
+              GROUP BY data_compra
+              ORDER BY data_compra ASC";
 
     return pg_exec($conn, $query);
   }

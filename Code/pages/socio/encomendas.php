@@ -51,7 +51,7 @@
               <tr>
                 <th class="js-sort-number">ID</th>
                 <th class="js-sort-number">Quantidade de Produtos</th>
-                <th class="js-sort-date">Data de Entrega</th>
+                <th class="js-sort-date">Data de Compra</th>
                 <th class="js-sort-number">Total</th>
                 <th>Detalhes</th>
               </tr>
@@ -61,7 +61,7 @@
                    <tr>
                       <td>#<?php echo $encomenda['id']; ?></td>
                       <td><?php echo $encomenda['num_produtos']; ?></td>
-                      <td><?php echo $encomenda['data_entrega']; ?></td>
+                      <td><?php echo $encomenda['data_compra']; ?></td>
                       <td><?php echo $encomenda['total']; ?> €</td>
                       <td><i class="fas fa-search" style="cursor: pointer;" onClick ="click_modalEncomenda(<?php echo $encomenda['id'];?>,<?php echo $_SESSION['num_socio']?>)"></i></td>
                     </tr>

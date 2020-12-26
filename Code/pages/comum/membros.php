@@ -23,28 +23,11 @@
         
         $s = $j = $p = FALSE;
         $procura = "first";
-        $query_search = "";
-        $query_search_alt = "";
-
-        /*Queries*/
-        $query_presidente = "select * from cliente where admin = 'TRUE'";
-        $query_socio = "select * from cliente where admin = 'FALSE' AND aprovacao = 'TRUE'";
-        $query_jogador = "select * from jogador";
 
         /* Pesquisa */
         if(isset($_GET['search'])) {
             $procura = $_GET['search'];
-            $procura = explode(" ", $procura);
-
-            for ($k=0; $k<sizeof($procura); $k++){
-                $query_search .= " AND LOWER(nome) LIKE LOWER('%$procura[$k]%')";
-
-                if($k == 0) 
-                    $query_search_alt = " WHERE LOWER(nome) LIKE LOWER('%$procura[$k]%')";
-                else{
-                    $query_search_alt .= " AND LOWER(nome) LIKE LOWER('%$procura[$k]%')";
-                }
-            }    
+            $procura = explode(" ", $procura);  
         }
 
         /* Filtro dos Cargos*/
@@ -54,21 +37,18 @@
             for($i=0; $i < count($cargos); $i++)
             {
                 if( $cargos[$i]=="presidente"){  
-                    $p = TRUE;  
-                    $query = $query_presidente . $query_search;       
-                    $presidentes = pg_exec($conn, $query);
+                    $p = TRUE;        
+                    $presidentes = getPresidenteByName($procura);
                     $presidente = pg_fetch_assoc($presidentes);
                 }
                 elseif($cargos[$i]=="socio"){
-                    $s = TRUE;
-                    $query = $query_socio . $query_search;  
-                    $socios = pg_exec($conn, $query);
+                    $s = TRUE; 
+                    $socios = getSocioByName($procura);
                     $socio = pg_fetch_assoc($socios);
                 }
                 else {
                     $j = TRUE;  
-                    $query = $query_jogador . $query_search_alt; 
-                    $jogadores = pg_exec($conn, $query);
+                    $jogadores = getJogadorByName($procura);
                     $jogador = pg_fetch_assoc($jogadores);
                 }
             }
@@ -80,13 +60,13 @@
             else
                 $s = $j = $p = FALSE;
         
-            $presidentes = pg_exec($conn, $query_presidente);
+            $presidentes = getPresidente();
             $presidente = pg_fetch_assoc($presidentes);
 
-            $socios = pg_exec($conn, $query_socio);
+            $socios = getSocio();
             $socio = pg_fetch_assoc($socios);
 
-            $jogadores = pg_exec($conn, $query_jogador);
+            $jogadores = getAlljogador();
             $jogador = pg_fetch_assoc($jogadores);
 
         }

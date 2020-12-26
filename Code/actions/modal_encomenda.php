@@ -45,7 +45,7 @@
                       <td><?php echo $encomenda['nome']; ?></td>
                       <td><?php echo $encomenda['tamanho']; ?></td>
                       <td><?php echo $encomenda['quantidade']; ?></td>
-                      <td><?php echo $encomenda['data_entrega']; ?></td>
+                      <td><?php echo date("d/m/Y",strtotime($encomenda['data_compra'])); ?></td>
                       <td><?php echo $encomenda['total']; ?> €</td>
                       <td></td>
                     </tr>

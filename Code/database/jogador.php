@@ -9,7 +9,7 @@
 
   }
 
-  function getAlljogador($numero){
+  function getAlljogador(){
 
     global $conn;
 
@@ -27,6 +27,24 @@
     $result = pg_exec($conn, $query);
 
     return $result;
+  }
+
+  function getJogadorByName($procura){
+    global $conn;
+
+    $query = "SELECT * FROM jogador";
+
+    if (!empty($procura) && sizeof($procura)>0) {
+        for ($k=0; $k<sizeof($procura); $k++){
+          if($k == 0) 
+              $query .= " WHERE LOWER(nome) LIKE LOWER('%$procura[$k]%')";
+          else{
+              $query .= " AND LOWER(nome) LIKE LOWER('%$procura[$k]%')";
+          }
+        }  
+    }
+
+    return pg_exec($conn, $query);
   }
 
   function removejogadorById($numero){

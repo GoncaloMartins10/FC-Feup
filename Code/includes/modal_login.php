@@ -1,7 +1,3 @@
-<?php
-  session_start();
-?>
-
 <div class="form-popup" id="myForm">
 
     <form action="../../actions/login.php" method="POST"  class="form-container">
@@ -15,9 +11,10 @@
 
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Insira a Password" id="psw" name="psw" onkeyup='keyup(this);' required>
-        <span style="color:red; font-size:15px;"> <?php if(isset($_SESSION['erro'])) echo $_SESSION['erro'];?> </span> <br><br>
+        <span style="color:red; font-size:15px;"> <?php if(isset($_SESSION['erro']))echo $_SESSION['erro']; ?> </span> <br><br>
 
         <button type="submit" class="btn">Login</button>
+        <a href="../comum/socio.php" class="button">Tornar-se Sócio</a>
     </form>
 
 </div>
@@ -29,7 +26,8 @@
             document.getElementById('myForm').style.display = "block";
             document.getElementById('numero').style.border = "2px solid red";
             document.getElementById('psw').style.border = "2px solid red";
-    <?php } ?>
+    <?php   $_SESSION['erro']=NULL;
+     } ?>
 
     var keyup = function(input) {
         document.getElementById(input.id).style.border = "";
