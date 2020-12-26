@@ -41,7 +41,7 @@
         <div class="content center">
 
             <?php if(empty($encomenda['id'])){ ?>
-                      <img style="width: 350px" src="../images/empty_box.png">
+                      <img style="width: 350px" src="../../images/empty_box.png">
                       <h3>Não realizou qualquer encomenda</h3>
             <?php } else {?>
 

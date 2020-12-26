@@ -22,14 +22,14 @@
 
 </div>
 
+
+
 <script>
-    <?php if(isset($_SESSION['erro'])) {
-            if( $_SESSION['erro'] == "Número de Sócio ou Password inexistente! Por favor tente novamente." ) { ?>
-                document.getElementById('myForm').style.display = "block";
-                document.getElementById('numero').style.border = "2px solid red";
-                document.getElementById('psw').style.border = "2px solid red";
-    <?php   } 
-          }?>
+    <?php if(isset($_SESSION['erro'])) { ?>
+            document.getElementById('myForm').style.display = "block";
+            document.getElementById('numero').style.border = "2px solid red";
+            document.getElementById('psw').style.border = "2px solid red";
+    <?php } ?>
 
     var keyup = function(input) {
         document.getElementById(input.id).style.border = "";
