@@ -33,7 +33,29 @@
         
     </div>
 
-    <div class="main-container">
+    <main class="center" style="flex-direction: column;">
+
+        <div class="main-container">
+            <h3>Logins</h3>
+            <div class="flexbox">
+                <div class="card">
+                    <h4>Presidente</h4>
+                    <div class="text">
+                        <b>Nº Sócio:</b> 1 <br>
+                        <b>Password:</b> admin <br>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Sócio</h4>
+                    <div class="text">
+                        <b>Nº Sócio:</b> 11 <br>
+                        <b>Password:</b> socio <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-container">
             <h3>Publicidade</h3>
             <!-- Slideshow container -->
             <div class="slideshow-container">

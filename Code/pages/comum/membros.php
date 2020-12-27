@@ -100,12 +100,6 @@
             <button type="submit" name="procura"><i class="fas fa-search"></i></button>
         </div>
 
-    <?php if(! isset($_SESSION['num_socio']) ) { ?>
-        <div class="item" style="margin-left: auto;">
-            <a href="socio.php"><div class="button hvr-grow-shadow">Tornar-se Sócio</div> </a>
-        </div>             
-    <?php }?>
-
     </form> 
 
 <?php   if($p == FALSE AND $s == FALSE AND $j == FALSE){ ?>
