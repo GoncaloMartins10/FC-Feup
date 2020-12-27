@@ -28,6 +28,7 @@
         global $conn;
 
         $query = "UPDATE encomenda SET comprado = 'TRUE' WHERE clienteid = '".$socio."' AND comprado = 'FALSE' ";
+        
         pg_exec($conn, $query);
     }
 

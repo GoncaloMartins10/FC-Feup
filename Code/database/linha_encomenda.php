@@ -41,7 +41,7 @@
 
     global $conn;
 
-    $query = "SELECT linha_encomenda.id, imagem, nome, tamanho, preco, quantidade, linha_encomenda.total FROM linha_encomenda
+    $query = "SELECT linha_encomenda.id, imagem, nome, tamanho, preco, quantidade, produtoid, linha_encomenda.total FROM linha_encomenda
     JOIN encomenda ON (encomendaid = encomenda.id) 
     JOIN produto ON (produtoid = produto.id)  
     WHERE clienteid = '".$cliente."' AND comprado = 'FALSE' ";

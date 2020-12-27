@@ -53,6 +53,17 @@
     pg_exec($conn, $query);
   }
 
+  function updateQuantidadeProduto($quantidade , $id){
+
+    global $conn;
+
+    $query = "UPDATE produto SET  stock = stock - '".$quantidade."'  
+              WHERE id = '".$id."' ";
+  
+    pg_exec($conn, $query);
+    
+  }
+
   function deleteProduto($id){
     
     global $conn;
