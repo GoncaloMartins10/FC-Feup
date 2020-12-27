@@ -174,9 +174,6 @@
         }
     }
 
-</script>
-
-<script>
     <?php if(isset($_SESSION['erro_pass'])) {
             if( $_SESSION['erro_pass'] == "Password antiga errada. Tente Novamente." ) { ?>
                 document.getElementById('id02').style.display = "block";

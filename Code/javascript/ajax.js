@@ -11,8 +11,6 @@ function click_modalEncomenda(clicked_id,clicked_client) {
 }
 
 function click_modalEditProduto(clicked_id) {
-    var img = document.getElementById(clicked_id);
-
     $.ajax({
             url: '../../actions/modal_loja.php',
             type: 'POST',
@@ -32,6 +30,7 @@ function click_modalEditProduto(clicked_id) {
     setTimeout(function() {
         document.getElementById("id01").style.display = "block";
     }, 300); 
+    
 }
 
 function click_modalLoja(clicked_id) {
@@ -61,6 +60,7 @@ function click_modalLoja(clicked_id) {
         document.getElementById("id01").style.display = "block";
         modalImg.src = img.src;   
     }, 100); 
+
 }
 
 function click_modalMembro(clicked_id) {
@@ -162,5 +162,14 @@ var checkPass = function() {
     } else {
       document.getElementById('message3').style.color = 'red';
       document.getElementById('message3').innerHTML = "<i class='fas fa-times-circle'></i>";
+    }
+}
+
+window.onclick = function(event) {
+    if (event.target == document.getElementById("id01") ) {
+        document.getElementById("id01").style.display = "none";
+    }
+    else if (event.target == document.getElementById("id02") ) {
+        document.getElementById("id02").style.display = "none";
     }
 }
