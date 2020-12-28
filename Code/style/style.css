@@ -398,7 +398,7 @@ button, .button{
 input[type=text], 
 input[type=tel], 
 input[type=password], 
-input[type=number], input[list] {
+input[type=number], input[list], select{
     width: fit-content;
     padding: 6px 10px;
     box-sizing: border-box;
@@ -551,6 +551,8 @@ textarea {
 
 img.avatar {
     width: 80%;
+    height: 250px;
+    object-fit: contain;
     margin-top: 5px;
 }
 

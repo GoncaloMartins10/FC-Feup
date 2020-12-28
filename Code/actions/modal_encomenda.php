@@ -15,19 +15,9 @@
 
 <div id="id01" class="modal center">
 
-    <div class="content center" style="position:relative;"> 
+    <div class="content center"> 
 
-            <table id=cart style="background-color: white;">
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th style="position:relative;"><span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span></th>
-              </tr>
+            <table id="cart" class="center" style="background-color: white; margin: 0; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);">
               <tr>
                 <th>ID</th>
                 <th><!-- Foto --></th>
@@ -36,7 +26,7 @@
                 <th>Quantidade</th>
                 <th>Data</th>
                 <th>Total</th>
-                <th></th>
+                <th><span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" style="position: relative">&times;</span></th>
               </tr>
                 <?php while(isset($encomenda['id'])){ ?>
                     <tr>

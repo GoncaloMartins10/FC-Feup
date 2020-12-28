@@ -65,9 +65,9 @@
 
     <form class="search" action="loja.php" method="GET">
 
-        <div class="item">
+        <div class="item" style="width: 260px; max-width: 260px;">
             <label for="price"> Preço:</label><br>
-            <?php echo($minprice); ?> € <input type="range" id="price" name="price" value="<?php echo($price); ?>" min ="<?php echo($minprice); ?>" max="<?php echo($maxprice); ?>" oninput="this.nextElementSibling.value = this.value">
+            <?php echo($minprice); ?> € <input type="range" id="price" name="price" step="0.01" value="<?php echo($price); ?>" min ="<?php echo($minprice); ?>" max="<?php echo($maxprice); ?>" oninput="this.nextElementSibling.value = this.value">
             <output><?php echo($price); ?></output> €
         </div>
 
