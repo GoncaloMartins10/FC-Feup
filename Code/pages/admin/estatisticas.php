@@ -66,6 +66,11 @@
                                             bold: true,    // true or false
                                         },
                         title: "Unidades Vendidas por Produto",
+                        animation: {
+                                duration: 3000,
+                                easing: 'out',
+                                startup: true
+                                },
                         width: 900,
                         height: 500,
                         bar: {groupWidth: "95%"},
@@ -100,9 +105,14 @@
                                             bold: true,    // true or false
                                         },
                                     title: "Vendas Diárias",
+                                    pointSize: 5,
+                                    animation: {
+                                        duration: 2000,
+                                        easing: 'inAndOut',
+                                        startup: true
+                                    },
                                     width: 900,
-                                    height: 500,
-                                    
+                                    height: 500,                                   
                                     hAxis: {
                                             title: 'Data'
                                            },

@@ -77,7 +77,7 @@
     <div id="id01" class="modal">
         <div class="content center">
 
-            <div class="member center" style="position: relative;">
+            <div class="member center" style="position: relative; margin: 0; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <h1>Editar Produto</h1>
                 <form method="POST" action="../../actions/edit_product.php" enctype="multipart/form-data" name="modal_lojaadmin">

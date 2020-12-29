@@ -82,7 +82,7 @@
         <div id="id01" class="modal">
             <div class="content center">
 
-                <div class="member center" style="position: relative;">
+                <div class="member center" style="position: relative; margin: 0; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);">
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                     <h1>Editar Dados Pessoais</h1>
                     <form method="POST" action="../../actions/edit_socio.php" enctype="multipart/form-data">
@@ -110,7 +110,7 @@
         <div id="id02" class="modal">
             <div class="content center">
 
-                <div class="member center" style="position: relative;">
+                <div class="member center" style="position: relative; margin: 0; position: absolute; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);">
                     <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
                     <h1>Alterar Password</h1>
                     <form method="POST" action="../../actions/edit_pass.php" enctype="multipart/form-data">

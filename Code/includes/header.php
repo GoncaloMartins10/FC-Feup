@@ -3,7 +3,7 @@
 
 <header>   
 
-    <img class="logo" src="../../images/logo.png">
+    <a href="../comum/inicio.php"><img class="logo" src="../../images/logo.png"></a>
     <nav>
         <ul>
             <li id="<?php if($page == 'inicio.php'){echo 'active"';}else{?>" class=" <?php echo 'hvr-underline-from-left"';}?>" > <a href="../comum/inicio.php"> Inicio</a></li>
