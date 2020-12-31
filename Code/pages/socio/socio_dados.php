@@ -133,7 +133,7 @@
                             <span id='message3' ><i class='fas fa-times-circle' style="color:red" ></i></span><br>
                         </div>
                         <div class="item">
-                            <button type="submit">Editar Dados</button>
+                            <button type="submit">Mudar Password</button>
                         </div>
                     </form> 
                 </div>

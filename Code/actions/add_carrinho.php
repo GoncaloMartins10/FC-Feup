@@ -15,21 +15,27 @@
     if(isset($_POST['tamanho']))
         $tamanho = $_POST['tamanho'];
     
-
-    if($id == "" OR $quantidade == "" OR $tamanho == ""){
-        $_SESSION['error'] = "Por favor preencha todos os campos do formulário";
-        header('Location: ../pages/loja.php');
-    }
-    else{
-        $result = getPrecoprodutoById($id);
-        $row = pg_fetch_assoc($result);
-        $total = $row['preco'] * $quantidade;
-    
-        createlinha_encomenda($quantidade, $tamanho, $total, $id);
-        updateEncomenda($quantidade, $total, $_SESSION['num_socio']);
-        pg_close($conn);
+    if(isset($_SESSION['num_socio'])){
+        if($id == "" OR $quantidade == "" OR $tamanho == ""){
+            $_SESSION['error'] = "Por favor preencha todos os campos do formulário";
+            header('Location: ../pages/loja.php');
+        }
+        else{
+            $result = getPrecoprodutoById($id);
+            $row = pg_fetch_assoc($result);
+            $total = $row['preco'] * $quantidade;
         
-        header('Location: ../pages/comum/carrinho.php');
-    }
+            createlinha_encomenda($quantidade, $tamanho, $total, $id);
+            updateEncomenda($quantidade, $total, $_SESSION['num_socio']);
+            pg_close($conn);
+            
+            header('Location: ../pages/comum/carrinho.php');
+        }
+    }  
+    else{
+        header('Location: ../pages/comum/socio.php');
+        $_SESSION['error'] = "Para adicionar produtos ao carrinho, inicie sessão ou torne-se sócio.";
+    }  
+   
 
  ?>
