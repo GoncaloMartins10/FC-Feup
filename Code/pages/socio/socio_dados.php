@@ -122,7 +122,7 @@
                         <div class="item">
                             <label for="pass_antiga">Password Antiga</label><br>
                             <input type="password" id="pass_antiga" name="pass_antiga"  onkeyup='keyup(this);' required><br>
-                            <span style="color:red; font-size:15px;"> <?php if(isset($_SESSION['erro_pass'])) echo $_SESSION['erro_pass'];?> </span> <br>
+                            <span id="error" style="color:red; font-size:15px;"> <?php if(isset($_SESSION['erro_pass'])) echo $_SESSION['erro_pass'];?> </span> <br>
                         </div>
                         <div class="item">
                             <label for="pass_nova">Password Nova</label><br>
@@ -177,13 +177,13 @@
 
     var keyup = function(input) {
         document.getElementById(input.id).style.border = "";
+        document.getElementById('error').innerHTML= "";
     }
 
-    <?php if(isset($_SESSION['erro_pass'])) {
-            if( $_SESSION['erro_pass'] == "Password antiga errada. Tente Novamente." ) { ?>
-                document.getElementById('id02').style.display = "block";
-                document.getElementById('pass_antiga').style.border = "2px solid red";
-    <?php   } 
+    <?php if(isset($_SESSION['erro_pass'])) { ?>
+            document.getElementById('id02').style.display = "block";
+            document.getElementById('pass_antiga').style.border = "2px solid red";
+    <?php   $_SESSION['erro_pass'] = null; 
           }?>
 
 </script>

@@ -47,10 +47,11 @@
                         </datalist>
                     </div>                
                     <div class="item">
-                        <input type="number" style="width: 40%;" id="idade" name="idade" placeholder="Idade" required>
+                        <input type="number" style="width: 40%;" id="idade" name="idade" placeholder="Idade" min="0" required>
                     </div>
                     <div class="item">
-                        <input type="number" style="width: 40%;" id="numero" name="numero" placeholder="Nº Camisola" min="0" max="99" required>
+                        <input type="number" style="width: 40%;" id="numero" name="numero" placeholder="Nº Camisola" min="0" max="99" onchange='keyup(this);' required> <?php if(isset($_SESSION['error'])) echo "<br>" ?> 
+                        <span id="error" style="color:red; font-size:15px;"> <?php if(isset($_SESSION['error'])) echo $_SESSION['error'];?> </span> <br>
                     </div>
                     <div class="item">
                         <label for="img">Imagem:</label><br>
@@ -71,5 +72,19 @@
      ?>
 
 </body>
+
+<script>      
+
+    var keyup = function(input) {
+        document.getElementById(input.id).style.border = "";
+        document.getElementById('error').innerHTML= "";
+    }
+
+    <?php if(isset($_SESSION['error'])) { ?>
+            document.getElementById('numero').style.border = "2px solid red";
+    <?php   $_SESSION['error'] = null;
+     } ?> 
+
+</script>
 
 </html>

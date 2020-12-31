@@ -39,11 +39,11 @@
                         <input type="text" id="name" name="name" placeholder="Nome do Produto" required><br>
                     </div>                
                     <div class="item">
-                        <textarea type="text" id="discription" name="discription" placeholder="Descrição do Produto (Opcional)"></textarea><br>
+                        <textarea type="text" id="discription" name="discription" placeholder="Descrição do Produto (Opcional)" ></textarea><br>
                     </div>
                     <div class="item">
                         <input type="number" style="width: 34%;margin-right: 5px;" id="price" name="price" placeholder="Preço (€)" min="0.00" max="10000.00" step="0.01" required>
-                        <input type="number" style="width: 34%;" id="stock" name="stock" placeholder="Stock Inicial" required>
+                        <input type="number" style="width: 34%;" id="stock" name="stock" placeholder="Stock Inicial" min="0" required>
                     </div>
                     <div class="item">
                         <label for="img">Imagem:</label><br>
