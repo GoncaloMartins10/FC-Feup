@@ -25,7 +25,7 @@ CREATE TABLE encomenda (
 CREATE TABLE linha_encomenda (
     id SERIAL,
     quantidade INTEGER,
-    tamanho CHAR,
+    tamanho CHAR(5),
     total DECIMAL(10,2),
     produtoID INTEGER,
     encomendaID INTEGER,
