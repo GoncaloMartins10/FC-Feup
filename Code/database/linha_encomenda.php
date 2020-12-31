@@ -4,16 +4,19 @@
 
     global $conn;
 
-    $query = "INSERT INTO linha_encomenda(quantidade, tamanho, total, produtoid, encomendaid) VALUES ('".$quantidade."','".$tamanho."','".$total."','".$id."',(SELECT id FROM encomenda WHERE clienteid ='".$_SESSION['num_socio']."' AND comprado = 'FALSE'))";
-    pg_exec($conn, $query);
+    $query = "INSERT INTO linha_encomenda(quantidade, tamanho, total, produtoid, encomendaid) 
+              VALUES ('".$quantidade."','".$tamanho."','".$total."','".$id."',(SELECT id FROM encomenda WHERE clienteid ='".$_SESSION['num_socio']."' AND comprado = 'FALSE'))";
 
+    pg_exec($conn, $query);
   }
 
   function getLinha_encomendaQuantTot($id){
 
     global $conn;
 
-    $query = "SELECT quantidade,total FROM linha_encomenda WHERE id = '".$id."' ";
+    $query = "SELECT quantidade,total FROM linha_encomenda 
+              WHERE id = '".$id."' ";
+
     return pg_exec($conn, $query);
   }
 
@@ -21,7 +24,9 @@
     
     global $conn;
 
-    $query = "DELETE FROM linha_encomenda WHERE id = '".$id."' ";
+    $query = "DELETE FROM linha_encomenda 
+              WHERE id = '".$id."' ";
+              
     pg_exec($conn, $query);
   }
 

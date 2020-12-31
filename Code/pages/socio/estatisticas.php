@@ -34,38 +34,45 @@
                 <a class="hvr-underline-from-left" href="socio_dados.php">Dados Pessoais</a>
                 <a class="hvr-underline-from-left" href="encomendas.php">Histórico de Encomendas</a>
                 <a id="active" class="hvr-underline-from-left" href="estatisticas.php">Estatísticas</a>
-            </div>
+        </div>
 
-            <div class="content center">
+        <div class="content center">
+
+            <?php if(empty($produto['nome'])){ ?> 
+                <img src="../../images/empty-search.png">
+                <h3>Ainda não comprou nenhum produto!</h3>
+            <?php } else { ?> 
     
-            <script type="text/javascript">
-                google.charts.load("current", {packages:["corechart"]});
-                google.charts.setOnLoadCallback(drawChart);
-                function drawChart() {
-                    var data = google.visualization.arrayToDataTable([
-                    ['Task', 'Hours per Day'],
-                    <?php while(isset($produto['nome'])){ ?>
-                        ["<?php echo $produto['nome']; ?>", <?php echo $produto['unidades_vendidas'];?>],
-                        
-                        <?php $produto = pg_fetch_assoc($Compras); } ?>
-                    ]);
+                <script type="text/javascript">
+                    google.charts.load("current", {packages:["corechart"]});
+                    google.charts.setOnLoadCallback(drawChart);
+                    function drawChart() {
+                        var data = google.visualization.arrayToDataTable([
+                        ['Task', 'Hours per Day'],
+                        <?php while(isset($produto['nome'])){ ?>
+                            ["<?php echo $produto['nome']; ?>", <?php echo $produto['unidades_vendidas'];?>],
+                            
+                            <?php $produto = pg_fetch_assoc($Compras); } ?>
+                        ]);
 
-                    var options = {
-                        titleTextStyle: {                                           
-                                            color: '#284b63',    // any HTML string color ('red', '#cc00cc')                                        
-                                            fontName: 'Nunito', // i.e. 'Times New Roman'
-                                            fontSize: 25, // 12, 18 whatever you want (don't specify px)
-                                            bold: true,    // true or false
-                                        },
-                        title: "Produtos Comprados",
-                        is3D: true
-                    };
-                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-                    chart.draw(data, options);
-                }
-            </script>
+                        var options = {
+                            titleTextStyle: {                                           
+                                                color: '#284b63',    // any HTML string color ('red', '#cc00cc')                                        
+                                                fontName: 'Nunito', // i.e. 'Times New Roman'
+                                                fontSize: 25, // 12, 18 whatever you want (don't specify px)
+                                                bold: true,    // true or false
+                                            },
+                            title: "Produtos Comprados",
+                            is3D: true
+                        };
+                        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+                        chart.draw(data, options);
+                    }
+                </script>
 
-            <div id="piechart_3d" style="width: 900px; height: 450px;"></div>
+                <div id="piechart_3d" style="width: 900px; height: 450px;"></div>
+
+            <?php } ?>
         </div>
     </main>
 

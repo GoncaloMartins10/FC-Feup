@@ -100,6 +100,10 @@
                             <input type="tel" id="telefone" name="telefone" pattern="[0-9]{9}" value ="<?php echo($telefone);?>" required><br>
                         </div>
                         <div class="item">
+                            <label for="img">Imagem (Opcional):</label><br>
+                            <input type="file" id="img" name="img" accept="image/*"><br>                       
+                        </div>
+                        <div class="item">
                             <button type="submit">Editar Dados</button>
                         </div>
                     </form> 

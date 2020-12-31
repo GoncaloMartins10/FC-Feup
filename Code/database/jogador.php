@@ -4,9 +4,10 @@
 
     global $conn;
 
-    $query = "INSERT INTO jogador(num_camisola, nome, posicao, idade, imagem) VALUES ('".$numero."','".$nome."','".$posicao."','".$idade."','".$imagem."')";
-    pg_exec($conn, $query);
+    $query = "INSERT INTO jogador(num_camisola, nome, posicao, idade, imagem) 
+              VALUES ('".$numero."','".$nome."','".$posicao."','".$idade."','".$imagem."')";
 
+    pg_exec($conn, $query);
   }
 
   function getAlljogador(){
@@ -23,9 +24,10 @@
 
     global $conn;
 
-    $query = "SELECT * FROM jogador WHERE num_camisola = '".$numero."'";
-    $result = pg_exec($conn, $query);
+    $query = "SELECT * FROM jogador 
+              WHERE num_camisola = '".$numero."'";
 
+    $result = pg_exec($conn, $query);
     return $result;
   }
 
@@ -51,7 +53,9 @@
 
     global $conn;
 
-    $query = "DELETE FROM jogador WHERE num_camisola = '".$numero."'";
+    $query = "DELETE FROM jogador 
+              WHERE num_camisola = '".$numero."'";
+              
     pg_exec($conn, $query);
   }
 

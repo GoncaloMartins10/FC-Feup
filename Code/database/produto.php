@@ -57,7 +57,8 @@
 
     global $conn;
 
-    $query = "UPDATE produto SET  stock = stock - '".$quantidade."'  
+    $query = "UPDATE produto 
+              SET  stock = stock - '".$quantidade."'  
               WHERE id = '".$id."' ";
   
     pg_exec($conn, $query);

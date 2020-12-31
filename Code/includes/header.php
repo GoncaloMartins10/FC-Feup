@@ -13,7 +13,7 @@
             <li id="<?php if($page == 'sociopendente.php'){echo 'active"';}else{?>" class=" <?php echo 'hvr-underline-from-left"';}?>" ><a href="../admin/sociopendente.php">Admin</a></li>          
             <?php }?>
             <?php if(isset($_SESSION['num_socio']) and $_SESSION['admin']=="f") { ?>
-            <li id="<?php if($page == 'encomendas.php'){echo 'active"';}else{?>" class=" <?php echo 'hvr-underline-from-left"';}?>" ><a href="../socio/encomendas.php">Sócio</a></li>          
+            <li id="<?php if($page == 'encomendas.php'){echo 'active"';}else{?>" class=" <?php echo 'hvr-underline-from-left"';}?>" ><a href="../socio/socio_dados.php">Sócio</a></li>          
             <?php }?>
         </ul> 
     </nav>
