@@ -100,7 +100,7 @@ function click_modalEditPass(clicked_id) {
 }
 
 function click_acceptSocio(socio) {
-    if (confirm("Tem a certeza que quer aceitar o sócio")) {
+    if (confirm("Tem a certeza que quer aceitar o sócio?")) {
             $.ajax({
                 url: '../../actions/accept_socio.php',
                 type: 'POST',
@@ -111,7 +111,7 @@ function click_acceptSocio(socio) {
 } 
 
 function click_eliminateSocio(socio) {
-    if (confirm("Tem a certeza que quer eliminar o sócio")) {
+    if (confirm("Tem a certeza que quer eliminar o sócio?")) {
             $.ajax({
                 url: '../../actions/remove_socio.php',
                 type: 'POST',
@@ -122,7 +122,7 @@ function click_eliminateSocio(socio) {
 }   
 
 function click_eliminateJogador(jogador) {
-    if (confirm("Tem a certeza que quer eliminar o jogador")) {
+    if (confirm("Tem a certeza que quer eliminar o jogador?")) {
             $.ajax({
                 url: '../../actions/remove_jogador.php',
                 type: 'POST',
@@ -133,7 +133,7 @@ function click_eliminateJogador(jogador) {
 }  
 
 function click_eliminateProduto(id) {
-    if (confirm("Tem a certeza que quer apagar o produto")) {
+    if (confirm("Tem a certeza que quer apagar o produto?")) {
             $.ajax({
                 url: '../../actions/remove_produto.php',
                 type: 'POST',
@@ -145,7 +145,7 @@ function click_eliminateProduto(id) {
 }
 
 function click_eliminateLinhaEncomenda(id) {
-    if (confirm("Tem a certeza que quer apagar")) {
+    if (confirm("Tem a certeza que quer apagar?")) {
             $.ajax({
                 url: '../../actions/remove_linhaencomenda.php',
                 type: 'POST',

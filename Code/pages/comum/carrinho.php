@@ -99,7 +99,7 @@
 
     <div class="button-container">
     <?php if($row2['num_produtos']!= 0){?>
-      <a href="../../actions/comprar_carrinho.php"> <button class="hvr-grow-shadow">Comprar</button></a>
+      <a href="../../actions/comprar_carrinho.php"> <button class="hvr-grow-shadow" style="margin-bottom: 10px;">Comprar</button></a>
     <?php } ?>
       <a href="../../pages/comum/loja.php"><button class="hvr-grow-shadow" style="background: #284b63">Adicionar mais Produtos</button></a>
     </div>
