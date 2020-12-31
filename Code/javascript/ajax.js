@@ -53,7 +53,7 @@ function click_modalLoja(clicked_id) {
                 document.forms['modal_loja']['id'].type = "hidden";
 
                 document.forms['modal_loja']['quantidade'].max = data.stock;
-                document.forms['modal_loja']['quantidade'].value = 1;
+                document.forms['modal_loja']['quantidade'].value = 0;
             }
     });
     setTimeout(function() {

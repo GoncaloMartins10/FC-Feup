@@ -48,7 +48,7 @@
                 <div class="card">
                     <h4>Sócio</h4>
                     <div class="text">
-                        <b>Nº Sócio:</b> 11 <br>
+                        <b>Nº Sócio:</b> 4 <br>
                         <b>Password:</b> socio <br>
                     </div>
                 </div>

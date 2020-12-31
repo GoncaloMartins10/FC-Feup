@@ -13,6 +13,9 @@
 
 <?php
   session_start();
+
+  if($_SESSION['admin'] != "t") 
+    header("Location: ../comum/inicio.php");
 ?>
 
 <body>

@@ -21,9 +21,13 @@
     else{
         
         if( md5($passantiga) == pg_fetch_assoc(getPass($num_socio))['password'] ){
-            updatePass(md5($passnova), $num_socio);
-            pg_close($conn);
-            header('Location: ../pages/socio/socio_dados.php');
+            if($passnova == $passnovaa){
+                updatePass(md5($passnova), $num_socio);
+                pg_close($conn);
+                header('Location: ../pages/socio/socio_dados.php');
+            }else{
+                
+            }
         }else{
             header('Location: ../pages/socio/socio_dados.php');
             $_SESSION['erro_pass'] = "Password antiga errada. Tente Novamente.";

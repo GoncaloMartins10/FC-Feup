@@ -12,6 +12,8 @@
 
 <?php
   session_start();
+  if($_SESSION['admin'] != "f") 
+    header("Location: ../comum/inicio.php");
 ?>
 
 <body>
@@ -135,7 +137,7 @@
                             <span id='message3' ><i class='fas fa-times-circle' style="color:red" ></i></span><br>
                         </div>
                         <div class="item">
-                            <button type="submit">Mudar Password</button>
+                            <button id="button_pass" type="button">Mudar Password</button>
                         </div>
                     </form> 
                 </div>
@@ -169,6 +171,7 @@
         if ( document.getElementById('pass_nova').value == document.getElementById('pass_novaa').value ) {
             document.getElementById('message3').style.color = 'green';
             document.getElementById('message3').innerHTML = "<i class='fas fa-check-circle'></i>";
+            document.getElementById('button_pass').type = "submit";
         } else {
             document.getElementById('message3').style.color = 'red';
             document.getElementById('message3').innerHTML = "<i class='fas fa-times-circle'></i>";

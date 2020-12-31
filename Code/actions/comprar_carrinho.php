@@ -21,5 +21,5 @@
 
     pg_close($conn);
     
-    header('Location: ../pages/comum/inicio.php');
+    header('Location: ../pages/socio/encomendas.php');
 ?>

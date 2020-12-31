@@ -12,6 +12,9 @@
 
 <?php
   session_start();
+
+  if($_SESSION['admin'] != "t") 
+    header("Location: ../comum/inicio.php");
     
   include "../../includes/opendb.php";
   include "../../database/produto.php";
@@ -42,7 +45,7 @@
             <div class="flexbox">
                 
             <?php if(empty($row['id'])){ ?>
-                        <img src="../images/empty-search.png">
+                        <img src="../../images/empty-search.png">
                         <h3>Não há produtos na loja</h3>    
             <?php  }
              else{

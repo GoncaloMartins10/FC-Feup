@@ -3,7 +3,7 @@ CREATE TABLE cliente (
     nome VARCHAR(100) NOT NULL,
     morada VARCHAR(200) NOT NULL,
     telefone VARCHAR(15) NOT NULL,
-    password VARCHAR(20) NOT NULL,
+    password VARCHAR(100) NOT NULL,
     imagem VARCHAR(200) NOT NULL,
     aprovacao BOOLEAN DEFAULT FALSE,
     admin BOOLEAN DEFAULT FALSE,

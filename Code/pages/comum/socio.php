@@ -53,6 +53,6 @@
 
 </body>
 
-<script> alert("<?php echo $_SESSION['error'] ?>");  </script>
+<script> <?php if(isset($_SESSION['error']))?> alert("<?php echo $_SESSION['error'] ?>");  </script>
 
 </html>

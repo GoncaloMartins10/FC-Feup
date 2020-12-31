@@ -12,6 +12,9 @@
 
 <?php
   session_start();
+
+  if($_SESSION['admin'] != "t") 
+    header("Location: ../comum/inicio.php");
 ?>
 
 <body>
@@ -23,7 +26,7 @@
 
         $socios = getsocioAprovado();
 
-        $jogadores = getAlljogador($numero);
+        $jogadores = getAlljogador();
         pg_close($conn);
 
         $socio = pg_fetch_assoc($socios); 

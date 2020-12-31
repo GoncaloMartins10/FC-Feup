@@ -14,6 +14,9 @@
 
 <?php
   session_start();
+
+  if($_SESSION['admin'] != "f") 
+    header("Location: ../comum/inicio.php");
 ?>
 
 <body>
