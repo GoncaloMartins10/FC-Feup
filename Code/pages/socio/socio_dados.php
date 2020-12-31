@@ -121,10 +121,8 @@
 
                         <div class="item">
                             <label for="pass_antiga">Password Antiga</label><br>
-                            <input type="password" id="pass_antiga" name="pass_antiga"  onkeyup='confirmPassOld(this); keyup(this);' required>
-                            <span id='message1' ><i class='fas fa-times-circle' style="color:red" ></i></span><br>
+                            <input type="password" id="pass_antiga" name="pass_antiga"  onkeyup='keyup(this);' required><br>
                             <span style="color:red; font-size:15px;"> <?php if(isset($_SESSION['erro_pass'])) echo $_SESSION['erro_pass'];?> </span> <br>
-
                         </div>
                         <div class="item">
                             <label for="pass_nova">Password Nova</label><br>
@@ -137,7 +135,7 @@
                             <span id='message3' ><i class='fas fa-times-circle' style="color:red" ></i></span><br>
                         </div>
                         <div class="item">
-                            <button type="submit">Editar Dados</button>
+                            <button type="submit">Mudar Password</button>
                         </div>
                     </form> 
                 </div>
@@ -156,17 +154,6 @@
 </body>
 <script>
 
-    var confirmPassOld = function(pass) {
-        
-        if ( pass.value )  { 
-            document.getElementById('message1').style.color = 'green';
-            document.getElementById('message1').innerHTML = "<i class='fas fa-check-circle'></i>";
-        } else {
-            document.getElementById('message1').style.color = 'red';
-            document.getElementById('message1').innerHTML = "<i class='fas fa-times-circle'></i>";
-        }
-    }
-
     var confirmPassNew = function(pass) {
         
         if ( pass.value )  { 
@@ -178,16 +165,26 @@
         }
     }
 
+    var checkPass = function() {
+        if ( document.getElementById('pass_nova').value == document.getElementById('pass_novaa').value ) {
+            document.getElementById('message3').style.color = 'green';
+            document.getElementById('message3').innerHTML = "<i class='fas fa-check-circle'></i>";
+        } else {
+            document.getElementById('message3').style.color = 'red';
+            document.getElementById('message3').innerHTML = "<i class='fas fa-times-circle'></i>";
+        }
+    }
+
+    var keyup = function(input) {
+        document.getElementById(input.id).style.border = "";
+    }
+
     <?php if(isset($_SESSION['erro_pass'])) {
             if( $_SESSION['erro_pass'] == "Password antiga errada. Tente Novamente." ) { ?>
                 document.getElementById('id02').style.display = "block";
                 document.getElementById('pass_antiga').style.border = "2px solid red";
     <?php   } 
           }?>
-
-    var keyup = function(input) {
-        document.getElementById(input.id).style.border = "";
-    }
 
 </script>
 
