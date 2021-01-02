@@ -18,7 +18,7 @@
     if(isset($_SESSION['num_socio'])){
         if($id == "" OR $quantidade == "" OR $tamanho == ""){
             $_SESSION['error'] = "Por favor preencha todos os campos do formulário";
-            header('Location: ../pages/loja.php');
+            header('Location: ../pages/comum/loja.php');
         }
         else{
             $result = getPrecoprodutoById($id);

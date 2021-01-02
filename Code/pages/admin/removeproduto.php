@@ -102,7 +102,7 @@
                         <label for="stock">Stock</label><br>
                         <input type="number" style="width: 34%;margin-right: 5px;" id="preco" name="preco" value="" min="0.00" max="10000.00" step="0.01" required>
 
-                        <input type="number" style="width: 34%;" id="stock" name="stock" value="" required>
+                        <input type="number" style="width: 34%;" id="stock" name="stock" value=""  min="0"  required>
                     </div>
 
                     <div class="item">

@@ -149,14 +149,13 @@
                 <input type="number" min="1" max ="" name="quantidade" required><br><br>
 
                 <label for="tamanho"><b>Tamanho</b></label>
-                <input list="tamanhos" placeholder="S" name="tamanho" required><br><br>
-                <datalist id="tamanhos">
-                <option value="S">
-                <option value="M">
-                <option value="L">
-                <option value="XL">
-                <option value="XXL">
-                </datalist>
+                <select id="tamanho" name="tamanho">
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                </select><br><br>
 
                 <b>Preço:</b> <p id="preco"> </p> <br><br> 
                 <button type="submit">Adicionar ao carrinho</button>
