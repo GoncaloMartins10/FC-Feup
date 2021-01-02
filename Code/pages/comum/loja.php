@@ -111,7 +111,7 @@
                         <div class="text">
                             <b>Nome:</b> <?php echo $produto['nome']; ?><br>
                             <b>Preço:</b> <?php echo $produto['preco']; ?>€<br>
-                            <b>Stock:</b> <?php echo $produto['stock']; ?><br>
+                            <b>Stock:</b> <?php if($produto['stock'] > 0) echo $produto['stock']; else echo '<span style="color: red"><b>Esgotado</b></span>'; ?><br>
                         </div>
                 </div>    
 

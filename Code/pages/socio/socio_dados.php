@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="../../images/logo.png">
     <link rel="stylesheet" href="../../style/style.css">
     <link rel="stylesheet" href="../../style/style_admin.css">
-    <title>FC FEUP | Sócio</title>
+    <title>Sócio | Dados Pessoais</title>
 </head>
 
 <?php

@@ -62,7 +62,8 @@
               JOIN encomenda ON (encomendaid = encomenda.id) 
               JOIN produto ON (produtoid = produto.id)
               WHERE comprado = 'TRUE'
-              GROUP BY produto.nome";
+              GROUP BY produto.nome
+              ORDER BY unidades_vendidas DESC";
 
     return pg_exec($conn, $query);
   }

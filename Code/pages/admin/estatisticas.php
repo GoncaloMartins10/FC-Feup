@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="../../images/logo.png">
     <link rel="stylesheet" href="../../style/style.css">
     <link rel="stylesheet" href="../../style/style_admin.css">
-    <title>FC FEUP | Admin</title>
+    <title>Admin | Estatísticas</title>
 </head>
 
 <?php
@@ -27,6 +27,7 @@
 
         $vendasProduto = getVendasProduto();
         $produto = pg_fetch_assoc($vendasProduto);
+        $counter = 0;
 
         $vendasDiarias = getVendasDiarias();
         $vendas = pg_fetch_assoc($vendasDiarias);
@@ -55,7 +56,7 @@
                     var data = google.visualization.arrayToDataTable([
                         ["Produto", "Quantidade", { role: "style" } ],
                         <?php while(isset($produto['nome'])){ ?>
-                            ["<?php echo $produto['nome']; ?>", <?php echo $produto['unidades_vendidas']; ?>, "#284b63"],
+                            ["<?php echo $produto['nome']; ?>", <?php echo $produto['unidades_vendidas']; ?>, <?php $counter++; if($counter % 2 == 0) echo '"#284B63"'; else echo '"#417B9F"';?>],
                         
                         <?php $produto = pg_fetch_assoc($vendasProduto); } ?>
                     ]);
@@ -76,7 +77,7 @@
                                 },
                         width: 900,
                         height: 500,
-                        bar: {groupWidth: "95%"},
+                        bar: {groupWidth: "85%"},
                         legend: { position: "none" },
                     };
                     
@@ -108,6 +109,7 @@
                                             bold: true,    // true or false
                                         },
                                     title: "Vendas Diárias",
+                                    colors: ["#417B9F"],
                                     pointSize: 5,
                                     animation: {
                                         duration: 2000,

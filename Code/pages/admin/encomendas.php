@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="../../images/logo.png">
     <link rel="stylesheet" href="../../style/style.css">
     <link rel="stylesheet" href="../../style/style_admin.css">
-    <title>FC FEUP | Admin</title>
+    <title>Admin | Histórico Encomendas</title>
 </head>
 
 <?php

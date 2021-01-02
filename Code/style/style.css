@@ -314,7 +314,7 @@ footer .container{
 .card{
     width: 150px;
     background: #D9D9D9;
-    margin: 20px;
+    margin: 15px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
     /* Animation*/
     -webkit-transform: perspective(1px) translateZ(0);

@@ -42,7 +42,8 @@
         global $conn;
 
         $query = "SELECT * FROM cliente 
-                  WHERE aprovacao='TRUE' AND admin = 'FALSE';";
+                  WHERE aprovacao='TRUE' AND admin = 'FALSE'
+                  ORDER BY num_socio";
 
         return pg_exec($conn, $query);
     }

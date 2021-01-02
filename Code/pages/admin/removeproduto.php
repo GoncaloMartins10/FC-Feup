@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="../../images/logo.png">
     <link rel="stylesheet" href="../../style/style.css">
     <link rel="stylesheet" href="../../style/style_admin.css">
-    <title>FC FEUP | Admin</title>
+    <title>Admin | Editar Produto</title>
 </head>
 
 <?php
@@ -58,7 +58,7 @@
                         <div class="text">
                             <b>Nome:</b> <?php echo $row['nome']; ?><br>
                             <b>Preço:</b> <?php echo $row['preco']; ?>€<br>
-                            <b>Stock:</b> <?php echo $row['stock']; ?><br>
+                            <b>Stock:</b> <?php if($row['stock'] > 0) echo $row['stock']; else echo '<span style="color: red"><b>Esgotado</b></span>'; ?><br>
                         </div>
                     </div>
 
