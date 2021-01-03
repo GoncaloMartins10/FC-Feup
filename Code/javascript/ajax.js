@@ -56,11 +56,14 @@ function click_modalLoja(clicked_id) {
                 document.forms['modal_loja']['quantidade'].value = 0;
             }
     });
-    setTimeout(function() {
-        document.getElementById("id01").style.display = "block";
-        modalImg.src = img.src;   
-    }, 100); 
 
+    setTimeout(function() {
+        if ( document.forms['modal_loja']['quantidade'].max != 0){
+            document.getElementById("id01").style.display = "block";
+            modalImg.src = img.src;   
+        }
+    }, 150); 
+   
 }
 
 function click_modalMembro(clicked_id) {
