@@ -14,7 +14,7 @@
         <span style="color:red; font-size:15px;"> <?php if(isset($_SESSION['erro']))echo $_SESSION['erro']; ?> </span> <br><br>
 
         <button type="submit" class="btn">Login</button>
-        <a href="../comum/socio.php" class="button">Tornar-se Sócio</a>
+        <a href="../comum/socio.php" class="button loginandchart">Tornar-se Sócio</a>
     </form>
 
 </div>

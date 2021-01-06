@@ -53,7 +53,7 @@
                         var data = google.visualization.arrayToDataTable([
                         ['Task', 'Hours per Day'],
                         <?php while(isset($produto['nome'])){ ?>
-                            ["<?php echo $produto['nome']; ?>", <?php echo $produto['unidades_vendidas'];?>],
+                            ["<?php echo $produto['nome']; ?>", <?php echo $produto['unidades_compradas'];?>],
                             
                             <?php $produto = pg_fetch_assoc($Compras); } ?>
                         ]);

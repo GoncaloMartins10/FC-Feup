@@ -80,6 +80,10 @@ header{
 /* -------------------- Logo -------------------- */
 .logo{
     width: 100px;
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
 }
 /* -------------------- Navbar -------------------- */
 nav {
@@ -697,5 +701,10 @@ i:hover, i:focus, i:active {
   .hvr-underline-from-left:hover:before, .hvr-underline-from-left:focus:before, .hvr-underline-from-left:active:before {
     right: 0;
   }
+
+  .logo:hover {
+    -webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
 
   

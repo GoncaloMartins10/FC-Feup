@@ -85,7 +85,7 @@
 
     global $conn;
 
-    $query = "SELECT nome, SUM(quantidade) AS unidades_vendidas FROM linha_encomenda
+    $query = "SELECT nome, SUM(quantidade) AS unidades_compradas FROM linha_encomenda
               JOIN encomenda ON (encomendaid = encomenda.id) 
               JOIN produto ON (produtoid = produto.id)
               WHERE comprado = 'TRUE' AND clienteid = '".$cliente."'
