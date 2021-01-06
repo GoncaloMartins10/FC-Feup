@@ -12,11 +12,11 @@
             <li id="<?php if($page == 'inicio.php'){echo 'active"';}else{?>" class=" <?php echo 'hvr-underline-from-left"';}?>" > <a href="../comum/inicio.php"> Inicio</a></li>
             <li id="<?php if($page == 'membros.php'){echo 'active"';}else{?>" class=" <?php echo 'hvr-underline-from-left"';}?>" ><a href="../comum/membros.php">Membros</a></li>
             <li id="<?php if($page == 'loja.php'){echo 'active"';}else{?>" class=" <?php echo 'hvr-underline-from-left"';}?>" ><a href="../comum/loja.php">Loja</a></li>
+            <?php if(isset($_SESSION['num_socio'])) { ?>
+            <li id="<?php if( in_array($page, $sociopage) ){echo 'active"';}else{?>" class=" <?php echo 'hvr-underline-from-left"';}?>" ><a href="../socio/socio_dados.php">Sócio</a></li>          
+            <?php }?>
             <?php if(isset($_SESSION['num_socio']) and $_SESSION['admin']=="t") { ?>
             <li id="<?php if( in_array($page, $adminpage) ){echo 'active"';}else{?>" class=" <?php echo 'hvr-underline-from-left"';}?>" ><a href="../admin/sociopendente.php">Admin</a></li>          
-            <?php }?>
-            <?php if(isset($_SESSION['num_socio']) and $_SESSION['admin']=="f") { ?>
-            <li id="<?php if( in_array($page, $sociopage) ){echo 'active"';}else{?>" class=" <?php echo 'hvr-underline-from-left"';}?>" ><a href="../socio/socio_dados.php">Sócio</a></li>          
             <?php }?>
         </ul> 
     </nav>

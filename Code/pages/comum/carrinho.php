@@ -23,13 +23,16 @@
         include "../../database/encomenda.php";
 
 
-        $result = getLinha_encomendaCarrinho($_SESSION['num_socio']);
-        $row = pg_fetch_assoc($result); 
+        $row = $row2 = null;
+        if(isset($_SESSION['num_socio'])){
+          $result = getLinha_encomendaCarrinho($_SESSION['num_socio']);
+          $row = pg_fetch_assoc($result); 
 
-        $result2 = getCarrinho($_SESSION['num_socio']);
-        $row2 = pg_fetch_assoc($result2); 
-        
-        pg_close($conn);
+          $result2 = getCarrinho($_SESSION['num_socio']);
+          $row2 = pg_fetch_assoc($result2); 
+          
+          pg_close($conn);
+        }
     ?>
 
     <?php include "../../includes/header.php" ?>

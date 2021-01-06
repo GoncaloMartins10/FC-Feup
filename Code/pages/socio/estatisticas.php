@@ -14,7 +14,7 @@
 <?php
   session_start();
 
-  if($_SESSION['admin'] != "f") 
+  if($_SESSION['num_socio']==null) 
     header("Location: ../comum/inicio.php");
 ?>
 
