@@ -18,7 +18,7 @@
     <div id="cover">
         <img src="../../images/logo.png">
         <h5>Futebol Clube da FEUP</h5>
-        <h2>Um Engenherio também sabe jogar à bola</h2>
+        <h2>Um Engenheiro também sabe jogar à bola</h2>
         <br>
         <p style="color: white;">
             Gonçalo Martins &emsp;-&emsp; Ricardo Martins<br>
