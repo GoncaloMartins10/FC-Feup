@@ -313,6 +313,9 @@ footer .container{
 .iconbox img:hover{
     opacity: 1;
 }
+.iconbox a{
+    text-decoration: none;
+}
 
 /* ---------------------------------------- Cards  ---------------------------------------- */
 .card{

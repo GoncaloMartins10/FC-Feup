@@ -26,9 +26,15 @@
         </p>
 
         <div class="iconbox">
-            <img class="hvr-grow-shadow" src="../../images/zip-flat.svg">
-            <img class="hvr-grow-shadow" src="../../images/css-flat.svg">
-            <img class="hvr-grow-shadow" src="../../images/ppt-flat.svg">
+            <a href="../../downloads/code.zip" download>
+                <img class="hvr-grow-shadow" src="../../images/zip-flat.svg">
+            </a>
+            <a href="../../downloads/style.zip" download>
+                <img class="hvr-grow-shadow" src="../../images/css-flat.svg">
+            </a>
+            <a href="../../downloads/mockup.pptx" download>
+                <img class="hvr-grow-shadow" src="../../images/ppt-flat.svg">
+            </a>
         </div>
         
     </div>
