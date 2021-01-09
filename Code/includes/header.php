@@ -1,5 +1,5 @@
 <?php $page = basename($_SERVER['PHP_SELF']);
-    $sociopage = array('encomendas.php', 'estatisticas.php' , 'socio_dados.php');
+    $sociopage = array('encomendas_pessoais.php', 'estatisticas_pessoais.php' , 'socio_dados.php');
     $adminpage = array('encomendas.php', 'estatisticas.php', 'novojogador.php', 'novoproduto.php', 'removemembro.php', 'removeproduto.php', 'sociopendente.php');
 ?>
 
